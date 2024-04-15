@@ -3,6 +3,7 @@ import { TbBrandNextjs } from "react-icons/tb";
 import { BiLogoMongodb } from "react-icons/bi";
 import { BiLogoNodejs } from "react-icons/bi";
 import { SiExpress } from "react-icons/si";
+import { SiMysql } from "react-icons/si";
 
 const Technologies = () => {
   return (
@@ -23,6 +24,9 @@ const Technologies = () => {
         </div>
         <div className="rounded-2xl border-4 border-neutral-800 p-4">
           <BiLogoNodejs className="text-6xl text-green-500" />
+        </div>
+        <div className="rounded-2xl border-4 border-neutral-800 p-4">
+          <SiMysql className="text-6xl text-blue-500" />
         </div>
       </div>
     </div>

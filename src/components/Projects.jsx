@@ -10,8 +10,8 @@ function Projects() {
             <div className="w-full lg:w-1/4">
               <img
                 src={project.image}
-                width={150}
-                height={150}
+                width={200}
+                height={200}
                 alt={project.title}
                 className="mb-6 rounded"
               />

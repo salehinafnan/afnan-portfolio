@@ -1,7 +1,5 @@
 import logo from "../assets/afnanLogo.png";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaInstagram, FaFilePdf } from "react-icons/fa";
 
 const Navbar = () => {
   return (
@@ -17,6 +15,9 @@ const Navbar = () => {
       <div className="m-8 flex items-center justify-center gap-4 text-2xl">
         <FaLinkedin />
         <FaGithub />
+        <a href="https://your-resume-url" download>
+          <FaFilePdf />
+        </a>
         <FaInstagram />
       </div>
     </nav>
