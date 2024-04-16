@@ -1,4 +1,4 @@
-import aboutImg from "../assets/afnanProfile.png";
+import aboutImg from "../assets/afnanAbout.jpg";
 import { ABOUT_TEXT } from "../constants";
 
 function About() {
