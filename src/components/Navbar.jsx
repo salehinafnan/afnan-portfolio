@@ -4,16 +4,11 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 
 const Navbar = () => {
   return (
-    <nav className="mb-20 flex items-center justify-between py-4">
+    <nav className="my-2 mb-20 flex items-center justify-between py-4">
       <div className="flex flex-shrink-0 items-center ml-2">
-        <img
-          className="mx-1"
-          style={{ maxHeight: "26px" }}
-          src={logo}
-          alt="logo"
-        />
+        <img style={{ maxHeight: "26px" }} src={logo} alt="logo" />
       </div>
-      <div className="m-4 flex items-center justify-center gap-3 text-2xl mr-2">
+      <div className="flex items-center justify-center gap-3 text-2xl mr-2">
         <a
           href="https://www.linkedin.com/in/salehinafnan"
           target="_blank"
