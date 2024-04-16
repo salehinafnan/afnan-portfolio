@@ -60,7 +60,7 @@ function Projects() {
           <img
             src={selectedImage}
             alt="Selected"
-            style={{ maxWidth: "90%", maxHeight: "90%" }}
+            style={{ maxWidth: "70%", maxHeight: "70%" }}
           />
         </div>
       )}
