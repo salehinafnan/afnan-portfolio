@@ -9,17 +9,17 @@
 }
 
 .text-responsive {
-  font-size: 2rem; /* Small screens */
+  font-size: 2rem;
 }
 
 @media screen and (min-width: 640px) {
   .text-responsive {
-    font-size: 2.5rem; /* Medium screens */
+    font-size: 2.5rem;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .text-responsive {
-    font-size: 4rem; /* Large screens */
+    font-size: 4rem;
   }
 }
