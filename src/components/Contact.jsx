@@ -18,21 +18,22 @@ function Contact() {
         <form
           action="https://formspree.io/f/mwkgwdea"
           onSubmit={handleSubmit}
-          className="my-4 flex flex-col px-10 justify-center items-center"
+          className="my-2 flex flex-col px-10 justify-center items-center"
         >
           <input
             id="email"
             type="email"
             name="email"
-            className="mr-2 mb-4 rounded bg-neutral-900 px-5 py-2 text-base font-medium text-blue-100"
+            className="w-4/5 lg:w-1/4 mb-4 rounded bg-neutral-900 px-2 py-2 font-medium text-blue-100"
             placeholder="Your Email"
           />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
           <textarea
             id="message"
             name="message"
-            className="mr-2 mb-4 rounded bg-neutral-900 px-5 py-4 text-base font-medium text-blue-100"
+            className="w-4/5 lg:w-1/4 mb-4 rounded bg-neutral-900 px-2 py-8 font-medium text-blue-100"
             placeholder="Your Message"
+            style={{ resize: "none", overflow: "auto" }}
           />
           <ValidationError
             prefix="Message"
@@ -42,7 +43,7 @@ function Contact() {
           <button
             type="submit"
             disabled={state.submitting}
-            className="mr-2 rounded bg-neutral-900 px-3 py-2 text-base font-medium text-blue-100"
+            className="rounded bg-neutral-900 px-5 py-2 font-medium text-blue-100"
           >
             Send
           </button>
