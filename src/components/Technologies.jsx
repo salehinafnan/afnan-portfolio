@@ -17,7 +17,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <RiReactjsLine className="text-6xl text-cyan-500" />
+            <RiReactjsLine className="text-5xl text-cyan-500" />
           </a>
         </div>
         <div className="rounded-2xl border-4 border-neutral-800 p-4">
@@ -26,7 +26,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TbBrandNextjs className="text-6xl" />
+            <TbBrandNextjs className="text-5xl" />
           </a>
         </div>
         <div className="rounded-2xl border-4 border-neutral-800 p-4">
@@ -35,7 +35,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <BiLogoMongodb className="text-6xl text-green-500" />
+            <BiLogoMongodb className="text-5xl text-green-500" />
           </a>
         </div>
         <div className="rounded-2xl border-4 border-neutral-800 p-4">
@@ -44,7 +44,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiExpress className="text-6xl " />
+            <SiExpress className="text-5xl " />
           </a>
         </div>
         <div className="rounded-2xl border-4 border-neutral-800 p-4">
@@ -53,7 +53,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <BiLogoNodejs className="text-6xl text-green-500" />
+            <BiLogoNodejs className="text-5xl text-green-500" />
           </a>
         </div>
         <div className="rounded-2xl border-4 border-neutral-800 p-4">
@@ -62,7 +62,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiMysql className="text-6xl text-blue-500" />
+            <SiMysql className="text-5xl text-blue-500" />
           </a>
         </div>
         <div className="rounded-2xl border-4 border-neutral-800 p-4">
@@ -71,7 +71,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiPostman className="text-6xl text-orange-500" />
+            <SiPostman className="text-5xl text-orange-500" />
           </a>
         </div>
       </div>

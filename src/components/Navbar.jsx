@@ -4,7 +4,7 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 
 const Navbar = () => {
   return (
-    <nav className="mb-20 flex items-center justify-between py-6">
+    <nav className="mb-20 flex items-center justify-between py-4">
       <div className="flex flex-shrink-0 items-center">
         <img
           className="mx-2"
@@ -13,7 +13,7 @@ const Navbar = () => {
           alt="logo"
         />
       </div>
-      <div className="m-8 flex items-center justify-center gap-4 text-2xl">
+      <div className="m-4 flex items-center justify-center gap-3 text-2xl">
         <a
           href="https://www.linkedin.com/in/salehinafnan"
           target="_blank"

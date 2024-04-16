@@ -28,15 +28,19 @@ function Projects() {
                   <FiExternalLink className="inline-block w-4 h-4 ml-2" />
                 </a>
               </h6>
-              <p className="mb-4 text-neutral-400">{project.description}</p>
-              {project.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="mr-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-blue-100"
-                >
-                  {tech}
-                </span>
-              ))}
+              <p className="mb-4 text-neutral-400 text-justify">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap">
+                {project.technologies.map((tech, index) => (
+                  <span
+                    key={index}
+                    className="mr-2 mb-2 rounded bg-neutral-900 px-2 py-1 text-xs font-medium text-blue-100"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         ))}
@@ -60,7 +64,7 @@ function Projects() {
           <img
             src={selectedImage}
             alt="Selected"
-            style={{ maxWidth: "70%", maxHeight: "70%" }}
+            style={{ maxWidth: "90%", maxHeight: "90%" }}
           />
         </div>
       )}
