@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { PROJECTS } from "../constants";
 import { FiExternalLink } from "react-icons/fi";
 
 function Projects() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <div className="pb-4">
       <h2 className="my-20 text-center text-4xl">Projects</h2>
@@ -15,6 +18,7 @@ function Projects() {
                 height={200}
                 alt={project.title}
                 className="mb-6 rounded"
+                onClick={() => setSelectedImage(project.image)}
               />
             </div>
             <div className="w-full max-w-xl lg:w-3/4">
@@ -37,6 +41,29 @@ function Projects() {
           </div>
         ))}
       </div>
+      {selectedImage && (
+        <div
+          onClick={() => setSelectedImage(null)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            zIndex: 1000,
+          }}
+        >
+          <img
+            src={selectedImage}
+            alt="Selected"
+            style={{ maxWidth: "90%", maxHeight: "90%" }}
+          />
+        </div>
+      )}
     </div>
   );
 }
