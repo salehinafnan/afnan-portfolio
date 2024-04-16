@@ -1,4 +1,5 @@
 import { PROJECTS } from "../constants";
+import { FiExternalLink } from "react-icons/fi";
 
 function Projects() {
   return (
@@ -17,7 +18,12 @@ function Projects() {
               />
             </div>
             <div className="w-full max-w-xl lg:w-3/4">
-              <h6 className="mb-2 font-semibold">{project.title}</h6>
+              <h6 className="mb-2 font-semibold">
+                <a href={project.url} target="_blank" rel="noopener noreferrer">
+                  {project.title}
+                  <FiExternalLink className="inline-block w-4 h-4 ml-2" />
+                </a>
+              </h6>
               <p className="mb-4 text-neutral-400">{project.description}</p>
               {project.technologies.map((tech, index) => (
                 <span
