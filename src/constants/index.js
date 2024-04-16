@@ -1,7 +1,7 @@
 import project1 from "../assets/projects/project-1.png";
 import project2 from "../assets/projects/project-2.png";
 import project3 from "../assets/projects/project-3.png";
-import project4 from "../assets/projects/project-4.jpg";
+import project4 from "../assets/projects/project-4.png";
 
 export const HERO_CONTENT = `Aspiring web developer with a passion for creating engaging and user-friendly experiences. Possess a strong foundation in diverse programming languages and frameworks, including MERN stack, Next.js, Node and ES6. Ability to collaborate effectively within teams and contribute to project success. Technical expertise with problem-solving skills honed through competitive programming. Eager to learn and grow within a dynamic web development environment.`;
 
@@ -50,7 +50,14 @@ export const PROJECTS = [
     image: project3,
     description:
       "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "Tailwind CSS", "React", "Framer Motion"],
+    technologies: ["React", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    title: "Random Block Graph Generator",
+    image: project4,
+    description:
+      "Users can create, delete, resize and move blocks that are randomly generated and are connected to their corresponding parent block.",
+    technologies: ["React", "TypeScript", "JavaScript", "CSS"],
   },
 ];
 
