@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const iconVariants = (duration) => ({
   initial: { y: -10 },
   animate: {
-    y: [10, -10],
+    y: [5, -5],
     transition: {
       duration: duration,
       ease: "linear",
