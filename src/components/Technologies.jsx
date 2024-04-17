@@ -1,9 +1,10 @@
 import { RiReactjsLine } from "react-icons/ri";
 import { TbBrandNextjs } from "react-icons/tb";
+import { SiTypescript } from "react-icons/si";
+import { SiTailwindcss } from "react-icons/si";
 import { BiLogoMongodb } from "react-icons/bi";
 import { BiLogoNodejs } from "react-icons/bi";
 import { SiExpress } from "react-icons/si";
-import { SiMysql } from "react-icons/si";
 import { SiPostman } from "react-icons/si";
 import { motion } from "framer-motion";
 
@@ -61,6 +62,34 @@ const Technologies = () => {
           </a>
         </motion.div>
         <motion.div
+          variants={iconVariants(3)}
+          initial="initial"
+          animate="animate"
+          className="rounded-2xl border-4 border-neutral-800 p-4"
+        >
+          <a
+            href="https://www.typescriptlang.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SiTypescript className="text-5xl text-blue-500" />
+          </a>
+        </motion.div>
+        <motion.div
+          variants={iconVariants(5)}
+          initial="initial"
+          animate="animate"
+          className="rounded-2xl border-4 border-neutral-800 p-4"
+        >
+          <a
+            href="https://tailwindcss.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SiTailwindcss className="text-5xl text-indigo-500" />
+          </a>
+        </motion.div>
+        <motion.div
           variants={iconVariants(5)}
           initial="initial"
           animate="animate"
@@ -100,20 +129,6 @@ const Technologies = () => {
             rel="noopener noreferrer"
           >
             <BiLogoNodejs className="text-5xl text-green-500" />
-          </a>
-        </motion.div>
-        <motion.div
-          variants={iconVariants(4)}
-          initial="initial"
-          animate="animate"
-          className="rounded-2xl border-4 border-neutral-800 p-4"
-        >
-          <a
-            href="https://www.mysql.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <SiMysql className="text-5xl text-blue-500" />
           </a>
         </motion.div>
         <motion.div
