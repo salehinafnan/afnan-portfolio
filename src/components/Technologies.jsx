@@ -8,9 +8,9 @@ import { SiPostman } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const iconVariants = (duration) => ({
-  initial: { y: -10 },
+  initial: { y: -6 },
   animate: {
-    y: [5, -5],
+    y: [6, -6],
     transition: {
       duration: duration,
       ease: "linear",
@@ -31,12 +31,7 @@ const Technologies = () => {
       >
         Technologies
       </motion.h1>
-      <motion.div
-        whileInView={{ opacity: 1, x: 0 }}
-        initial={{ opacity: 0, x: -100 }}
-        transition={{ duration: 1 }}
-        className="flex flex-wrap items-center justify-center gap-4"
-      >
+      <div className="flex flex-wrap items-center justify-center gap-4">
         <motion.div
           variants={iconVariants(2.5)}
           initial="initial"
@@ -135,7 +130,7 @@ const Technologies = () => {
             <SiPostman className="text-5xl text-orange-500" />
           </a>
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 };

@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="my-4 mb-20 flex items-center justify-between py-4">
       <div className="flex flex-shrink-0 items-center ml-2">
-        <img style={{ maxHeight: "26px" }} src={logo} alt="logo" />
+        <img style={{ maxHeight: "25px" }} src={logo} alt="logo" />
       </div>
       <div className="flex items-center justify-center gap-3 text-2xl mr-2">
         <a

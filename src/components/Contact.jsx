@@ -9,7 +9,7 @@ function Contact() {
       <motion.p
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
         className="my-20 text-center font-medium text-2xl"
       >
         Thanks for Contacting
@@ -33,10 +33,7 @@ function Contact() {
           onSubmit={handleSubmit}
           className="my-2 flex flex-col px-10 justify-center items-center"
         >
-          <motion.input
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: -100 }}
-            transition={{ duration: 1 }}
+          <input
             id="email"
             type="email"
             name="email"
@@ -44,10 +41,7 @@ function Contact() {
             placeholder="Your Email"
           />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
-          <motion.textarea
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: -100 }}
-            transition={{ duration: 1 }}
+          <textarea
             id="message"
             name="message"
             className="w-full lg:w-1/4 mb-4 rounded bg-neutral-900 px-2 py-8 font-medium text-blue-100"
@@ -60,12 +54,10 @@ function Contact() {
             errors={state.errors}
           />
           <motion.button
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: -100 }}
-            transition={{ duration: 1 }}
             type="submit"
             disabled={state.submitting}
             className="rounded bg-neutral-900 px-5 py-2 font-medium text-blue-100"
+            whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
           >
             Send
           </motion.button>
