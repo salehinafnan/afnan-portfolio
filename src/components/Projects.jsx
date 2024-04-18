@@ -27,8 +27,8 @@ function Projects() {
             >
               <motion.img
                 src={project.image}
-                width={200}
-                height={200}
+                width={280}
+                height={300}
                 alt={project.title}
                 className="mb-6 rounded"
                 onClick={() => setSelectedImage(project.image)}
