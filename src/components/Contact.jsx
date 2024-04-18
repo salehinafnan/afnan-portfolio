@@ -37,14 +37,14 @@ function Contact() {
             id="email"
             type="email"
             name="email"
-            className="w-full lg:w-1/4 mb-4 rounded bg-neutral-900 px-2 py-2 font-medium text-blue-100"
+            className="w-full lg:w-1/4 mb-4 rounded bg-neutral-900 px-2 py-2"
             placeholder="Your Email"
           />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
           <textarea
             id="message"
             name="message"
-            className="w-full lg:w-1/4 mb-4 rounded bg-neutral-900 px-2 py-8 font-medium text-blue-100"
+            className="w-full lg:w-1/4 mb-4 rounded bg-neutral-900 px-2 py-8"
             placeholder="Your Message"
             style={{ resize: "none", overflow: "auto" }}
           />

@@ -24,9 +24,9 @@ const Hero = () => {
               variants={container(0)}
               initial="hidden"
               animate="visible"
-              className="pb-12 font-thin tracking-tight lg:mt-16 text-responsive"
+              className="pb-12 font-light tracking-tight lg:mt-16 text-responsive"
             >
-              Mushfiqus Salehin <span className="text-blue-100">Afnan</span>
+              Mushfiqus Salehin <span className="text-blue-200">Afnan</span>
             </motion.h1>
             <motion.span
               variants={container(0.5)}
