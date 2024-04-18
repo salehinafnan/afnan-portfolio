@@ -38,7 +38,12 @@ function Projects() {
             </motion.div>
             <div className="w-full max-w-xl lg:w-3/4">
               <h6 className="mb-2 font-semibold">
-                <a href={project.url} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer "
+                  className="hover:underline"
+                >
                   {project.title}
                   <FiExternalLink className="inline-block w-4 h-4 ml-2" />
                 </a>

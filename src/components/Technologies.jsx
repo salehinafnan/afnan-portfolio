@@ -9,9 +9,9 @@ import { SiPostman } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const iconVariants = (duration) => ({
-  initial: { y: -6 },
+  initial: { y: -7 },
   animate: {
-    y: [6, -6],
+    y: [7, -7],
     transition: {
       duration: duration,
       ease: "linear",
@@ -44,7 +44,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <RiReactjsLine className="text-5xl text-cyan-500" />
+            <RiReactjsLine className="text-4xl text-cyan-500" />
           </a>
         </motion.div>
         <motion.div
@@ -58,7 +58,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TbBrandNextjs className="text-5xl" />
+            <TbBrandNextjs className="text-4xl" />
           </a>
         </motion.div>
         <motion.div
@@ -72,7 +72,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiTypescript className="text-5xl text-blue-500" />
+            <SiTypescript className="text-4xl text-blue-500" />
           </a>
         </motion.div>
         <motion.div
@@ -86,7 +86,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiTailwindcss className="text-5xl text-indigo-500" />
+            <SiTailwindcss className="text-4xl text-indigo-500" />
           </a>
         </motion.div>
         <motion.div
@@ -100,7 +100,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <BiLogoMongodb className="text-5xl text-green-500" />
+            <BiLogoMongodb className="text-4xl text-green-500" />
           </a>
         </motion.div>
         <motion.div
@@ -114,7 +114,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiExpress className="text-5xl " />
+            <SiExpress className="text-4xl " />
           </a>
         </motion.div>
         <motion.div
@@ -128,7 +128,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <BiLogoNodejs className="text-5xl text-green-500" />
+            <BiLogoNodejs className="text-4xl text-green-500" />
           </a>
         </motion.div>
         <motion.div
@@ -142,7 +142,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiPostman className="text-5xl text-orange-500" />
+            <SiPostman className="text-4xl text-orange-500" />
           </a>
         </motion.div>
       </div>

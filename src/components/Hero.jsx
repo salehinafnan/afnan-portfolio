@@ -24,7 +24,7 @@ const Hero = () => {
               variants={container(0)}
               initial="hidden"
               animate="visible"
-              className="pb-16 font-thin tracking-tight lg:mt-16 text-responsive"
+              className="pb-12 font-thin tracking-tight lg:mt-16 text-responsive"
             >
               Mushfiqus Salehin <span className="text-blue-100">Afnan</span>
             </motion.h1>
@@ -51,7 +51,7 @@ const Hero = () => {
             <motion.img
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
+              transition={{ duration: 0.5, delay: 1 }}
               className="rounded-2xl w-full object-cover sm:object-contain md:object-scale-down"
               src={profilePic}
               alt="Mushfiqus Salehin Afnan"
