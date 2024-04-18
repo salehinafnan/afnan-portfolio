@@ -11,10 +11,10 @@ const Navbar = () => {
         className="flex flex-shrink-0 items-center ml-2"
       >
         <a href="/">
-          <img style={{ maxHeight: "25px" }} src={logo} alt="logo" />
+          <img className="max-h-6 md:max-h-25px" src={logo} alt="logo" />
         </a>
       </motion.div>
-      <div className="flex items-center justify-center gap-3 text-2xl mr-2">
+      <div className="flex items-center justify-center gap-3 text-xl md:text-2xl mr-2">
         <a
           href="https://www.linkedin.com/in/salehinafnan"
           target="_blank"
