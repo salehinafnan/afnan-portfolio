@@ -27,7 +27,7 @@ const Hero = () => {
               className="pb-12 font-light tracking-tight lg:mt-16 text-responsive"
             >
               Mushfiqus Salehin{" "}
-              <span className="bg-gradient-to-r from-blue-200 via-neutral-300 to-blue-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-200 via-gray-200 to-blue-200 bg-clip-text text-transparent">
                 Afnan
               </span>
             </motion.h1>
@@ -35,7 +35,7 @@ const Hero = () => {
               variants={container(0.5)}
               initial="hidden"
               animate="visible"
-              className="bg-gradient-to-r from-blue-300 via-slate-300 to-pink-300 bg-clip-text text-3xl tracking-tight text-transparent"
+              className="bg-gradient-to-r from-blue-200 via-slate-200 to-pink-200 bg-clip-text text-3xl tracking-tight text-transparent"
             >
               Web Developer
             </motion.span>
