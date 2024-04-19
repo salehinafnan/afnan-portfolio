@@ -26,7 +26,10 @@ const Hero = () => {
               animate="visible"
               className="pb-12 font-light tracking-tight lg:mt-16 text-responsive"
             >
-              Mushfiqus Salehin <span className="text-blue-200">Afnan</span>
+              Mushfiqus Salehin{" "}
+              <span className="bg-gradient-to-r from-blue-200 via-neutral-300 to-blue-200 bg-clip-text text-transparent">
+                Afnan
+              </span>
             </motion.h1>
             <motion.span
               variants={container(0.5)}
@@ -40,7 +43,7 @@ const Hero = () => {
               variants={container(1)}
               initial="hidden"
               animate="visible"
-              className="my-2 max-w-xl py-6 font-light tracking-tighter"
+              className="my-2 max-w-xl py-6 font-light tracking-tight"
             >
               {HERO_CONTENT}
             </motion.p>
