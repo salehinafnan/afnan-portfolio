@@ -49,7 +49,7 @@ export const PROJECTS = [
   },
   {
     title: "Portfolio Website",
-    url: "https://salehinafnan.vercel.app/",
+    url: "https://salehinafnan.me/",
     image: project3,
     description:
       "A personal portfolio website showcasing projects, skills, and contact information.",
@@ -57,7 +57,7 @@ export const PROJECTS = [
   },
   {
     title: "Random Block Graph Generator",
-    url: "https://github.com/salehinafnan/Random-Block-Graph-Generator",
+    url: "https://github.com/salehinafnan/random-block-graph-generator",
     image: project4,
     description:
       "Users can create, delete, resize and move blocks that are randomly generated and are connected to their corresponding parent block.",
