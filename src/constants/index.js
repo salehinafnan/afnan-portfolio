@@ -23,7 +23,7 @@ export const PROJECTS = [
     url: "https://sepia.onrender.com/",
     image: project1,
     description:
-      "'Sepia' is a simple web application created using MERN fullstack. It allows users to upload images, add captions, and view images uploaded by other users. Users can also like and edit their post once uploaded. The app is fully responsive as well. All the data is stored in MongoDB.",
+      "'Sepia' is a MERN stack application with features like user authentication, post creation and interaction, real-time updates, and full responsiveness. Users can sign up, sign in, create, like, and delete their own posts. The application adapts to different screen sizes and updates in real-time.",
     technologies: [
       "MongoDB",
       "Express.js",
