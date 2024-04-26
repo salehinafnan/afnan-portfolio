@@ -77,14 +77,15 @@ function Projects() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1000,
+            backdropFilter: "blur(10px)",
           }}
         >
           <img
             src={selectedImage}
             alt="Selected"
-            style={{ maxWidth: "90%", maxHeight: "90%" }}
+            style={{ maxWidth: "85%", maxHeight: "85%" }}
           />
         </div>
       )}
