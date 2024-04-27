@@ -37,16 +37,25 @@ function Contact() {
             id="email"
             type="email"
             name="email"
-            className="w-full lg:w-1/4 mb-4 rounded bg-neutral-900 px-2 py-2"
+            className="w-full lg:w-1/4 mb-4 rounded px-2 py-2"
             placeholder="Your Email"
+            style={{
+              backdropFilter: "blur(10px)",
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+            }}
           />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
           <textarea
             id="message"
             name="message"
-            className="w-full lg:w-1/4 mb-4 rounded bg-neutral-900 px-2 py-8"
+            className="w-full lg:w-1/4 mb-4 rounded px-2 py-8"
             placeholder="Your Message"
-            style={{ resize: "none", overflow: "auto" }}
+            style={{
+              resize: "none",
+              overflow: "auto",
+              backdropFilter: "blur(10px)",
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+            }}
           />
           <ValidationError
             prefix="Message"
@@ -56,8 +65,12 @@ function Contact() {
           <motion.button
             type="submit"
             disabled={state.submitting}
-            className="rounded bg-neutral-900 px-5 py-2 font-medium text-blue-100"
+            className="rounded px-5 py-2 font-medium text-blue-100"
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+            style={{
+              backdropFilter: "blur(10px)",
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+            }}
           >
             Send
           </motion.button>
