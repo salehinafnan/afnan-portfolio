@@ -68,7 +68,7 @@ const Technologies = () => {
           className="rounded-2xl border-4 border-neutral-800 p-4"
         >
           <a
-            href="https://www.typescriptlang.org/"
+            href="https://www.javascript.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
