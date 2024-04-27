@@ -1,6 +1,6 @@
 import { RiReactjsLine } from "react-icons/ri";
 import { TbBrandNextjs } from "react-icons/tb";
-import { SiTypescript } from "react-icons/si";
+import { SiJavascript } from "react-icons/si";
 import { SiTailwindcss } from "react-icons/si";
 import { BiLogoMongodb } from "react-icons/bi";
 import { BiLogoNodejs } from "react-icons/bi";
@@ -72,7 +72,7 @@ const Technologies = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiTypescript className="text-4xl text-blue-500" />
+            <SiJavascript className="text-4xl text-yellow-500" />
           </a>
         </motion.div>
         <motion.div
