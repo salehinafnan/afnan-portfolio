@@ -10,7 +10,7 @@ function Contact() {
     return (
       <motion.p
         whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: 100 }}
+        initial={{ opacity: 0, y: -100 }}
         transition={{ duration: 0.5 }}
         className="my-20 text-center font-medium text-2xl md:text-3xl lg:text-3xl"
       >
