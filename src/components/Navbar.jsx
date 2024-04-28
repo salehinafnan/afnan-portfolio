@@ -43,7 +43,7 @@ const Navbar = () => {
           </motion.div>
         </a>
         <a
-          href="https://drive.google.com/file/d/149gFWfOIiyEU9IgGzihq_nf5SBiq9klj/view?usp=sharing"
+          href="https://drive.google.com/file/d/1vTHfho8SVgPnA-23TanriDsgCcjhWLvA/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
