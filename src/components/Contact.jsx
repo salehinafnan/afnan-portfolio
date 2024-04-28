@@ -29,7 +29,7 @@ function Contact() {
       </motion.h2>
       <div className="text-center tracking-tighter">
         <form
-          action="https://formspree.io/f/mwkgwdea"
+          action={import.meta.env.VITE_EMAIL_API}
           onSubmit={handleSubmit}
           className="my-2 flex flex-col px-10 justify-center items-center"
         >
