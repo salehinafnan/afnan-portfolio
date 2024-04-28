@@ -24,7 +24,7 @@ const Hero = () => {
               variants={container(0)}
               initial="hidden"
               animate="visible"
-              className="pb-12 font-light tracking-tight lg:mt-16 text-responsive"
+              className="pb-12 font-light tracking-tight lg:mt-16 text-responsive whitespace-nowrap"
             >
               Mushfiqus Salehin{" "}
               <span className="bg-gradient-to-r from-blue-300 via-gray-300 to-blue-300 bg-clip-text text-transparent">

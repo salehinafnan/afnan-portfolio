@@ -2,7 +2,9 @@ import { useForm, ValidationError } from "@formspree/react";
 import { motion } from "framer-motion";
 
 function Contact() {
-  const [state, handleSubmit] = useForm("mwkgwdea");
+  const [state, handleSubmit] = useForm(
+    `${import.meta.env.VITE_EMAIL_API_KEY}`
+  );
 
   if (state.succeeded) {
     return (
@@ -29,16 +31,28 @@ function Contact() {
       </motion.h2>
       <div className="text-center tracking-tighter">
         <form
-          action={import.meta.env.VITE_EMAIL_API}
+          action={import.meta.env.VITE_EMAIL_API_LINK}
           onSubmit={handleSubmit}
           className="my-2 flex flex-col px-10 justify-center items-center"
         >
+          <input
+            id="name"
+            type="text"
+            name="name"
+            className="w-full lg:w-1/4 mb-4 rounded px-2 py-2"
+            placeholder="Name"
+            style={{
+              backdropFilter: "blur(10px)",
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+            }}
+          />
+          <ValidationError prefix="Name" field="name" errors={state.errors} />
           <input
             id="email"
             type="email"
             name="email"
             className="w-full lg:w-1/4 mb-4 rounded px-2 py-2"
-            placeholder="Your Email"
+            placeholder="Email"
             style={{
               backdropFilter: "blur(10px)",
               backgroundColor: "rgba(255, 255, 255, 0.1)",
@@ -49,7 +63,7 @@ function Contact() {
             id="message"
             name="message"
             className="w-full lg:w-1/4 mb-4 rounded px-2 py-8"
-            placeholder="Your Message"
+            placeholder="Message"
             style={{
               resize: "none",
               overflow: "auto",
@@ -65,7 +79,7 @@ function Contact() {
           <motion.button
             type="submit"
             disabled={state.submitting}
-            className="rounded px-5 py-2 font-medium text-blue-100"
+            className="rounded px-4 py-1.5 font-small"
             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
             style={{
               backdropFilter: "blur(10px)",

@@ -18,7 +18,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .text-responsive {
     font-size: 4rem;
   }
