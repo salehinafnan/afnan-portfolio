@@ -17,6 +17,16 @@ export const EXPERIENCES = [
   },
 ];
 
+export const PUBLICATION = [
+  {
+    year: "December 2023",
+    title: "TI-Fusion: A Multimodal Anxiety Disorder Detection Method",
+    link: "DOI",
+    description: `Published in 2023 6th International Conference on Electrical Information and Communication Technology.`,
+    publisher: ["IEEE Xplore"],
+  },
+];
+
 export const PROJECTS = [
   {
     title: "Sepia",
