@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 function Contact() {
   const [state, handleSubmit] = useForm(
-    `${import.meta.env.VITE_EMAIL_API_KEY}`
+    `${import.meta.env.VITE_EMAIL_API_CODE}`
   );
 
   if (state.succeeded) {
