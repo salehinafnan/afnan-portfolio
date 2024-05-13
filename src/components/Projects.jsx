@@ -45,7 +45,7 @@ function Projects() {
                   className="hover:underline"
                 >
                   {project.title}
-                  <FiExternalLink className="inline-block w-4 h-4 ml-2" />
+                  <FiExternalLink className="inline-block w-4 h-4 mx-1" />
                 </a>
               </h6>
               <p className="mb-4 text-neutral-400 text-justify">{project.description}</p>

@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   return (
     <nav className="my-4 mb-20 flex items-center justify-between py-4">
-      <motion.div whileHover={{ scale: 1.1 }} className="flex flex-shrink-0 items-center ml-2">
+      <motion.div whileHover={{ scale: 1.1 }} className="flex flex-shrink-0 items-center">
         <a href="/">
           <img className="h-4 sm:h-6" src={logo} alt="logo" />
         </a>
       </motion.div>
-      <div className="flex items-center justify-center gap-3 text-xl md:text-2xl mr-2">
+      <div className="flex items-center justify-center gap-3 text-xl md:text-2xl">
         <a href="https://github.com/salehinafnan" target="_blank" rel="noopener noreferrer">
           <motion.div whileHover={{ scale: 1.2 }}>
             <FaGithub />

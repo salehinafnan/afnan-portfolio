@@ -21,13 +21,9 @@ function Experience() {
             <div className="w-full max-w-xl lg:w-3/4">
               <h6 className="mb-2 font-semibold">
                 {experience.role} -{" "}
-                <span className="text-sm text-blue-100">
-                  {experience.company}
-                </span>
+                <span className="text-sm text-blue-100">{experience.company}</span>
               </h6>
-              <p className="mb-4 text-neutral-400 text-justify">
-                {experience.description}
-              </p>
+              <p className="mb-4 text-neutral-400 text-justify">{experience.description}</p>
               <div className="flex flex-wrap">
                 {experience.technologies.map((technology, index) => (
                   <span
