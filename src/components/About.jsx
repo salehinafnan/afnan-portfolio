@@ -1,6 +1,9 @@
-import aboutImg from "../assets/afnanAbout.jpg";
+import aboutImg from "../assets/afnanAbout.webp";
 import { ABOUT_TEXT } from "../constants";
 import { motion } from "framer-motion";
+
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 function About() {
   return (
@@ -21,11 +24,12 @@ function About() {
             transition={{ duration: 0.5 }}
             className="flex item-center justify-center"
           >
-            <img
-              className="rounded-2xl w-full object-cover sm:object-contain md:object-scale-down"
+            <LazyLoadImage
+              effect="blur"
               src={aboutImg}
               alt="Mushfiqus Salehin Afnan"
               style={{ maxWidth: "420px" }}
+              className="rounded-2xl w-full object-cover sm:object-contain md:object-scale-down"
             />
           </motion.div>
         </div>
