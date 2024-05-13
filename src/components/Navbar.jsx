@@ -1,5 +1,5 @@
 import logo from "../assets/afnanLogo.webp";
-import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 
@@ -12,6 +12,11 @@ const Navbar = () => {
         </a>
       </motion.div>
       <div className="flex items-center justify-center gap-3 text-xl md:text-2xl mr-2">
+        <a href="https://github.com/salehinafnan" target="_blank" rel="noopener noreferrer">
+          <motion.div whileHover={{ scale: 1.2 }}>
+            <FaGithub />
+          </motion.div>
+        </a>
         <a
           href="https://www.linkedin.com/in/salehinafnan"
           target="_blank"
@@ -19,16 +24,6 @@ const Navbar = () => {
         >
           <motion.div whileHover={{ scale: 1.2 }}>
             <FaLinkedin />
-          </motion.div>
-        </a>
-        <a href="https://github.com/salehinafnan" target="_blank" rel="noopener noreferrer">
-          <motion.div whileHover={{ scale: 1.2 }}>
-            <FaGithub />
-          </motion.div>
-        </a>
-        <a href="https://www.instagram.com/sleep.lust" target="_blank" rel="noopener noreferrer">
-          <motion.div whileHover={{ scale: 1.2 }}>
-            <FaInstagram />
           </motion.div>
         </a>
         <a
