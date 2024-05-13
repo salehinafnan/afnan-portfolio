@@ -2,9 +2,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import { motion } from "framer-motion";
 
 function Contact() {
-  const [state, handleSubmit] = useForm(
-    `${import.meta.env.VITE_EMAIL_API_CODE}`
-  );
+  const [state, handleSubmit] = useForm(`${import.meta.env.VITE_EMAIL_API_CODE}`);
 
   if (state.succeeded) {
     return (
@@ -14,13 +12,13 @@ function Contact() {
         transition={{ duration: 0.5 }}
         className="my-20 text-center font-medium text-2xl md:text-3xl lg:text-3xl"
       >
-        Thanks for Contacting
+        Thank you for contacting!
       </motion.p>
     );
   }
 
   return (
-    <div className="pb-20">
+    <div className="pb-10">
       <motion.h2
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
@@ -29,65 +27,63 @@ function Contact() {
       >
         Get in Touch
       </motion.h2>
-      <div className="text-center tracking-tighter">
+      <div className="w-full max-w-sm mx-auto my-20">
         <form
           action={import.meta.env.VITE_EMAIL_API_LINK}
           onSubmit={handleSubmit}
-          className="my-2 flex flex-col px-10 justify-center items-center"
+          className="bg-white bg-opacity-5 rounded px-8 pt-6 pb-8 mb-4 backdrop-blur-lg"
         >
-          <input
-            id="name"
-            type="text"
-            name="name"
-            className="w-full lg:w-1/4 mb-4 rounded px-2 py-2"
-            placeholder="Name"
-            style={{
-              backdropFilter: "blur(10px)",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-            }}
-          />
-          <ValidationError prefix="Name" field="name" errors={state.errors} />
-          <input
-            id="email"
-            type="email"
-            name="email"
-            className="w-full lg:w-1/4 mb-4 rounded px-2 py-2"
-            placeholder="Email"
-            style={{
-              backdropFilter: "blur(10px)",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-            }}
-          />
-          <ValidationError prefix="Email" field="email" errors={state.errors} />
-          <textarea
-            id="message"
-            name="message"
-            className="w-full lg:w-1/4 mb-4 rounded px-2 py-8"
-            placeholder="Message"
-            style={{
-              resize: "none",
-              overflow: "auto",
-              backdropFilter: "blur(10px)",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-            }}
-          />
-          <ValidationError
-            prefix="Message"
-            field="message"
-            errors={state.errors}
-          />
-          <motion.button
-            type="submit"
-            disabled={state.submitting}
-            className="rounded px-4 py-1.5 font-small"
-            whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-            style={{
-              backdropFilter: "blur(10px)",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-            }}
-          >
-            Send
-          </motion.button>
+          <div className="mb-4">
+            <label className="block text-sm mb-2" htmlFor="name">
+              Name
+            </label>
+            <input
+              className=" bg-white bg-opacity-5 backdrop-blur-sm appearance-none rounded w-full py-2 px-3 leading-tight placeholder-neutral-600 focus:outline-none"
+              id="name"
+              type="text"
+              name="name"
+              placeholder="eg. John Doe"
+              onFocus={(e) => (e.target.placeholder = "")}
+              onBlur={(e) => (e.target.placeholder = "eg. John Doe")}
+            />
+            <ValidationError prefix="Name" field="name" errors={state.errors} />
+          </div>
+          <div className="mb-6">
+            <label className="block text-sm mb-2" htmlFor="email">
+              Email
+            </label>
+            <input
+              className="bg-white bg-opacity-5 backdrop-blur-sm appearance-none rounded w-full py-2 px-3 leading-tight placeholder-neutral-600 focus:outline-none"
+              id="email"
+              type="email"
+              name="email"
+              placeholder="eg. john.doe@example.com"
+              onFocus={(e) => (e.target.placeholder = "")}
+              onBlur={(e) => (e.target.placeholder = "eg. john.doe@example.com")}
+            />
+          </div>
+          <div className="mb-6">
+            <label className="block text-sm mb-2" htmlFor="message">
+              Message
+            </label>
+            <textarea
+              className="bg-white bg-opacity-5 backdrop-blur-sm appearance-none rounded w-full py-2 px-3 leading-tight placeholder-neutral-600 focus:outline-none"
+              id="message"
+              name="message"
+              placeholder="Enter your message"
+              rows="4"
+              onFocus={(e) => (e.target.placeholder = "")}
+              onBlur={(e) => (e.target.placeholder = "Enter your message")}
+            />
+          </div>
+          <div className="flex items-center justify-center">
+            <button
+              className="bg-white bg-opacity-5 backdrop-blur-xl hover:scale-110 transition-transform duration-200 py-1 px-4 rounded text-blue-100"
+              type="submit"
+            >
+              Send
+            </button>
+          </div>
         </form>
       </div>
     </div>
