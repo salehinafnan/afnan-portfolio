@@ -2,9 +2,6 @@ import { HERO_CONTENT } from "../constants";
 import profilePic from "../assets/afnanProfile.webp";
 import { motion } from "framer-motion";
 
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
-
 const container = (delay) => ({
   hidden: { x: -100, opacity: 0 },
   visible: {
@@ -54,12 +51,14 @@ const Hero = () => {
         </div>
         <div className="w-full lg:w-1/2 lg:p-8">
           <div className="flex justify-center">
-            <LazyLoadImage
-              effect="blur"
+            <motion.img
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1 }}
+              className="rounded-2xl w-full object-cover sm:object-contain md:object-scale-down"
               src={profilePic}
               alt="Mushfiqus Salehin Afnan"
               style={{ maxWidth: "420px" }}
-              className="rounded-2xl w-full object-cover sm:object-contain md:object-scale-down"
             />
           </div>
         </div>

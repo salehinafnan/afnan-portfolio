@@ -3,15 +3,12 @@ import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
-
 const Navbar = () => {
   return (
     <nav className="my-4 mb-20 flex items-center justify-between py-4">
       <motion.div whileHover={{ scale: 1.1 }} className="flex flex-shrink-0 items-center ml-2">
         <a href="/">
-          <LazyLoadImage effect="blur" className="h-4 sm:h-6" src={logo} alt="logo" />
+          <img className="h-4 sm:h-6" src={logo} alt="logo" />
         </a>
       </motion.div>
       <div className="flex items-center justify-center gap-3 text-xl md:text-2xl mr-2">
