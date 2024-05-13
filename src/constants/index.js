@@ -1,7 +1,7 @@
-import project1 from "../assets/projects/project-1.png";
-import project2 from "../assets/projects/project-2.png";
-import project3 from "../assets/projects/project-3.png";
-import project4 from "../assets/projects/project-4.png";
+import project1 from "../assets/projects/project-1.webp";
+import project2 from "../assets/projects/project-2.webp";
+import project3 from "../assets/projects/project-3.webp";
+import project4 from "../assets/projects/project-4.webp";
 
 export const HERO_CONTENT = `Aspiring web developer with a passion for creating engaging and user-friendly experiences. Possess a strong foundation in diverse programming languages and frameworks, including React, Next.js, Node.js and Tailwind CSS, MongoDB.Additionally, proficiency in Machine Learning adds depth to my skill set. Able to collaborate effectively within teams and contribute to project success. Logic building expertise with problem-solving skills honed through competitive programming. Eager to learn and grow within a dynamic web development environment.`;
 
@@ -34,14 +34,7 @@ export const PROJECTS = [
     image: project1,
     description:
       "'Sepia' is a MERN stack application with features like user authentication, post creation and interaction, real-time updates, and full responsiveness. Users can sign up, sign in, create, like, and delete their own posts. The application adapts to different screen sizes and updates in real-time.",
-    technologies: [
-      "MongoDB",
-      "Express.js",
-      "React",
-      "Redux",
-      "Node.js",
-      "Material UI",
-    ],
+    technologies: ["MongoDB", "Express.js", "React", "Redux", "Node.js", "Material UI"],
   },
   {
     title: "Task Management App",
@@ -49,13 +42,7 @@ export const PROJECTS = [
     image: project2,
     description:
       "This is a task management application which allows users to create, view, update, and delete tasks. The application utilizes local storage for data persistence.",
-    technologies: [
-      "Next.js",
-      "JavaScript",
-      "TypeScript",
-      "Tailwind CSS",
-      "MobX",
-    ],
+    technologies: ["Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "MobX"],
   },
   {
     title: "Portfolio Website",

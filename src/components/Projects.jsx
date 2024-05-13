@@ -48,9 +48,7 @@ function Projects() {
                   <FiExternalLink className="inline-block w-4 h-4 ml-2" />
                 </a>
               </h6>
-              <p className="mb-4 text-neutral-400 text-justify">
-                {project.description}
-              </p>
+              <p className="mb-4 text-neutral-400 text-justify">{project.description}</p>
               <div className="flex flex-wrap">
                 {project.technologies.map((tech, index) => (
                   <span
@@ -82,11 +80,7 @@ function Projects() {
             backdropFilter: "blur(10px)",
           }}
         >
-          <img
-            src={selectedImage}
-            alt="Selected"
-            style={{ maxWidth: "85%", maxHeight: "85%" }}
-          />
+          <img src={selectedImage} alt="Selected" style={{ maxWidth: "85%", maxHeight: "85%" }} />
         </div>
       )}
     </div>
