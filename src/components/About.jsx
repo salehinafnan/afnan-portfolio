@@ -15,23 +15,23 @@ function About() {
       </motion.h1>
       <div className="flex flex-wrap">
         <div className="w-full lg:w-1/2 lg:p-8">
-          <motion.div
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
-            className="flex item-center justify-center"
-          >
-            <img
+          <div className="flex justify-center">
+            <motion.img
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
               className="rounded-2xl w-full object-cover sm:object-contain md:object-scale-down"
               src={aboutImg}
               alt="Mushfiqus Salehin Afnan"
               style={{ maxWidth: "420px" }}
             />
-          </motion.div>
+          </div>
         </div>
         <div className="w-full lg:w-1/2">
           <div className="flex justify-center lg:justify-start text-justify">
-            <p className="my-2 max-w-xl py-6 tracking-tight xs:tracking-tighter">{ABOUT_TEXT}</p>
+            <p className="my-2 max-w-xl py-6 tracking-tight xs:tracking-tighter font-medium">
+              {ABOUT_TEXT}
+            </p>
           </div>
         </div>
       </div>
