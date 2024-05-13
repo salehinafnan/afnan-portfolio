@@ -23,7 +23,9 @@ function Experience() {
                 {experience.role} -{" "}
                 <span className="text-sm text-blue-100">{experience.company}</span>
               </h6>
-              <p className="mb-4 text-neutral-400 text-justify">{experience.description}</p>
+              <p className="mb-4 text-neutral-400 text-justify tracking-tight">
+                {experience.description}
+              </p>
               <div className="flex flex-wrap">
                 {experience.technologies.map((technology, index) => (
                   <span

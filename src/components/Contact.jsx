@@ -74,6 +74,7 @@ function Contact() {
               rows="4"
               onFocus={(e) => (e.target.placeholder = "")}
               onBlur={(e) => (e.target.placeholder = "Enter your message")}
+              style={{ resize: "none" }}
             />
           </div>
           <div className="flex items-center justify-center">

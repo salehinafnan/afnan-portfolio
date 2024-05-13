@@ -34,7 +34,9 @@ function Publication() {
                   </a>
                 </span>
               </h6>
-              <p className="mb-4 text-neutral-400 text-justify">{publication.description}</p>
+              <p className="mb-4 text-neutral-400 text-justify tracking-tight">
+                {publication.description}
+              </p>
               <div className="flex flex-wrap">
                 {publication.publisher.map((technology, index) => (
                   <span

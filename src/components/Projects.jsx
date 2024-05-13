@@ -48,7 +48,9 @@ function Projects() {
                   <FiExternalLink className="inline-block w-4 h-4 mx-1" />
                 </a>
               </h6>
-              <p className="mb-4 text-neutral-400 text-justify">{project.description}</p>
+              <p className="mb-4 text-neutral-400 text-justify tracking-tight">
+                {project.description}
+              </p>
               <div className="flex flex-wrap">
                 {project.technologies.map((tech, index) => (
                   <span
