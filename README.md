@@ -2,11 +2,12 @@
 
 This is my personal portfolio to let others know about myself and to showcase my works.
 
-## Technologies Used
+## Technologies and Features
 
 - React.js: A JavaScript library for building user interfaces.
 - Tailwind CSS: A utility-first CSS framework for rapidly building custom user interfaces.
 - Framer Motion: A production-ready motion library for React.
+- All the images are fully optimized for the web. They are converted to webp format so that the site loads faster.
 
 ## How to Run the Project
 
