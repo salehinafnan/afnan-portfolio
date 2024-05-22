@@ -30,7 +30,7 @@ function Publication() {
                     className="hover:underline"
                   >
                     {publication.link}
-                    <FiExternalLink className="inline-block w-4 h-4 ml-1" />
+                    <FiExternalLink className="inline-block w-4 h-4 mx-1" />
                   </a>
                 </span>
               </h6>
