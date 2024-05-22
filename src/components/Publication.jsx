@@ -1,6 +1,6 @@
 import { PUBLICATION } from "../constants";
 import { motion } from "framer-motion";
-import { FiExternalLink } from "react-icons/fi";
+import { BiLinkExternal } from "react-icons/bi";
 
 function Publication() {
   return (
@@ -30,7 +30,7 @@ function Publication() {
                     className="hover:underline"
                   >
                     {publication.link}
-                    <FiExternalLink className="inline-block w-4 h-4 mx-1" />
+                    <BiLinkExternal className="inline-block w-4 h-4 mx-1" />
                   </a>
                 </span>
               </h6>

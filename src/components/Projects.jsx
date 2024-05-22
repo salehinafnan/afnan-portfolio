@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PROJECTS } from "../constants";
-import { FiExternalLink } from "react-icons/fi";
+import { BiLinkExternal } from "react-icons/bi";
 import { motion } from "framer-motion";
 
 function Projects() {
@@ -45,7 +45,7 @@ function Projects() {
                   className="hover:underline"
                 >
                   {project.title}
-                  <FiExternalLink className="inline-block w-4 h-4 mx-1" />
+                  <BiLinkExternal className="inline-block w-4 h-4 mx-1" />
                 </a>
               </h6>
               <p className="mb-4 text-neutral-400 text-justify tracking-tight">
