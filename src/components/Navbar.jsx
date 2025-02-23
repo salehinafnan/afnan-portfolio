@@ -27,7 +27,7 @@ const Navbar = () => {
           </motion.div>
         </a>
         <a
-          href="https://drive.google.com/drive/folders/1RXqTVn7kaGvEyNFxUeYD70F1wvN9LwXf?usp=sharing"
+          href="https://drive.google.com/file/d/1_C_VLskkKYOJ9Tz2w2eHnAXnOTvXFzOu/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
