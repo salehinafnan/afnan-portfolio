@@ -9,6 +9,14 @@ export const ABOUT_TEXT = `I am a dedicated and versatile web developer with a p
 
 export const EXPERIENCES = [
   {
+    year: "June 2024 - Present",
+    role: "Clinical AI Specialist",
+    company: "Augmedix Bangladesh",
+    description:
+      "Assist doctors across specialties by using proprietary AI technology to document and update patient EHRs during medical visits.",
+    technologies: ["AI", "Documentation", "EHR"],
+  },
+  {
     year: "2022 - 2023",
     role: "Teaching Assistant",
     company: "International Islamic University Chittagong",
@@ -63,7 +71,7 @@ export const PROJECTS = [
 ];
 
 export const CONTACT = {
-  address: "Mohakhali, Dhaka, Bangladesh",
+  address: "Mohanagar Project, Dhaka, Bangladesh",
   phoneNo: "+880 1301678987",
   email: "salehinafnan@gmail.com",
 };
