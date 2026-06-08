@@ -17,7 +17,7 @@ const Navbar = () => {
         className="flex flex-shrink-0 items-center"
       >
         <a href="/">
-          <Image src={logo} alt="logo" className="h-6 w-auto sm:h-8 object-contain" priority />
+          <Image src={logo} alt="logo" className="h-5 w-auto object-contain" priority />
         </a>
       </motion.div>
       <motion.div
