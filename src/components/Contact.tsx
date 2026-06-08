@@ -15,6 +15,7 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -50 }}
         transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
         className="mb-12 text-center text-3xl lg:text-4xl font-light tracking-tight"
       >
         Get in <span className="text-blue-400">Touch</span>
@@ -25,6 +26,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="w-full lg:w-1/2 flex flex-col justify-center"
         >
           <div className="text-center lg:text-left">
@@ -55,6 +57,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 50 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="w-full lg:w-1/2"
         >
           <form onSubmit={handleSubmit} className="glass-card p-8 rounded-3xl flex flex-col gap-6">

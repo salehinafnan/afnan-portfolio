@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PROJECTS } from "../constants";
-import { BiLinkExternal } from "react-icons/bi";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 
@@ -34,6 +34,7 @@ const Projects = () => {
                 src={project.image}
                 alt={project.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -49,7 +50,7 @@ const Projects = () => {
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 transition-colors"
                 >
-                  <BiLinkExternal className="w-5 h-5" />
+                  <FaExternalLinkAlt className="w-4 h-4" />
                 </a>
               </h3>
               <p className="mb-6 text-neutral-400 text-sm flex-grow text-left">
@@ -97,6 +98,7 @@ const Projects = () => {
                   src={selectedImage} 
                   alt="Expanded view" 
                   fill 
+                  sizes="100vw"
                   className="object-contain"
                 />
               </div>
