@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
-import { IoDocumentTextOutline } from "react-icons/io5";
+import { FaLinkedin, FaGithub, FaFacebook, FaInstagram, FaRegFileAlt } from "react-icons/fa";
 import Image from "next/image";
 import logo from "../assets/afnanLogo.webp";
 
@@ -27,7 +26,7 @@ const Navbar = () => {
         className="flex items-center justify-center gap-6 text-xl text-neutral-300"
       >
         <a href="https://drive.google.com/file/d/1_D7aZqK8ytZZWAmbEQEPhPS7Rv1uZaVa/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300" title="Resume / CV">
-          <IoDocumentTextOutline />
+          <FaRegFileAlt />
         </a>
         <a href="https://linkedin.com/in/salehinafnan" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors duration-300" title="LinkedIn">
           <FaLinkedin />

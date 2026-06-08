@@ -10,6 +10,7 @@ const Experience = () => {
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -50 }}
         transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
         className="mb-16 text-center text-3xl lg:text-4xl font-light tracking-tight"
       >
         Experience
@@ -18,9 +19,10 @@ const Experience = () => {
         {EXPERIENCES.map((experience, index) => (
           <motion.div
             key={index}
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
             className="mb-8 flex flex-col lg:flex-row gap-4 lg:gap-8 glass-card p-6 sm:p-8 rounded-3xl hover:bg-white/[0.03] transition-colors"
           >
             <div className="w-full lg:w-1/4 flex-shrink-0">

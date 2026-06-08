@@ -2,7 +2,7 @@
 
 import { PUBLICATION } from "../constants";
 import { motion } from "framer-motion";
-import { BiLinkExternal } from "react-icons/bi";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Publication = () => {
   return (
@@ -11,6 +11,7 @@ const Publication = () => {
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -50 }}
         transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
         className="mb-16 text-center text-3xl lg:text-4xl font-light tracking-tight"
       >
         Publications
@@ -19,9 +20,10 @@ const Publication = () => {
         {PUBLICATION.map((pub, index) => (
           <motion.div
             key={index}
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
             className="mb-8 flex flex-col lg:flex-row gap-4 lg:gap-8 glass-card p-6 sm:p-8 rounded-3xl hover:bg-white/[0.03] transition-colors"
           >
             <div className="w-full lg:w-1/4 flex-shrink-0">
@@ -34,7 +36,7 @@ const Publication = () => {
                 {pub.title}
                 {pub.link && (
                   <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-xs font-bold px-2 py-1 bg-blue-900/40 text-blue-400 rounded border border-blue-500/30 hover:bg-blue-900/60 hover:text-blue-300 transition-colors flex items-center gap-1">
-                    DOI <BiLinkExternal className="w-3 h-3" />
+                    DOI <FaExternalLinkAlt className="w-3 h-3" />
                   </a>
                 )}
               </h3>
