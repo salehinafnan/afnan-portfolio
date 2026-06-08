@@ -26,6 +26,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             initial={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
             className="flex flex-col glass-card rounded-3xl overflow-hidden group hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all duration-500"
           >
             <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-neutral-900 cursor-pointer" onClick={() => setSelectedImage(project.image as StaticImageData)}>
