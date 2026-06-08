@@ -2,12 +2,7 @@
 
 import { CONTACT } from "../constants";
 import { motion } from "framer-motion";
-import { useForm, ValidationError } from "@formspree/react";
-
 const Contact = () => {
-  const [state, handleSubmit] = useForm("xjvqrqoz"); // Replace with actual form ID if needed, wait the original used Formspree? The original code didn't show the form id directly, wait, let me check the original Contact.jsx.
-  // Actually, I should use a generic placeholder or standard inputs if Formspree wasn't imported before.
-  // I will recreate the original contact form fields but modernize the look.
 
   return (
     <div id="contact" className="py-20 border-t border-neutral-800">
@@ -60,7 +55,9 @@ const Contact = () => {
           viewport={{ once: true }}
           className="w-full lg:w-1/2"
         >
-          <form onSubmit={handleSubmit} className="glass-card p-8 rounded-3xl flex flex-col gap-6">
+          <form action={`https://formsubmit.co/${CONTACT.email}`} method="POST" className="glass-card p-8 rounded-3xl flex flex-col gap-6">
+            <input type="hidden" name="_subject" value="New submission from your portfolio!" />
+            <input type="hidden" name="_captcha" value="false" />
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-neutral-400 mb-2">Name</label>
               <input
@@ -71,7 +68,6 @@ const Contact = () => {
                 placeholder="John Doe"
                 required
               />
-              <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-400 text-sm mt-1" />
             </div>
             
             <div>
@@ -84,7 +80,6 @@ const Contact = () => {
                 placeholder="john@example.com"
                 required
               />
-              <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-400 text-sm mt-1" />
             </div>
 
             <div>
@@ -97,20 +92,14 @@ const Contact = () => {
                 placeholder="Your message here..."
                 required
               />
-              <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-400 text-sm mt-1" />
             </div>
 
             <button
               type="submit"
-              disabled={state.submitting}
-              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 rounded-xl transition-colors disabled:opacity-50"
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 rounded-xl transition-colors"
             >
-              {state.submitting ? "Sending..." : "Send Message"}
+              Send Message
             </button>
-            
-            {state.succeeded && (
-              <p className="text-green-400 text-center mt-2">Thanks for your message! I&apos;ll get back to you soon.</p>
-            )}
           </form>
         </motion.div>
       </div>
