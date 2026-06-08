@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #e5e7eb;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #93c5fd, #e5e7eb, #93c5fd);
+}
+
+.text-gradient-alt {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #93c5fd, #e5e7eb, #fca5a5);
+}
+
+.text-responsive {
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+@media screen and (min-width: 640px) {
+  .text-responsive {
+    font-size: 3.5rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .text-responsive {
+    font-size: 5rem;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
