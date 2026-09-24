@@ -1,58 +1,39 @@
-"use client";
-
 import { EXPERIENCES } from "../constants";
-import { motion } from "framer-motion";
+import SectionHeading from "./SectionHeading";
 
 const Experience = () => {
   return (
-    <div className="py-20">
-      <motion.h2
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -50 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="mb-16 text-center text-3xl lg:text-4xl font-light tracking-tight"
-      >
-        Experience
-      </motion.h2>
-      <div className="max-w-4xl mx-auto">
+    <section id="experience" aria-labelledby="experience-heading" className="py-16 sm:py-20">
+      <SectionHeading id="experience-heading">Experience</SectionHeading>
+      <ol className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
         {EXPERIENCES.map((experience, index) => (
-          <motion.div
-            key={index}
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 50 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            className="mb-8 flex flex-col lg:flex-row gap-4 lg:gap-8 glass-card p-6 sm:p-8 rounded-3xl hover:bg-white/[0.03] transition-colors"
+          <li
+            key={`${experience.role}-${experience.company}`}
+            data-reveal
+            style={{ "--reveal-delay": `${index * 100}ms` } as React.CSSProperties}
           >
-            <div className="w-full lg:w-1/4 flex-shrink-0">
-              <p className="mb-2 text-sm text-neutral-400 font-medium">
-                {experience.year}
-              </p>
-            </div>
-            <div className="w-full lg:w-3/4">
-              <h3 className="mb-2 font-semibold text-lg text-neutral-200">
-                {experience.role} -{" "}
-                <span className="text-blue-400 text-base font-medium">{experience.company}</span>
-              </h3>
-              <p className="mb-4 text-neutral-400 text-sm leading-relaxed text-left">
-                {experience.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {experience.technologies.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="rounded-full bg-blue-900/30 border border-blue-500/20 px-3 py-1 text-xs font-medium text-blue-300"
-                  >
-                    {tech}
-                  </span>
-                ))}
+            <article className="glass-card flex flex-col gap-3 rounded-3xl p-6 transition-colors hover:bg-white/[0.03] sm:p-8 md:flex-row md:gap-8">
+              <p className="shrink-0 text-sm font-medium text-neutral-400 md:w-1/4">{experience.year}</p>
+              <div className="md:w-3/4">
+                <h3 className="text-lg font-semibold text-neutral-200">{experience.role}</h3>
+                <p className="mt-0.5 text-sm font-medium text-blue-400 sm:text-base">{experience.company}</p>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-400">{experience.description}</p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {experience.technologies.map((tech) => (
+                    <li
+                      key={tech}
+                      className="rounded-full border border-blue-500/20 bg-blue-900/30 px-3 py-1 text-xs font-medium text-blue-300"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-          </motion.div>
+            </article>
+          </li>
         ))}
-      </div>
-    </div>
+      </ol>
+    </section>
   );
 };
 

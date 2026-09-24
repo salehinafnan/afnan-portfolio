@@ -1,12 +1,47 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import RevealObserver from "../components/RevealObserver";
+import { CONTACT, NAME, ROLE, SITE_URL, SOCIAL_LINKS } from "../constants";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+
+const description =
+  "Portfolio of Mushfiqus Salehin Afnan, a web developer building fast, user-friendly experiences with React, Next.js and Node.js.";
 
 export const metadata: Metadata = {
-  title: "Mushfiqus Salehin Afnan | Portfolio",
-  description: "Aspiring web developer with a passion for creating engaging and user-friendly experiences.",
+  metadataBase: new URL(SITE_URL),
+  title: `${NAME} | Portfolio`,
+  description,
+  authors: [{ name: NAME }],
+  keywords: [NAME, "Afnan", "Web Developer", "React", "Next.js", "Portfolio", "Bangladesh"],
+  openGraph: {
+    type: "website",
+    title: `${NAME} | ${ROLE}`,
+    description,
+    siteName: NAME,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${NAME} | ${ROLE}`,
+    description,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: NAME,
+  url: SITE_URL,
+  jobTitle: ROLE,
+  email: `mailto:${CONTACT.email}`,
+  sameAs: Object.values(SOCIAL_LINKS),
 };
 
 export default function RootLayout({
@@ -15,15 +50,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased selection:bg-blue-300 selection:text-blue-900`}>
-        {/* Modern Background */}
-        <div className="fixed top-0 left-0 -z-10 h-full w-full">
-          <div className="absolute inset-0 -z-10 h-full w-full bg-black bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(25,25,112,0.5),rgba(0,0,0,1))]"></div>
-        </div>
-        <main className="container mx-auto px-6 md:px-10 lg:px-16 selection:bg-blue-300 selection:text-blue-900">
-          {children}
-        </main>
+    <html lang="en" className={inter.variable}>
+      <body className="font-sans antialiased selection:bg-blue-300 selection:text-blue-900">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 -z-10 bg-black bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(25,25,112,0.5),rgba(0,0,0,1))]"
+        />
+        {children}
+        <RevealObserver />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </body>
     </html>
   );

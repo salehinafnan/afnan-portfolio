@@ -1,112 +1,50 @@
-"use client";
-
-import { useState } from "react";
-import { PROJECTS } from "../constants";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
+import { PROJECTS } from "../constants";
+import ProjectPreview from "./ProjectPreview";
+import SectionHeading from "./SectionHeading";
 
 const Projects = () => {
-  const [selectedImage, setSelectedImage] = useState<StaticImageData | null>(null);
-
   return (
-    <div id="projects" className="py-20">
-      <motion.h2
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -50 }}
-        transition={{ duration: 0.5 }}
-        className="mb-16 text-center text-3xl lg:text-4xl font-light tracking-tight"
-      >
-        Projects
-      </motion.h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+    <section id="projects" aria-labelledby="projects-heading" className="py-16 sm:py-20">
+      <SectionHeading id="projects-heading">Projects</SectionHeading>
+      <ul className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
         {PROJECTS.map((project, index) => (
-          <motion.div
-            key={index}
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 50 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            className="flex flex-col glass-card rounded-3xl overflow-hidden group hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] transition-all duration-500"
+          <li
+            key={project.title}
+            data-reveal
+            style={{ "--reveal-delay": `${(index % 2) * 100}ms` } as React.CSSProperties}
           >
-            <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-neutral-900 cursor-pointer" onClick={() => setSelectedImage(project.image as StaticImageData)}>
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span className="text-white bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm">Click to expand</span>
-              </div>
-            </div>
-            <div className="p-6 sm:p-8 flex flex-col flex-grow">
-              <h3 className="mb-3 font-semibold text-xl flex items-center gap-2">
-                {project.title}
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors"
-                >
-                  <FaExternalLinkAlt className="w-4 h-4" />
-                </a>
-              </h3>
-              <p className="mb-6 text-neutral-400 text-sm flex-grow text-left">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.technologies.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="rounded-full bg-neutral-800/50 border border-neutral-700 px-3 py-1 text-xs font-medium text-neutral-300"
+            <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+              <ProjectPreview image={project.image} title={project.title} />
+              <div className="flex grow flex-col p-6 sm:p-8">
+                <h3 className="mb-3 text-xl font-semibold">
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-blue-300"
                   >
-                    {tech}
-                  </span>
-                ))}
+                    {project.title}
+                    <FaExternalLinkAlt aria-hidden="true" className="ml-2 inline size-3.5 align-baseline text-blue-400" />
+                  </a>
+                </h3>
+                <p className="mb-6 grow text-sm leading-relaxed text-neutral-400">{project.description}</p>
+                <ul className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <li
+                      key={tech}
+                      className="rounded-full border border-neutral-700 bg-neutral-800/50 px-3 py-1 text-xs font-medium text-neutral-300"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-          </motion.div>
+            </article>
+          </li>
         ))}
-      </div>
-
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm cursor-zoom-out"
-          >
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              className="relative w-full max-w-5xl h-[80vh] rounded-2xl overflow-hidden glass p-2"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button 
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 z-10 bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-colors"
-              >
-                ✕
-              </button>
-              <div className="relative w-full h-full rounded-xl overflow-hidden">
-                <Image 
-                  src={selectedImage} 
-                  alt="Expanded view" 
-                  fill 
-                  sizes="100vw"
-                  className="object-contain"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+      </ul>
+    </section>
   );
 };
 

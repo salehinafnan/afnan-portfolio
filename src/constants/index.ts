@@ -1,13 +1,41 @@
+import type { StaticImageData } from "next/image";
 import project1 from "../assets/projects/project-1.webp";
 import project2 from "../assets/projects/project-2.webp";
 import project3 from "../assets/projects/project-3.webp";
 import project4 from "../assets/projects/project-4.webp";
 
-export const HERO_CONTENT = `Aspiring web developer with a passion for creating engaging and user-friendly experiences. Possess a strong foundation in diverse programming languages and frameworks, including React, Next.js, Node.js and Tailwind CSS, MongoDB. Additionally, proficiency in Machine Learning adds depth to my skill set. Able to collaborate effectively within teams and contribute to project success. Logic building expertise with problem-solving skills honed through competitive programming. Eager to learn and grow within a dynamic web development environment.`;
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
 
-export const ABOUT_TEXT = `I am a dedicated and versatile web developer with a passion for creating efficient and user-friendly web applications. I have worked with a variety of technologies, including React, Next.js, Node.js, MySQL and MongoDB. My journey in web development began with a deep curiosity for how things work, and it has evolved into a passion where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and photograph my favourite moments.`;
+export const NAME = "Mushfiqus Salehin Afnan";
+export const ROLE = "Web Developer";
 
-export const EXPERIENCES = [
+export const RESUME_URL =
+  "https://drive.google.com/file/d/1_D7aZqK8ytZZWAmbEQEPhPS7Rv1uZaVa/view?usp=drive_link";
+
+export const SOCIAL_LINKS = {
+  linkedin: "https://linkedin.com/in/salehinafnan",
+  github: "https://github.com/salehinafnan",
+  instagram: "https://instagram.com/salehinafnan",
+  facebook: "https://facebook.com/salehinafnan",
+};
+
+export const HERO_CONTENT = `Aspiring web developer with a passion for creating engaging and user-friendly experiences. Possess a strong foundation in diverse programming languages and frameworks, including React, Next.js, Node.js, Tailwind CSS and MongoDB. Additionally, proficiency in Machine Learning adds depth to my skill set. Able to collaborate effectively within teams and contribute to project success. Logic building expertise with problem-solving skills honed through competitive programming. Eager to learn and grow within a dynamic web development environment.`;
+
+export const ABOUT_TEXT = `I am a dedicated and versatile web developer with a passion for creating efficient and user-friendly web applications. I have worked with a variety of technologies, including React, Next.js, Node.js, MySQL and MongoDB. My journey in web development began with a deep curiosity for how things work, and it has evolved into a passion where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and photographing my favourite moments.`;
+
+export type Experience = {
+  year: string;
+  role: string;
+  company: string;
+  description: string;
+  technologies: string[];
+};
+
+export const EXPERIENCES: Experience[] = [
   {
     year: "June 2024 - Present",
     role: "Clinical AI Specialist",
@@ -25,7 +53,15 @@ export const EXPERIENCES = [
   },
 ];
 
-export const PUBLICATION = [
+export type Publication = {
+  year: string;
+  title: string;
+  link: string;
+  description: string;
+  publisher: string[];
+};
+
+export const PUBLICATION: Publication[] = [
   {
     year: "December 2023",
     title: "TI-Fusion: A Multimodal Anxiety Disorder Detection Method",
@@ -35,7 +71,15 @@ export const PUBLICATION = [
   },
 ];
 
-export const PROJECTS = [
+export type Project = {
+  title: string;
+  url: string;
+  image: StaticImageData;
+  description: string;
+  technologies: string[];
+};
+
+export const PROJECTS: Project[] = [
   {
     title: "Sepia",
     url: "https://sepia.onrender.com/",
@@ -54,11 +98,11 @@ export const PROJECTS = [
   },
   {
     title: "Portfolio Website",
-    url: "https://salehinafnan.me/",
+    url: "https://github.com/salehinafnan/afnan-portfolio",
     image: project3,
     description:
       "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["React", "Tailwind CSS", "Framer Motion"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
   },
   {
     title: "Random Block Graph Generator",

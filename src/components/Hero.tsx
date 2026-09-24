@@ -1,91 +1,69 @@
-"use client";
-
-import { HERO_CONTENT } from "../constants";
 import Image from "next/image";
 import profilePic from "../assets/afnanProfile.webp";
-import { motion, Variants } from "framer-motion";
+import { HERO_CONTENT, NAME, ROLE } from "../constants";
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { x: -50, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
+// Hero lines all start on the first frame (nothing waits to paint, which keeps
+// LCP fast) and cascade in through increasing durations instead of delays.
+const duration = (ms: number, delay = 0) =>
+  ({ "--duration": `${ms}ms`, "--delay": `${delay}ms` }) as React.CSSProperties;
 
 const Hero = () => {
   return (
-    <div className="pb-4 lg:mb-36 min-h-[70vh] flex items-center mt-8">
-      <div className="flex flex-wrap items-center w-full">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="w-full lg:w-1/2"
-        >
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <motion.h1
-              variants={itemVariants}
-              className="pb-6 font-light tracking-tight text-[clamp(1.5rem,4vw,3.5rem)] whitespace-nowrap"
+    <section aria-label="Introduction" className="flex min-h-[70vh] items-center pb-4 lg:mb-16">
+      <div className="grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-8">
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <h1
+            className="enter-left pb-4 text-[clamp(2rem,10vw,2.75rem)] leading-tight font-light tracking-tight sm:text-5xl lg:text-[clamp(2.25rem,3.4vw,3.25rem)]"
+            style={duration(700)}
+          >
+            Mushfiqus Salehin <span className="text-gradient">Afnan</span>
+          </h1>
+          <p
+            className="enter-left text-gradient-alt text-xl font-medium tracking-tight sm:text-2xl lg:text-3xl"
+            style={duration(900)}
+          >
+            {ROLE}
+          </p>
+          <p
+            className="enter-left my-6 max-w-xl py-4 text-left text-sm leading-relaxed font-light tracking-wide text-neutral-300/90 lg:text-base"
+            style={duration(1100)}
+          >
+            {HERO_CONTENT}
+          </p>
+          <div className="enter-left flex flex-wrap justify-center gap-3 sm:gap-4" style={duration(1300)}>
+            <a
+              href="#projects"
+              className="rounded-full bg-neutral-100 px-5 py-3 sm:px-6 font-medium text-neutral-900 transition-colors hover:bg-neutral-300"
             >
-              Mushfiqus Salehin{" "}
-              <span className="text-gradient">Afnan</span>
-            </motion.h1>
-            <motion.span
-              variants={itemVariants}
-              className="text-gradient-alt text-xl sm:text-2xl lg:text-3xl tracking-tight font-medium"
+              View Work
+            </a>
+            <a
+              href="#contact"
+              className="glass rounded-full px-5 py-3 sm:px-6 font-medium transition-colors hover:bg-white/10"
             >
-              Web Developer
-            </motion.span>
-            <motion.p
-              variants={itemVariants}
-              className="my-6 max-w-xl py-4 font-light leading-relaxed tracking-wide text-neutral-300/90 text-sm lg:text-base text-left"
-            >
-              {HERO_CONTENT}
-            </motion.p>
-            <motion.div variants={itemVariants} className="mt-4 flex gap-4">
-              <a href="#projects" className="px-6 py-3 rounded-full bg-neutral-100 text-neutral-900 font-medium hover:bg-neutral-300 transition-colors">
-                View Work
-              </a>
-              <a href="#contact" className="px-6 py-3 rounded-full glass font-medium hover:bg-white/10 transition-colors">
-                Contact Me
-              </a>
-            </motion.div>
+              Contact Me
+            </a>
           </div>
-        </motion.div>
-        <div className="w-full lg:w-1/2 lg:p-8 mt-12 lg:mt-0">
-          <div className="flex justify-center relative">
-            {/* Glowing Blob behind image */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-500/20 rounded-full blur-[80px] -z-10"></div>
-            
-            <motion.div
-              initial={{ x: 50, opacity: 0, scale: 0.9 }}
-              animate={{ x: 0, opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5, type: "spring", stiffness: 50 }}
-              className="relative rounded-3xl overflow-hidden glass p-2"
-            >
-              <Image
-                className="rounded-2xl w-full max-w-[420px] object-cover"
-                src={profilePic}
-                alt="Mushfiqus Salehin Afnan"
-                priority
-              />
-            </motion.div>
+        </div>
+        <div className="relative flex justify-center lg:p-8">
+          <div
+            aria-hidden="true"
+            className="glow absolute top-1/2 left-1/2 size-72 sm:size-96 -translate-x-1/2 -translate-y-1/2"
+          />
+          <div className="enter-zoom glass relative w-full max-w-[436px] rounded-3xl p-2" style={duration(1000, 150)}>
+            <Image
+              src={profilePic}
+              alt={NAME}
+              sizes="(max-width: 500px) calc(100vw - 64px), 420px"
+              placeholder="blur"
+              loading="eager"
+              fetchPriority="high"
+              className="w-full rounded-2xl object-cover"
+            />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

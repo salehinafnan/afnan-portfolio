@@ -1,47 +1,47 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaFacebook, FaInstagram, FaRegFileAlt } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaRegFileAlt } from "react-icons/fa";
 import logo from "../assets/afnanLogo.webp";
+import { RESUME_URL, SOCIAL_LINKS } from "../constants";
+
+const LINKS = [
+  { href: RESUME_URL, label: "Resume / CV", Icon: FaRegFileAlt, hover: "hover:text-white" },
+  { href: SOCIAL_LINKS.linkedin, label: "LinkedIn", Icon: FaLinkedin, hover: "hover:text-blue-400" },
+  { href: SOCIAL_LINKS.github, label: "GitHub", Icon: FaGithub, hover: "hover:text-white" },
+  { href: SOCIAL_LINKS.instagram, label: "Instagram", Icon: FaInstagram, hover: "hover:text-pink-400" },
+  { href: SOCIAL_LINKS.facebook, label: "Facebook", Icon: FaFacebook, hover: "hover:text-blue-500" },
+];
 
 const Navbar = () => {
   return (
-    <nav className="mb-8 flex items-center justify-between py-6">
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        whileHover={{ scale: 1.05 }}
-        className="flex flex-shrink-0 items-center"
-      >
-        <a href="/">
-          <Image src={logo} alt="logo" className="h-5 w-auto object-contain" priority />
-        </a>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        className="flex items-center justify-center gap-6 text-xl text-neutral-300"
-      >
-        <a href="https://drive.google.com/file/d/1_D7aZqK8ytZZWAmbEQEPhPS7Rv1uZaVa/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300" title="Resume / CV">
-          <FaRegFileAlt />
-        </a>
-        <a href="https://linkedin.com/in/salehinafnan" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors duration-300" title="LinkedIn">
-          <FaLinkedin />
-        </a>
-        <a href="https://github.com/salehinafnan" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300" title="GitHub">
-          <FaGithub />
-        </a>
-        <a href="https://instagram.com/salehinafnan" target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 transition-colors duration-300">
-          <FaInstagram />
-        </a>
-        <a href="https://facebook.com/salehinafnan" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors duration-300">
-          <FaFacebook />
-        </a>
-      </motion.div>
-    </nav>
+    <header>
+      <nav aria-label="Main" className="mb-8 flex items-center justify-between py-6">
+        <Link
+          href="/"
+          prefetch={false}
+          aria-label="Home"
+          className="enter-left shrink-0 rounded transition-transform duration-300 hover:scale-105"
+        >
+          <Image src={logo} alt="Afnan" className="h-5 w-auto" unoptimized loading="eager" />
+        </Link>
+        <ul className="enter-right -mr-1.5 flex items-center gap-1 text-xl text-neutral-300 sm:-mr-2 sm:gap-3">
+          {LINKS.map(({ href, label, Icon, hover }) => (
+            <li key={label}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                title={label}
+                className={`block rounded-full p-1.5 transition-colors duration-300 sm:p-2 ${hover}`}
+              >
+                <Icon aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 };
 

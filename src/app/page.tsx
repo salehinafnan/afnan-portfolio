@@ -1,28 +1,37 @@
-import dynamic from "next/dynamic";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
 import About from "../components/About";
-
-const Technologies = dynamic(() => import("../components/Technologies"));
-const Experience = dynamic(() => import("../components/Experience"));
-const Publication = dynamic(() => import("../components/Publication"));
-const Projects = dynamic(() => import("../components/Projects"));
-const Contact = dynamic(() => import("../components/Contact"));
+import Contact from "../components/Contact";
+import Experience from "../components/Experience";
+import Hero from "../components/Hero";
+import Navbar from "../components/Navbar";
+import Projects from "../components/Projects";
+import Publication from "../components/Publication";
+import Technologies from "../components/Technologies";
+import { NAME } from "../constants";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="container mx-auto flex min-h-screen flex-col px-6 md:px-10 lg:px-16">
+      <a
+        href="#main"
+        className="sr-only rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-900 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
+      >
+        Skip to content
+      </a>
       <Navbar />
-      <Hero />
-      <About />
-      <Technologies />
-      <Experience />
-      <Publication />
-      <Projects />
-      <Contact />
-      
-      <footer className="mt-20 py-8 border-t border-neutral-800 text-center text-neutral-500 text-sm">
-        <p>© {new Date().getFullYear()} Mushfiqus Salehin Afnan. All rights reserved.</p>
+      <main id="main">
+        <Hero />
+        <About />
+        <Technologies />
+        <Experience />
+        <Publication />
+        <Projects />
+        <Contact />
+      </main>
+
+      <footer className="mt-auto border-t border-neutral-800 py-8 text-center text-sm text-neutral-400">
+        <p>
+          © {new Date().getFullYear()} {NAME}. All rights reserved.
+        </p>
         <p className="mt-2">Designed & Built with Next.js & Tailwind CSS</p>
       </footer>
     </div>
