@@ -1,8 +1,9 @@
 import type { StaticImageData } from "next/image";
-import project1 from "../assets/projects/project-1.webp";
-import project2 from "../assets/projects/project-2.webp";
-import project3 from "../assets/projects/project-3.webp";
-import project4 from "../assets/projects/project-4.webp";
+import blockGraph from "../assets/projects/block-graph.webp";
+import nodrift from "../assets/projects/nodrift.webp";
+import portfolio from "../assets/projects/portfolio.webp";
+import sepia from "../assets/projects/sepia.webp";
+import taskManager from "../assets/projects/task-manager.webp";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -73,44 +74,114 @@ export const PUBLICATION: Publication[] = [
 
 export type Project = {
   title: string;
-  url: string;
-  image: StaticImageData;
   description: string;
   technologies: string[];
+  image: StaticImageData;
+  live?: string;
+  source: string;
 };
 
+// Showcased with a screenshot. The first one is featured full width.
 export const PROJECTS: Project[] = [
   {
-    title: "Sepia",
-    url: "https://sepia.onrender.com/",
-    image: project1,
+    title: "nodrift",
     description:
-      "'Sepia' is a MERN stack application with features like user authentication, post creation and interaction, real-time updates, and full responsiveness. Users can sign up, sign in, create, like, and delete their own posts. The application adapts to different screen sizes and updates in real-time.",
+      "A local-first work-hour tracker that runs entirely in the browser, with no account needed. It paces daily goals against a weekly target, detects sleep and idle time, and has a keyboard-driven command palette that understands entries like “add yesterday 9am to 5pm”. Data lives in IndexedDB with snapshot rollbacks, the app installs as an offline PWA, and optional cloud sync runs on Supabase with row-level security.",
+    technologies: ["JavaScript", "IndexedDB", "Web Workers", "PWA", "Supabase", "PostgreSQL"],
+    image: nodrift,
+    live: "https://nodrift.vercel.app/",
+    source: "https://github.com/salehinafnan/nodrift",
+  },
+  {
+    title: "Sepia",
+    description:
+      "A MERN stack social media app. Users can sign up, sign in, and create, like and delete their own posts, with changes showing up in real time on a fully responsive layout.",
     technologies: ["MongoDB", "Express.js", "React", "Redux", "Node.js", "Material UI"],
+    image: sepia,
+    live: "https://sepia.onrender.com/",
+    source: "https://github.com/salehinafnan/sepia",
   },
   {
     title: "Task Management App",
-    url: "https://afnantask.vercel.app/",
-    image: project2,
     description:
-      "This is a task management application which allows users to create, view, update, and delete tasks. The application utilizes local storage for data persistence.",
-    technologies: ["Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "MobX"],
-  },
-  {
-    title: "Portfolio Website",
-    url: "https://github.com/salehinafnan/afnan-portfolio",
-    image: project3,
-    description:
-      "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+      "Create, edit, delete and filter tasks by status. State is managed with MobX-State-Tree and persisted to local storage.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MobX-State-Tree"],
+    image: taskManager,
+    live: "https://afnantask.vercel.app/",
+    source: "https://github.com/salehinafnan/task-management-app",
   },
   {
     title: "Random Block Graph Generator",
-    url: "https://github.com/salehinafnan/random-block-graph-generator",
-    image: project4,
     description:
-      "Users can create, delete, resize and move blocks that are randomly generated and are connected to their corresponding parent block.",
-    technologies: ["React", "TypeScript", "JavaScript", "CSS"],
+      "Spawn, delete and drag randomly placed blocks. Each new block is linked to its parent by a line that follows it as it moves.",
+    technologies: ["React", "TypeScript", "CSS"],
+    image: blockGraph,
+    source: "https://github.com/salehinafnan/random-block-graph-generator",
+  },
+  {
+    title: "Portfolio Website",
+    description:
+      "This site. Server-rendered with the Next.js App Router, it ships almost no client JavaScript, animates with CSS alone and is tuned for accessibility and Core Web Vitals.",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    image: portfolio,
+    live: "https://salehinafnan.vercel.app/",
+    source: "https://github.com/salehinafnan/afnan-portfolio",
+  },
+];
+
+export type Repository = {
+  title: string;
+  description: string;
+  technologies: string[];
+  source: string;
+  team?: boolean;
+};
+
+// Smaller and academic work, shown as compact cards.
+export const REPOSITORIES: Repository[] = [
+  {
+    title: "TI-Fusion",
+    description:
+      "Code behind my IEEE paper. Detects anxiety disorders by late fusion of a CNN trained on Gabor-filtered facial expressions and a model trained on DASS-21 questionnaire answers.",
+    technologies: ["Python", "TensorFlow", "scikit-learn", "OpenCV"],
+    source: "https://github.com/salehinafnan/anxiety-disorder-detection-using-multimoadal-learning",
+  },
+  {
+    title: "Dua & Ruqyah",
+    description:
+      "A Next.js front end for browsing duas by category and sub-category, backed by an Express REST API over a SQLite database.",
+    technologies: ["Next.js", "Express.js", "SQLite", "Tailwind CSS"],
+    source: "https://github.com/salehinafnan/dua-web-app-front-end",
+  },
+  {
+    title: "Long-Polling Server",
+    description:
+      "An Express server where clients wait up to 30 seconds on a key and receive queued data, in order, the moment it is pushed.",
+    technologies: ["Node.js", "Express.js"],
+    source: "https://github.com/salehinafnan/backend-long-polling-server",
+  },
+  {
+    title: "Campus Network",
+    description:
+      "A GNS3 simulation of a six-department university network, taken from static routing to OSPF, then extended with NAT and DHCP for internet access.",
+    technologies: ["GNS3", "OSPF", "NAT", "DHCP"],
+    source: "https://github.com/salehinafnan/campus-network-gns3",
+    team: true,
+  },
+  {
+    title: "Air Quality Monitor",
+    description:
+      "An Arduino Uno device that reads gas levels from an MQ-135 sensor and shows the ppm and an air-quality verdict on an LCD, designed and simulated in Proteus.",
+    technologies: ["Arduino", "C++", "Proteus"],
+    source: "https://github.com/salehinafnan/air-quality-sensor",
+    team: true,
+  },
+  {
+    title: "Competitive Programming",
+    description:
+      "Nearly 200 solutions to Codeforces and CodeChef problems, written while sharpening problem solving and algorithms.",
+    technologies: ["C++", "Algorithms", "Data Structures"],
+    source: "https://github.com/salehinafnan/competitive-programming",
   },
 ];
 
