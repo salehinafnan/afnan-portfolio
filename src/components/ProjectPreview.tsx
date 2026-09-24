@@ -7,9 +7,14 @@ import { FiMaximize2, FiX } from "react-icons/fi";
 type Props = {
   image: StaticImageData;
   title: string;
+  sizes?: string;
 };
 
-const ProjectPreview = ({ image, title }: Props) => {
+const ProjectPreview = ({
+  image,
+  title,
+  sizes = "(min-width: 1152px) 552px, (min-width: 768px) 50vw, 100vw",
+}: Props) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const close = () => dialogRef.current?.close();
 
@@ -25,7 +30,7 @@ const ProjectPreview = ({ image, title }: Props) => {
           src={image}
           alt=""
           fill
-          sizes="(min-width: 1152px) 552px, (min-width: 768px) 50vw, 100vw"
+          sizes={sizes}
           placeholder="blur"
           className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
         />
