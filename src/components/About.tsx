@@ -1,57 +1,37 @@
-"use client";
-
-import { ABOUT_TEXT } from "../constants";
 import Image from "next/image";
 import aboutImg from "../assets/afnanAbout.webp";
-import { motion } from "framer-motion";
+import { ABOUT_TEXT } from "../constants";
+import SectionHeading from "./SectionHeading";
 
 const About = () => {
   return (
-    <div id="about" className="py-20">
-      <motion.h2
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -50 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="mb-16 text-center text-3xl lg:text-4xl font-light tracking-tight"
-      >
+    <section id="about" aria-labelledby="about-heading" className="py-16 sm:py-20">
+      <SectionHeading id="about-heading">
         About <span className="text-neutral-500">Me</span>
-      </motion.h2>
-      <div className="flex flex-wrap items-center">
-        <div className="w-full lg:w-1/2 lg:pr-12 mb-10 lg:mb-0">
-          <motion.div
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center relative"
-          >
-            {/* Background Blob */}
-            <div className="absolute w-64 h-64 bg-blue-500/10 rounded-full blur-[60px] -z-10"></div>
-            <div className="glass p-2 rounded-3xl overflow-hidden">
-              <Image
-                className="rounded-2xl max-w-sm w-full object-cover"
-                src={aboutImg}
-                alt="About"
-              />
-            </div>
-          </motion.div>
+      </SectionHeading>
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+        <div data-reveal="left" className="relative flex justify-center">
+          <div
+            aria-hidden="true"
+            className="glow absolute top-1/2 left-1/2 size-72 sm:size-80 -translate-x-1/2 -translate-y-1/2"
+          />
+          <div className="glass relative w-full max-w-sm rounded-3xl p-2">
+            <Image
+              src={aboutImg}
+              alt="Afnan sitting on a chair, smiling"
+              sizes="(max-width: 440px) calc(100vw - 64px), 368px"
+              placeholder="blur"
+              className="w-full rounded-2xl object-cover"
+            />
+          </div>
         </div>
-        <div className="w-full lg:w-1/2">
-          <motion.div
-            whileInView={{ opacity: 1, x: 0 }}
-            initial={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex justify-center lg:justify-start"
-          >
-            <p className="max-w-xl py-6 font-light leading-relaxed tracking-wide text-neutral-300/90 text-sm lg:text-base text-left">
-              {ABOUT_TEXT}
-            </p>
-          </motion.div>
+        <div data-reveal="right" className="flex justify-center lg:justify-start">
+          <p className="max-w-xl text-sm leading-relaxed font-light tracking-wide text-neutral-300/90 lg:py-6 lg:text-base">
+            {ABOUT_TEXT}
+          </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
