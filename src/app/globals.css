@@ -5,11 +5,16 @@
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Warm paper tones instead of pure white, so the page is easy on the eyes. */
+  --color-canvas: #f2efe9;
+  --color-surface: #faf8f4;
 }
 
 :root {
-  --background: #fafafa;
-  --foreground: #171717;
+  --background: var(--color-canvas);
+  --foreground: #1c1917;
+  --accent-gradient: linear-gradient(100deg, #4338ca 0%, #7c3aed 45%, #db2777 100%);
   color-scheme: light;
 }
 
@@ -36,45 +41,44 @@
   }
 
   :focus-visible {
-    outline: 2px solid #0a0a0a;
+    outline: 2px solid #4f46e5;
     outline-offset: 3px;
   }
 
   input:-webkit-autofill,
   textarea:-webkit-autofill {
-    -webkit-text-fill-color: #0a0a0a;
-    -webkit-box-shadow: 0 0 0 1000px #fff inset;
-    caret-color: #0a0a0a;
+    -webkit-text-fill-color: #1c1917;
+    -webkit-box-shadow: 0 0 0 1000px var(--color-surface) inset;
+    caret-color: #1c1917;
   }
 }
 
 @layer components {
-  /* Page backdrop: a soft white spotlight over light grey, with faint grey haze
-     in the corners. Monochrome, so the depth comes from light, not colour. */
+  /* Page backdrop: warm paper with soft washes of peach, iris and mint. */
   .page-bg {
     background:
-      radial-gradient(ellipse 60% 45% at 50% 0%, #ffffff 0%, transparent 100%),
-      radial-gradient(ellipse 45% 40% at 0% 0%, rgba(0, 0, 0, 0.045), transparent 70%),
-      radial-gradient(ellipse 45% 40% at 100% 30%, rgba(0, 0, 0, 0.035), transparent 70%),
-      linear-gradient(180deg, #f7f7f7 0%, #fafafa 40%, #f4f4f4 100%);
+      radial-gradient(ellipse 55% 50% at 0% 0%, rgba(251, 146, 60, 0.13), rgba(251, 146, 60, 0.05) 45%, transparent 80%),
+      radial-gradient(ellipse 60% 55% at 100% 0%, rgba(129, 140, 248, 0.16), rgba(129, 140, 248, 0.06) 45%, transparent 80%),
+      radial-gradient(ellipse 80% 55% at 50% 110%, rgba(45, 212, 191, 0.06), rgba(45, 212, 191, 0.02) 50%, transparent 85%),
+      var(--color-canvas);
   }
 
   /* Hairline grid behind the hero, fading out towards the edges. */
   .hero-grid {
     background-image:
-      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(68, 64, 60, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(68, 64, 60, 0.06) 1px, transparent 1px);
     background-size: 64px 64px;
     background-position: center top;
     mask-image: radial-gradient(ellipse 65% 70% at 50% 0%, #000 20%, transparent 100%);
   }
 
   .glass-card {
-    background: linear-gradient(180deg, #ffffff, #fbfbfb);
-    border: 1px solid rgba(0, 0, 0, 0.07);
+    background: linear-gradient(180deg, #fcfbf8, var(--color-surface));
+    border: 1px solid rgba(68, 64, 60, 0.09);
     box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.04),
-      0 12px 32px -16px rgba(0, 0, 0, 0.12);
+      0 1px 2px rgba(68, 64, 60, 0.05),
+      0 12px 32px -16px rgba(68, 64, 60, 0.16);
   }
 
   .lift {
@@ -83,28 +87,46 @@
       box-shadow 0.3s ease;
   }
   .lift:hover {
-    border-color: rgba(0, 0, 0, 0.14);
+    border-color: rgba(99, 102, 241, 0.3);
     box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.04),
-      0 24px 48px -20px rgba(0, 0, 0, 0.2);
+      0 1px 2px rgba(68, 64, 60, 0.05),
+      0 24px 48px -20px rgba(79, 70, 229, 0.25);
+  }
+
+  /* Brand-tinted tiles: each sets --brand to its logo colour. */
+  .tech-tile {
+    color: var(--brand);
+    background: color-mix(in srgb, var(--brand) 7%, var(--color-surface));
+    border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
+    box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--brand) 45%, transparent);
+    transition:
+      scale 0.3s ease,
+      background-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .tech-tile:hover {
+    background: color-mix(in srgb, var(--brand) 13%, var(--color-surface));
+    box-shadow: 0 16px 32px -12px color-mix(in srgb, var(--brand) 60%, transparent);
   }
 
   .text-gradient {
-    background-image: linear-gradient(100deg, #0a0a0a 15%, #737373 100%);
+    background-image: var(--accent-gradient);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-alt {
-    background-image: linear-gradient(to right, #404040, #a3a3a3);
+    background-image: linear-gradient(to right, #44403c, #a8a29e);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .glow {
-    background: radial-gradient(closest-side, rgba(0, 0, 0, 0.1), transparent);
+    background:
+      radial-gradient(closest-side at 35% 40%, rgba(129, 140, 248, 0.35), transparent),
+      radial-gradient(closest-side at 65% 65%, rgba(251, 146, 60, 0.25), transparent);
     pointer-events: none;
   }
 }
@@ -229,7 +251,7 @@
   animation: lightbox-in 0.3s var(--ease-smooth);
 }
 .lightbox::backdrop {
-  background: rgba(10, 10, 10, 0.8);
+  background: rgba(28, 25, 23, 0.8);
 }
 .lightbox[open]::backdrop {
   animation: enter-fade 0.3s ease;
@@ -252,7 +274,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  background: #f5f5f5;
+  background: #ece8e1;
   color: var(--foreground);
 }
 .cv-dialog[open] {
@@ -261,7 +283,7 @@
   animation: sheet-in 0.35s var(--ease-smooth);
 }
 .cv-dialog::backdrop {
-  background: rgba(10, 10, 10, 0.45);
+  background: rgba(28, 25, 23, 0.45);
 }
 .cv-dialog[open]::backdrop {
   animation: enter-fade 0.3s ease;
@@ -272,9 +294,9 @@
     height: calc(100dvh - 3rem);
     margin: auto;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(68, 64, 60, 0.1);
     border-radius: 1.5rem;
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 24px 80px rgba(28, 25, 23, 0.25);
   }
 }
 
@@ -302,18 +324,18 @@ html:has(dialog[open]) {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f5f5f5;
+  background: var(--color-canvas);
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d4;
+  background: #d6d3d1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a3a3a3;
+  background: #a8a29e;
 }
 @supports not selector(::-webkit-scrollbar) {
   html {
-    scrollbar-color: #d4d4d4 #f5f5f5;
+    scrollbar-color: #d6d3d1 var(--color-canvas);
     scrollbar-width: thin;
   }
 }
