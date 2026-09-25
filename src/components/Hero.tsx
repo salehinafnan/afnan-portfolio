@@ -18,7 +18,7 @@ const Hero = () => {
         <div className="@container flex flex-col items-center text-center lg:items-start lg:text-left">
           {/* The name always fits on one line: its size follows the column width. */}
           <h1
-            className="enter-left pb-5 text-[min(8.9cqi,4.5rem)] leading-[1.1] font-medium tracking-[-0.035em] whitespace-nowrap"
+            className="enter-left pb-5 text-[min(8.9cqi,4.5rem)] leading-[1.1] font-normal tracking-[-0.035em] whitespace-nowrap"
             style={duration(700)}
           >
             Mushfiqus Salehin{" "}

@@ -118,7 +118,7 @@ const Page = ({ pdf, index, page, width }: PageProps) => {
             aria-label={link.label}
             title={link.label}
             style={link.box}
-            className="absolute rounded-xs transition-colors hover:bg-blue-500/15 focus-visible:bg-blue-500/15"
+            className="absolute rounded-xs transition-colors hover:bg-neutral-900/10 focus-visible:bg-neutral-900/10"
           />
         );
       })}

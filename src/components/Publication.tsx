@@ -25,10 +25,10 @@ const Publication = () => {
                 <p className="mt-1 text-sm text-neutral-400 italic">{pub.venue}</p>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-neutral-400">{pub.description}</p>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <span className="rounded-full border border-blue-500/20 bg-blue-900/30 px-3 py-1 text-xs font-medium text-blue-300">
+                  <span className="rounded-full border border-neutral-700 bg-neutral-800/60 px-3 py-1 text-xs font-medium text-neutral-100">
                     {pub.publisher}
                   </span>
-                  <span className="rounded-full border border-neutral-700 bg-neutral-800/50 px-3 py-1 text-xs font-medium text-neutral-300">
+                  <span className="rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1 text-xs font-medium text-neutral-400">
                     {pub.type}
                   </span>
                   <LinkPill href={pub.link}>

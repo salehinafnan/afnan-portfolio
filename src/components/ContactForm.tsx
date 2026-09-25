@@ -5,7 +5,7 @@ import { useState, type FormEvent } from "react";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const fieldClass =
-  "w-full rounded-xl border border-neutral-700 bg-neutral-900/50 px-4 py-3 text-base text-white outline-none transition-colors placeholder:text-neutral-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500";
+  "w-full rounded-xl border border-neutral-700 bg-neutral-900/50 px-4 py-3 text-base text-white outline-none transition-colors placeholder:text-neutral-500 focus:border-neutral-400 focus:ring-1 focus:ring-neutral-400";
 
 // Submits in the background so visitors stay on the page. Without JavaScript the
 // form still posts straight to FormSubmit.
@@ -92,7 +92,7 @@ const ContactForm = ({ email }: { email: string }) => {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="w-full rounded-xl bg-blue-600 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-500 disabled:cursor-wait disabled:opacity-70"
+          className="w-full rounded-xl bg-neutral-100 py-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-300 disabled:cursor-wait disabled:opacity-70"
         >
           {status === "sending" ? "Sending…" : "Send Message"}
         </button>
