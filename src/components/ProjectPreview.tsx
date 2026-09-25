@@ -24,7 +24,7 @@ const ProjectPreview = ({
         type="button"
         onClick={() => dialogRef.current?.showModal()}
         aria-label={`Expand ${title} screenshot`}
-        className="relative block aspect-2/1 w-full cursor-zoom-in overflow-hidden bg-neutral-100"
+        className="relative block aspect-2/1 w-full cursor-zoom-in overflow-hidden bg-stone-100"
       >
         <Image
           src={image}
@@ -34,12 +34,12 @@ const ProjectPreview = ({
           placeholder="blur"
           className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
         />
-        <span className="absolute inset-0 hidden items-center justify-center bg-neutral-950/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:flex">
-          <span className="rounded-full bg-white/95 px-4 py-2 text-sm font-medium text-neutral-900 shadow-lg">Click to expand</span>
+        <span className="absolute inset-0 hidden items-center justify-center bg-stone-950/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:flex">
+          <span className="rounded-full bg-surface/95 px-4 py-2 text-sm font-medium text-stone-900 shadow-lg">Click to expand</span>
         </span>
         <span
           aria-hidden="true"
-          className="absolute right-3 bottom-3 rounded-full bg-white/90 p-2 text-sm text-neutral-900 shadow md:hidden"
+          className="absolute right-3 bottom-3 rounded-full bg-surface/90 p-2 text-sm text-stone-900 shadow md:hidden"
         >
           <FiMaximize2 />
         </span>
@@ -53,7 +53,7 @@ const ProjectPreview = ({
           if (event.target === event.currentTarget) close();
         }}
       >
-        <div className="relative cursor-default rounded-2xl bg-white p-2">
+        <div className="relative cursor-default rounded-2xl bg-surface p-2">
           <Image
             src={image}
             alt={`${title} screenshot`}
@@ -65,7 +65,7 @@ const ProjectPreview = ({
             type="button"
             onClick={close}
             aria-label="Close"
-            className="absolute top-4 right-4 flex size-10 items-center justify-center rounded-full bg-white/90 text-lg text-neutral-900 shadow transition-colors hover:bg-neutral-950 hover:text-white"
+            className="absolute top-4 right-4 flex size-10 items-center justify-center rounded-full bg-surface/90 text-lg text-stone-900 shadow transition-colors hover:bg-stone-950 hover:text-white"
           >
             <FiX aria-hidden="true" />
           </button>

@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fafafa",
+  themeColor: "#f2efe9",
   colorScheme: "light",
 };
 
@@ -74,7 +74,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
-      <body className="font-sans text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white">
+      <body className="font-sans text-stone-900 antialiased selection:bg-indigo-200 selection:text-indigo-950">
         <div aria-hidden="true" className="page-bg pointer-events-none fixed inset-0 -z-10" />
         <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-x-0 top-0 -z-10 h-[52rem]" />
         {children}

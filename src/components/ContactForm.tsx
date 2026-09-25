@@ -5,7 +5,7 @@ import { useState, type FormEvent } from "react";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const fieldClass =
-  "w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-base text-neutral-950 outline-none transition-[border-color,box-shadow] placeholder:text-neutral-400 focus:border-neutral-900 focus:ring-4 focus:ring-neutral-900/5";
+  "w-full rounded-xl border border-stone-200 bg-surface px-4 py-3 text-base text-stone-950 outline-none transition-[border-color,box-shadow] placeholder:text-stone-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/10";
 
 // Submits in the background so visitors stay on the page. Without JavaScript the
 // form still posts straight to FormSubmit.
@@ -45,7 +45,7 @@ const ContactForm = ({ email }: { email: string }) => {
       <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
       <div>
-        <label htmlFor="name" className="mb-2 block text-sm font-medium text-neutral-700">
+        <label htmlFor="name" className="mb-2 block text-sm font-medium text-stone-700">
           Name
         </label>
         <input
@@ -60,7 +60,7 @@ const ContactForm = ({ email }: { email: string }) => {
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-2 block text-sm font-medium text-neutral-700">
+        <label htmlFor="email" className="mb-2 block text-sm font-medium text-stone-700">
           Email Address
         </label>
         <input
@@ -75,7 +75,7 @@ const ContactForm = ({ email }: { email: string }) => {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-neutral-700">
+        <label htmlFor="message" className="mb-2 block text-sm font-medium text-stone-700">
           Message
         </label>
         <textarea
@@ -92,7 +92,7 @@ const ContactForm = ({ email }: { email: string }) => {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="w-full rounded-xl bg-neutral-950 py-3 text-sm font-medium text-white shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5)] transition-colors hover:bg-neutral-800 disabled:cursor-wait disabled:opacity-70"
+          className="w-full rounded-xl bg-stone-950 py-3 text-sm font-medium text-white shadow-[0_8px_20px_-8px_rgba(28,25,23,0.5)] transition-colors hover:bg-stone-800 disabled:cursor-wait disabled:opacity-70"
         >
           {status === "sending" ? "Sending…" : "Send Message"}
         </button>

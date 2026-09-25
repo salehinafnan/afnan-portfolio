@@ -9,15 +9,16 @@ const duration = (ms: number, delay = 0) =>
   ({ "--duration": `${ms}ms`, "--delay": `${delay}ms` }) as React.CSSProperties;
 
 const secondaryButton =
-  "inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 px-5 py-3 text-sm font-medium text-neutral-900 transition-colors hover:border-neutral-300 hover:bg-white sm:px-6";
+  "inline-flex items-center gap-2 rounded-full border border-stone-200 bg-surface/80 px-5 py-3 text-sm font-medium text-stone-900 transition-colors hover:border-stone-300 hover:bg-surface sm:px-6";
 
 const Hero = () => {
   return (
     <section aria-label="Introduction" className="flex min-h-[70vh] items-center pb-4 lg:mb-16">
-      <div className="grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-12">
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+      <div className="grid w-full items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+        <div className="@container flex flex-col items-center text-center lg:items-start lg:text-left">
+          {/* The name always fits on one line: its size follows the column width. */}
           <h1
-            className="enter-left pb-5 text-[clamp(2.5rem,11vw,3.5rem)] leading-[1.05] font-semibold tracking-[-0.035em] text-neutral-950 sm:text-6xl lg:text-[clamp(3.25rem,4.6vw,4.5rem)]"
+            className="enter-left pb-5 text-[min(8.9cqi,4.5rem)] leading-[1.1] font-semibold tracking-[-0.035em] whitespace-nowrap text-stone-950"
             style={duration(700)}
           >
             Mushfiqus Salehin{" "}
@@ -32,7 +33,7 @@ const Hero = () => {
             {ROLE}
           </p>
           <p
-            className="enter-left mt-6 mb-10 max-w-xl text-left text-base leading-7 text-neutral-600 lg:text-[1.0625rem] lg:leading-[1.8]"
+            className="enter-left mt-6 mb-10 max-w-xl text-left text-base leading-7 text-stone-600 lg:text-[1.0625rem] lg:leading-[1.8]"
             style={duration(1100)}
           >
             {HERO_CONTENT}
@@ -40,7 +41,7 @@ const Hero = () => {
           <div className="enter-left flex flex-wrap justify-center gap-3 lg:justify-start" style={duration(1300)}>
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5)] transition-colors hover:bg-neutral-800 sm:px-6"
+              className="group inline-flex items-center gap-2 rounded-full bg-stone-950 px-5 py-3 text-sm font-medium text-white shadow-[0_8px_20px_-8px_rgba(28,25,23,0.5)] transition-colors hover:bg-stone-800 sm:px-6"
             >
               View Work
               <FiArrowRight
