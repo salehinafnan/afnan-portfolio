@@ -1,10 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import RevealObserver from "../components/RevealObserver";
 import { CONTACT, NAME, ROLE, SITE_URL, SOCIAL_LINKS } from "../constants";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+const geist = Geist({ subsets: ["latin"], display: "swap", variable: "--font-geist" });
+const geistMono = Geist_Mono({ subsets: ["latin"], display: "swap", variable: "--font-geist-mono", preload: false });
+// Only used in italic, for accent words and the wordmark.
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  display: "swap",
+  variable: "--font-instrument-serif",
+});
 
 const description =
   "Portfolio of Mushfiqus Salehin Afnan, a web developer and Clinical AI Specialist who builds fast, user-friendly apps with React, Next.js and Node.js and has published research in multimodal machine learning.";
@@ -41,8 +50,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
-  colorScheme: "dark",
+  themeColor: "#fafafa",
+  colorScheme: "light",
 };
 
 const personJsonLd = {
@@ -64,12 +73,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased selection:bg-blue-300 selection:text-blue-900">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 -z-10 bg-black bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(25,25,112,0.5),rgba(0,0,0,1))]"
-        />
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
+      <body className="font-sans text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white">
+        <div aria-hidden="true" className="page-bg pointer-events-none fixed inset-0 -z-10" />
+        <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-x-0 top-0 -z-10 h-[52rem]" />
         {children}
         <RevealObserver />
         <script

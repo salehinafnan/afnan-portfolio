@@ -102,7 +102,7 @@ const Page = ({ pdf, index, page, width }: PageProps) => {
 
   return (
     <div
-      className="relative overflow-hidden rounded-sm bg-white shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
+      className="relative overflow-hidden rounded-sm bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] ring-1 ring-black/5"
       style={{ aspectRatio: `${page.width} / ${page.height}` }}
     >
       {!painted && <div aria-hidden="true" className="absolute inset-0 animate-pulse bg-neutral-200" />}
@@ -118,7 +118,7 @@ const Page = ({ pdf, index, page, width }: PageProps) => {
             aria-label={link.label}
             title={link.label}
             style={link.box}
-            className="absolute rounded-xs transition-colors hover:bg-blue-500/15 focus-visible:bg-blue-500/15"
+            className="absolute rounded-xs transition-colors hover:bg-neutral-950/10 focus-visible:bg-neutral-950/10"
           />
         );
       })}
@@ -127,7 +127,7 @@ const Page = ({ pdf, index, page, width }: PageProps) => {
 };
 
 const iconButton =
-  "flex size-10 shrink-0 items-center justify-center rounded-full text-lg text-neutral-300 transition-colors hover:bg-white/10 hover:text-white";
+  "flex size-10 shrink-0 items-center justify-center rounded-full text-lg text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-950";
 
 const ResumeViewer = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -201,17 +201,17 @@ const ResumeViewer = () => {
         if (event.target === event.currentTarget) close();
       }}
     >
-      <header className="flex shrink-0 items-center gap-1 border-b border-white/10 py-3 pr-3 pl-5 sm:gap-2 sm:pl-6">
+      <header className="flex shrink-0 items-center gap-1 border-b border-neutral-200 bg-white py-3 pr-3 pl-5 sm:gap-2 sm:pl-6">
         <div className="mr-2 min-w-0 grow">
-          <h2 id="cv-title" className="truncate font-semibold text-neutral-100">
+          <h2 id="cv-title" className="truncate font-semibold tracking-tight text-neutral-950">
             Curriculum Vitae
           </h2>
-          <p className="truncate text-xs text-neutral-400">{NAME}</p>
+          <p className="truncate text-xs text-neutral-500">{NAME}</p>
         </div>
         <a
           href={RESUME_PDF}
           download={RESUME_FILENAME}
-          className="flex h-10 shrink-0 items-center gap-2 rounded-full bg-neutral-100 px-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-300 sm:px-4"
+          className="flex h-10 shrink-0 items-center gap-2 rounded-full bg-neutral-950 px-3 text-sm font-medium text-white transition-colors hover:bg-neutral-800 sm:px-4"
         >
           <FiDownload aria-hidden="true" className="size-4" />
           <span className="max-sm:sr-only">Download</span>
@@ -239,13 +239,13 @@ const ResumeViewer = () => {
             ))
           ) : failed ? (
             <div role="alert" className="flex flex-col items-center gap-4 py-24 text-center">
-              <FiAlertCircle aria-hidden="true" className="size-8 text-neutral-500" />
-              <p className="text-sm text-neutral-300">The CV couldn&apos;t be loaded here.</p>
+              <FiAlertCircle aria-hidden="true" className="size-8 text-neutral-400" />
+              <p className="text-sm text-neutral-600">The CV couldn&apos;t be loaded here.</p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button
                   type="button"
                   onClick={load}
-                  className="rounded-full bg-neutral-100 px-5 py-2.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-300"
+                  className="rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
                 >
                   Try again
                 </button>
@@ -253,14 +253,14 @@ const ResumeViewer = () => {
                   href={RESUME_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass rounded-full px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white/10"
+                  className="rounded-full border border-neutral-200 bg-white px-5 py-2.5 text-sm font-medium text-neutral-900 transition-colors hover:border-neutral-300"
                 >
                   Open in Google Drive
                 </a>
               </div>
             </div>
           ) : (
-            <div role="status" className="aspect-210/297 animate-pulse rounded-sm bg-white/10">
+            <div role="status" className="aspect-210/297 animate-pulse rounded-sm bg-neutral-200">
               <span className="sr-only">Loading CV…</span>
             </div>
           )}

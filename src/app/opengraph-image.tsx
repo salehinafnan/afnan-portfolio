@@ -16,16 +16,16 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 96px",
-          color: "#e5e7eb",
-          backgroundColor: "#000",
-          backgroundImage: "radial-gradient(circle at 50% -30%, rgba(25,25,112,0.9), #000 70%)",
+          color: "#0a0a0a",
+          backgroundColor: "#f5f5f5",
+          backgroundImage: "radial-gradient(ellipse at 50% -20%, #ffffff 30%, #f5f5f5 70%, #e5e5e5 100%)",
         }}
       >
-        <div style={{ display: "flex", fontSize: 76, letterSpacing: "-0.03em" }}>
-          Mushfiqus Salehin&nbsp;<span style={{ color: "#93c5fd" }}>Afnan</span>
+        <div style={{ display: "flex", fontSize: 76, fontWeight: 600, letterSpacing: "-0.04em" }}>
+          Mushfiqus Salehin&nbsp;<span style={{ color: "#737373" }}>Afnan</span>
         </div>
-        <div style={{ display: "flex", marginTop: 20, fontSize: 40, color: "#93c5fd" }}>{ROLE}</div>
-        <div style={{ display: "flex", marginTop: 48, fontSize: 26, color: "#a3a3a3" }}>
+        <div style={{ display: "flex", marginTop: 20, fontSize: 40, color: "#525252" }}>{ROLE}</div>
+        <div style={{ display: "flex", marginTop: 48, fontSize: 26, color: "#737373" }}>
           React · Next.js · TypeScript · Node.js · Machine Learning
         </div>
       </div>

@@ -15,12 +15,12 @@ const Education = () => {
     <section id="education" aria-labelledby="education-heading" className="py-16 sm:py-20">
       <SectionHeading id="education-heading">Education</SectionHeading>
       <div data-reveal className="mx-auto max-w-4xl">
-        <article className="glass-card flex flex-col gap-3 rounded-3xl p-6 transition-colors hover:bg-white/3 sm:p-8 md:flex-row md:gap-8">
-          <p className="shrink-0 text-sm font-medium text-neutral-400 md:w-1/4">{EDUCATION.period}</p>
+        <article className="glass-card lift flex flex-col gap-3 rounded-3xl p-6 sm:p-8 md:flex-row md:gap-8">
+          <p className="shrink-0 font-mono text-xs tracking-wider text-balance text-neutral-500 uppercase md:w-1/4 md:pt-1.5">{EDUCATION.period}</p>
           <div className="md:w-3/4">
-            <h3 className="text-lg font-semibold text-neutral-200">{EDUCATION.degree}</h3>
-            <p className="mt-0.5 text-sm font-medium text-blue-400 sm:text-base">{EDUCATION.school}</p>
-            <p className="mt-3 text-sm leading-relaxed text-neutral-400">{EDUCATION.description}</p>
+            <h3 className="text-lg font-semibold tracking-tight text-neutral-950 sm:text-xl">{EDUCATION.degree}</h3>
+            <p className="mt-1 text-sm font-medium text-neutral-500 sm:text-base">{EDUCATION.school}</p>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-neutral-600">{EDUCATION.description}</p>
             <div className="mt-4">
               <LinkPill href={EDUCATION.certificate}>
                 Certificate<span className="sr-only">: {EDUCATION.degree}</span>
@@ -31,7 +31,7 @@ const Education = () => {
       </div>
 
       <div className="mx-auto mt-20 max-w-6xl sm:mt-24">
-        <h3 data-reveal="down" className="mb-10 text-center text-2xl font-light tracking-tight sm:mb-12">
+        <h3 data-reveal="down" className="mb-10 text-center text-2xl font-semibold tracking-tight text-neutral-950 sm:mb-12 sm:text-3xl">
           Certifications &amp; Activities
         </h3>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
@@ -43,10 +43,10 @@ const Education = () => {
                 data-reveal
                 style={{ "--reveal-delay": `${(index % 3) * 100}ms` } as React.CSSProperties}
               >
-                <article className="glass-card flex h-full flex-col rounded-2xl p-6">
-                  <Icon aria-hidden="true" className="mb-5 size-6 text-blue-400" />
-                  <h4 className="mb-1 font-semibold text-neutral-100">{credential.title}</h4>
-                  <p className="grow text-sm text-neutral-400">{credential.detail}</p>
+                <article className="glass-card lift flex h-full flex-col rounded-2xl p-6">
+                  <Icon aria-hidden="true" className="mb-5 size-5 text-neutral-900" />
+                  <h4 className="mb-1 font-semibold tracking-tight text-neutral-950">{credential.title}</h4>
+                  <p className="grow text-sm leading-relaxed text-neutral-600">{credential.detail}</p>
                   {credential.links.length > 0 && (
                     <div className="mt-5 flex flex-wrap gap-2">
                       {credential.links.map((link) => (
