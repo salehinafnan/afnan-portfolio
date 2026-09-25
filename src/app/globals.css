@@ -64,6 +64,22 @@
       0 8px 32px rgba(0, 0, 0, 0.37);
   }
 
+  /* Wafer-like crosshatch over the top of the page, easing out into the black below.
+     The two diagonals mirror each other, so the diamonds stay centred at any width. */
+  .wafer {
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.065) 0 1px, transparent 1px 22px),
+      repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.065) 0 1px, transparent 1px 22px);
+    mask-image: radial-gradient(
+      ellipse 120% 100% at 50% 0%,
+      #000 0%,
+      rgba(0, 0, 0, 0.75) 30%,
+      rgba(0, 0, 0, 0.35) 60%,
+      rgba(0, 0, 0, 0.1) 80%,
+      transparent 100%
+    );
+  }
+
   .text-gradient {
     background-image: linear-gradient(100deg, #fafafa 0%, #d4d4d4 45%, #8f8f8f 100%);
     background-clip: text;
