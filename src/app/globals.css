@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
-  --background: #000000;
-  --foreground: #e5e7eb;
-  color-scheme: dark;
+  --background: #fafafa;
+  --foreground: #171717;
+  color-scheme: light;
 }
 
 @layer base {
@@ -34,50 +36,75 @@
   }
 
   :focus-visible {
-    outline: 2px solid #60a5fa;
+    outline: 2px solid #0a0a0a;
     outline-offset: 3px;
   }
 
   input:-webkit-autofill,
   textarea:-webkit-autofill {
-    -webkit-text-fill-color: #fff;
-    -webkit-box-shadow: 0 0 0 1000px #0b0b0f inset;
-    caret-color: #fff;
+    -webkit-text-fill-color: #0a0a0a;
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    caret-color: #0a0a0a;
   }
 }
 
 @layer components {
-  /* Frosted look without backdrop-filter: the page behind is a flat gradient, so a
-     real blur costs GPU time on every scroll frame for no visible difference. */
-  .glass {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+  /* Page backdrop: a soft white spotlight over light grey, with faint grey haze
+     in the corners. Monochrome, so the depth comes from light, not colour. */
+  .page-bg {
+    background:
+      radial-gradient(ellipse 60% 45% at 50% 0%, #ffffff 0%, transparent 100%),
+      radial-gradient(ellipse 45% 40% at 0% 0%, rgba(0, 0, 0, 0.045), transparent 70%),
+      radial-gradient(ellipse 45% 40% at 100% 30%, rgba(0, 0, 0, 0.035), transparent 70%),
+      linear-gradient(180deg, #f7f7f7 0%, #fafafa 40%, #f4f4f4 100%);
+  }
+
+  /* Hairline grid behind the hero, fading out towards the edges. */
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: center top;
+    mask-image: radial-gradient(ellipse 65% 70% at 50% 0%, #000 20%, transparent 100%);
   }
 
   .glass-card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, #ffffff, #fbfbfb);
+    border: 1px solid rgba(0, 0, 0, 0.07);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.04),
-      0 8px 32px rgba(0, 0, 0, 0.37);
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 12px 32px -16px rgba(0, 0, 0, 0.12);
+  }
+
+  .lift {
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .lift:hover {
+    border-color: rgba(0, 0, 0, 0.14);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 24px 48px -20px rgba(0, 0, 0, 0.2);
   }
 
   .text-gradient {
-    background-image: linear-gradient(to right, #93c5fd, #e5e7eb, #93c5fd);
+    background-image: linear-gradient(100deg, #0a0a0a 15%, #737373 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-alt {
-    background-image: linear-gradient(to right, #93c5fd, #e5e7eb, #fca5a5);
+    background-image: linear-gradient(to right, #404040, #a3a3a3);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .glow {
-    background: radial-gradient(closest-side, rgba(59, 130, 246, 0.22), transparent);
+    background: radial-gradient(closest-side, rgba(0, 0, 0, 0.1), transparent);
     pointer-events: none;
   }
 }
@@ -202,7 +229,7 @@
   animation: lightbox-in 0.3s var(--ease-smooth);
 }
 .lightbox::backdrop {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(10, 10, 10, 0.8);
 }
 .lightbox[open]::backdrop {
   animation: enter-fade 0.3s ease;
@@ -225,7 +252,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  background: #0a0a0f;
+  background: #f5f5f5;
   color: var(--foreground);
 }
 .cv-dialog[open] {
@@ -234,7 +261,7 @@
   animation: sheet-in 0.35s var(--ease-smooth);
 }
 .cv-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(10, 10, 10, 0.45);
 }
 .cv-dialog[open]::backdrop {
   animation: enter-fade 0.3s ease;
@@ -245,9 +272,9 @@
     height: calc(100dvh - 3rem);
     margin: auto;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 1.5rem;
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -275,18 +302,18 @@ html:has(dialog[open]) {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #f5f5f5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #d4d4d4;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: #a3a3a3;
 }
 @supports not selector(::-webkit-scrollbar) {
   html {
-    scrollbar-color: #262626 #050505;
+    scrollbar-color: #d4d4d4 #f5f5f5;
     scrollbar-width: thin;
   }
 }
