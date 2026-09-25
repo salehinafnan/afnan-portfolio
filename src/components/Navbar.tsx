@@ -3,11 +3,11 @@ import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaRegFileAlt } from "rea
 import { RESUME_PDF, SOCIAL_LINKS } from "../constants";
 
 const LINKS = [
-  { href: RESUME_PDF, label: "Resume / CV", Icon: FaRegFileAlt, hover: "hover:text-indigo-600", resume: true },
-  { href: SOCIAL_LINKS.linkedin, label: "LinkedIn", Icon: FaLinkedin, hover: "hover:text-[#0a66c2]" },
-  { href: SOCIAL_LINKS.github, label: "GitHub", Icon: FaGithub, hover: "hover:text-stone-950" },
-  { href: SOCIAL_LINKS.instagram, label: "Instagram", Icon: FaInstagram, hover: "hover:text-[#e1306c]" },
-  { href: SOCIAL_LINKS.facebook, label: "Facebook", Icon: FaFacebook, hover: "hover:text-[#1877f2]" },
+  { href: RESUME_PDF, label: "Resume / CV", Icon: FaRegFileAlt, hover: "hover:text-white", resume: true },
+  { href: SOCIAL_LINKS.linkedin, label: "LinkedIn", Icon: FaLinkedin, hover: "hover:text-blue-400" },
+  { href: SOCIAL_LINKS.github, label: "GitHub", Icon: FaGithub, hover: "hover:text-white" },
+  { href: SOCIAL_LINKS.instagram, label: "Instagram", Icon: FaInstagram, hover: "hover:text-pink-400" },
+  { href: SOCIAL_LINKS.facebook, label: "Facebook", Icon: FaFacebook, hover: "hover:text-blue-500" },
 ];
 
 const Navbar = () => {
@@ -18,11 +18,11 @@ const Navbar = () => {
           href="/"
           prefetch={false}
           aria-label="Home"
-          className="enter-left shrink-0 rounded font-serif text-[1.75rem] leading-none text-stone-950 italic transition-opacity duration-300 hover:opacity-70"
+          className="enter-left shrink-0 rounded font-serif text-[1.75rem] leading-none text-neutral-100 italic transition-opacity duration-300 hover:opacity-70"
         >
-          Afnan<span className="text-indigo-500">.</span>
+          Afnan<span className="text-blue-400">.</span>
         </Link>
-        <ul className="enter-right -mr-1.5 flex items-center gap-1 text-xl text-stone-500 sm:-mr-2 sm:gap-3">
+        <ul className="enter-right -mr-1.5 flex items-center gap-1 text-xl text-neutral-300 sm:-mr-2 sm:gap-3">
           {LINKS.map(({ href, label, Icon, hover, resume }) => (
             <li key={label}>
               <a

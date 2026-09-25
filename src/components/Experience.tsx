@@ -13,17 +13,17 @@ const Experience = () => {
             data-reveal
             style={{ "--reveal-delay": `${index * 100}ms` } as React.CSSProperties}
           >
-            <article className="glass-card lift flex flex-col gap-3 rounded-3xl p-6 sm:p-8 md:flex-row md:gap-8">
-              <p className="shrink-0 font-mono text-xs tracking-wider text-balance text-stone-500 uppercase md:w-1/4 md:pt-1.5">{experience.year.replace(" – ", " – ")}</p>
+            <article className="glass-card flex flex-col gap-3 rounded-3xl p-6 transition-colors hover:bg-white/3 sm:p-8 md:flex-row md:gap-8">
+              <p className="shrink-0 font-mono text-xs tracking-wider text-balance text-neutral-400 uppercase md:w-1/4 md:pt-1.5">{experience.year.replace(" – ", " – ")}</p>
               <div className="md:w-3/4">
-                <h3 className="text-lg font-semibold tracking-tight text-stone-950 sm:text-xl">{experience.role}</h3>
-                <p className="mt-1 text-sm font-medium text-indigo-600 sm:text-base">{experience.company}</p>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-stone-600">{experience.description}</p>
+                <h3 className="text-lg font-semibold tracking-tight text-neutral-200 sm:text-xl">{experience.role}</h3>
+                <p className="mt-1 text-sm font-medium text-blue-400 sm:text-base">{experience.company}</p>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-neutral-400">{experience.description}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {experience.technologies.map((tech) => (
                     <li
                       key={tech}
-                      className="rounded-full border border-stone-200 bg-stone-100/70 px-3 py-1 text-xs font-medium text-stone-700"
+                      className="rounded-full border border-blue-500/20 bg-blue-900/30 px-3 py-1 text-xs font-medium text-blue-300"
                     >
                       {tech}
                     </li>

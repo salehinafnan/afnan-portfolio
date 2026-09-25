@@ -50,8 +50,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f2efe9",
-  colorScheme: "light",
+  themeColor: "#000000",
+  colorScheme: "dark",
 };
 
 const personJsonLd = {
@@ -74,9 +74,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
-      <body className="font-sans text-stone-900 antialiased selection:bg-indigo-200 selection:text-indigo-950">
-        <div aria-hidden="true" className="page-bg pointer-events-none fixed inset-0 -z-10" />
-        <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-x-0 top-0 -z-10 h-[52rem]" />
+      <body className="font-sans antialiased selection:bg-blue-300 selection:text-blue-900">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 -z-10 bg-black bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(25,25,112,0.5),rgba(0,0,0,1))]"
+        />
         {children}
         <RevealObserver />
         <script
