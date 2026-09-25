@@ -8,7 +8,7 @@ const SectionHeading = ({ id, children }: Props) => {
     <h2
       id={id}
       data-reveal="down"
-      className="mb-12 text-center text-3xl font-semibold tracking-[-0.03em] text-stone-950 sm:mb-16 sm:text-4xl xl:text-[2.75rem]"
+      className="mb-12 text-center text-3xl font-semibold tracking-[-0.03em] sm:mb-16 sm:text-4xl xl:text-[2.75rem]"
     >
       {children}
     </h2>
@@ -16,8 +16,8 @@ const SectionHeading = ({ id, children }: Props) => {
 };
 
 // Serif italic accent for a word in a heading.
-export const Accent = ({ children }: { children: React.ReactNode }) => (
-  <span className="text-gradient pr-[0.06em] font-serif text-[1.1em] font-normal tracking-normal italic">
+export const Accent = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <span className={`pr-[0.06em] font-serif text-[1.1em] font-normal tracking-normal italic ${className}`}>
     {children}
   </span>
 );

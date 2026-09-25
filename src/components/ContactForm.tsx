@@ -5,7 +5,7 @@ import { useState, type FormEvent } from "react";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const fieldClass =
-  "w-full rounded-xl border border-stone-200 bg-surface px-4 py-3 text-base text-stone-950 outline-none transition-[border-color,box-shadow] placeholder:text-stone-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/10";
+  "w-full rounded-xl border border-neutral-700 bg-neutral-900/50 px-4 py-3 text-base text-white outline-none transition-colors placeholder:text-neutral-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500";
 
 // Submits in the background so visitors stay on the page. Without JavaScript the
 // form still posts straight to FormSubmit.
@@ -45,7 +45,7 @@ const ContactForm = ({ email }: { email: string }) => {
       <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
       <div>
-        <label htmlFor="name" className="mb-2 block text-sm font-medium text-stone-700">
+        <label htmlFor="name" className="mb-2 block text-sm font-medium text-neutral-400">
           Name
         </label>
         <input
@@ -60,7 +60,7 @@ const ContactForm = ({ email }: { email: string }) => {
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-2 block text-sm font-medium text-stone-700">
+        <label htmlFor="email" className="mb-2 block text-sm font-medium text-neutral-400">
           Email Address
         </label>
         <input
@@ -75,7 +75,7 @@ const ContactForm = ({ email }: { email: string }) => {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-stone-700">
+        <label htmlFor="message" className="mb-2 block text-sm font-medium text-neutral-400">
           Message
         </label>
         <textarea
@@ -92,17 +92,17 @@ const ContactForm = ({ email }: { email: string }) => {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="w-full rounded-xl bg-stone-950 py-3 text-sm font-medium text-white shadow-[0_8px_20px_-8px_rgba(28,25,23,0.5)] transition-colors hover:bg-stone-800 disabled:cursor-wait disabled:opacity-70"
+          className="w-full rounded-xl bg-blue-600 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-500 disabled:cursor-wait disabled:opacity-70"
         >
           {status === "sending" ? "Sending…" : "Send Message"}
         </button>
 
         <p role="status" aria-live="polite" className="mt-4 text-center text-sm empty:mt-0">
           {status === "sent" && (
-            <span className="text-emerald-700">Thanks! Your message has been sent. I&apos;ll get back to you soon.</span>
+            <span className="text-emerald-400">Thanks! Your message has been sent. I&apos;ll get back to you soon.</span>
           )}
           {status === "error" && (
-            <span className="text-red-600">
+            <span className="text-red-400">
               Something went wrong. Please try again or email me at{" "}
               <a href={`mailto:${email}`} className="underline underline-offset-2">
                 {email}

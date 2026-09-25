@@ -5,17 +5,12 @@
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* Warm paper tones instead of pure white, so the page is easy on the eyes. */
-  --color-canvas: #f2efe9;
-  --color-surface: #faf8f4;
 }
 
 :root {
-  --background: var(--color-canvas);
-  --foreground: #1c1917;
-  --accent-gradient: linear-gradient(100deg, #4338ca 0%, #7c3aed 45%, #db2777 100%);
-  color-scheme: light;
+  --background: #000000;
+  --foreground: #e5e7eb;
+  color-scheme: dark;
 }
 
 @layer base {
@@ -41,92 +36,50 @@
   }
 
   :focus-visible {
-    outline: 2px solid #4f46e5;
+    outline: 2px solid #60a5fa;
     outline-offset: 3px;
   }
 
   input:-webkit-autofill,
   textarea:-webkit-autofill {
-    -webkit-text-fill-color: #1c1917;
-    -webkit-box-shadow: 0 0 0 1000px var(--color-surface) inset;
-    caret-color: #1c1917;
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0 1000px #0b0b0f inset;
+    caret-color: #fff;
   }
 }
 
 @layer components {
-  /* Page backdrop: warm paper with soft washes of peach, iris and mint. */
-  .page-bg {
-    background:
-      radial-gradient(ellipse 55% 50% at 0% 0%, rgba(251, 146, 60, 0.13), rgba(251, 146, 60, 0.05) 45%, transparent 80%),
-      radial-gradient(ellipse 60% 55% at 100% 0%, rgba(129, 140, 248, 0.16), rgba(129, 140, 248, 0.06) 45%, transparent 80%),
-      radial-gradient(ellipse 80% 55% at 50% 110%, rgba(45, 212, 191, 0.06), rgba(45, 212, 191, 0.02) 50%, transparent 85%),
-      var(--color-canvas);
-  }
-
-  /* Hairline grid behind the hero, fading out towards the edges. */
-  .hero-grid {
-    background-image:
-      linear-gradient(to right, rgba(68, 64, 60, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(68, 64, 60, 0.06) 1px, transparent 1px);
-    background-size: 64px 64px;
-    background-position: center top;
-    mask-image: radial-gradient(ellipse 65% 70% at 50% 0%, #000 20%, transparent 100%);
+  /* Frosted look without backdrop-filter: the page behind is a flat gradient, so a
+     real blur costs GPU time on every scroll frame for no visible difference. */
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .glass-card {
-    background: linear-gradient(180deg, #fcfbf8, var(--color-surface));
-    border: 1px solid rgba(68, 64, 60, 0.09);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+    border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow:
-      0 1px 2px rgba(68, 64, 60, 0.05),
-      0 12px 32px -16px rgba(68, 64, 60, 0.16);
-  }
-
-  .lift {
-    transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-  .lift:hover {
-    border-color: rgba(99, 102, 241, 0.3);
-    box-shadow:
-      0 1px 2px rgba(68, 64, 60, 0.05),
-      0 24px 48px -20px rgba(79, 70, 229, 0.25);
-  }
-
-  /* Brand-tinted tiles: each sets --brand to its logo colour. */
-  .tech-tile {
-    color: var(--brand);
-    background: color-mix(in srgb, var(--brand) 7%, var(--color-surface));
-    border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
-    box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--brand) 45%, transparent);
-    transition:
-      scale 0.3s ease,
-      background-color 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-  .tech-tile:hover {
-    background: color-mix(in srgb, var(--brand) 13%, var(--color-surface));
-    box-shadow: 0 16px 32px -12px color-mix(in srgb, var(--brand) 60%, transparent);
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 8px 32px rgba(0, 0, 0, 0.37);
   }
 
   .text-gradient {
-    background-image: var(--accent-gradient);
+    background-image: linear-gradient(to right, #93c5fd, #e5e7eb, #93c5fd);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-alt {
-    background-image: linear-gradient(to right, #44403c, #a8a29e);
+    background-image: linear-gradient(to right, #93c5fd, #e5e7eb, #fca5a5);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .glow {
-    background:
-      radial-gradient(closest-side at 35% 40%, rgba(129, 140, 248, 0.35), transparent),
-      radial-gradient(closest-side at 65% 65%, rgba(251, 146, 60, 0.25), transparent);
+    background: radial-gradient(closest-side, rgba(59, 130, 246, 0.22), transparent);
     pointer-events: none;
   }
 }
@@ -251,7 +204,7 @@
   animation: lightbox-in 0.3s var(--ease-smooth);
 }
 .lightbox::backdrop {
-  background: rgba(28, 25, 23, 0.8);
+  background: rgba(0, 0, 0, 0.85);
 }
 .lightbox[open]::backdrop {
   animation: enter-fade 0.3s ease;
@@ -274,7 +227,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  background: #ece8e1;
+  background: #0a0a0f;
   color: var(--foreground);
 }
 .cv-dialog[open] {
@@ -283,7 +236,7 @@
   animation: sheet-in 0.35s var(--ease-smooth);
 }
 .cv-dialog::backdrop {
-  background: rgba(28, 25, 23, 0.45);
+  background: rgba(0, 0, 0, 0.8);
 }
 .cv-dialog[open]::backdrop {
   animation: enter-fade 0.3s ease;
@@ -294,9 +247,9 @@
     height: calc(100dvh - 3rem);
     margin: auto;
     overflow: hidden;
-    border: 1px solid rgba(68, 64, 60, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.5rem;
-    box-shadow: 0 24px 80px rgba(28, 25, 23, 0.25);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -324,18 +277,18 @@ html:has(dialog[open]) {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-canvas);
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d6d3d1;
+  background: #262626;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a29e;
+  background: #404040;
 }
 @supports not selector(::-webkit-scrollbar) {
   html {
-    scrollbar-color: #d6d3d1 var(--color-canvas);
+    scrollbar-color: #262626 #050505;
     scrollbar-width: thin;
   }
 }
