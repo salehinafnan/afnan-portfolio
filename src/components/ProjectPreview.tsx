@@ -24,7 +24,7 @@ const ProjectPreview = ({
         type="button"
         onClick={() => dialogRef.current?.showModal()}
         aria-label={`Expand ${title} screenshot`}
-        className="relative block aspect-[2/1] w-full cursor-zoom-in overflow-hidden bg-neutral-900"
+        className="relative block aspect-2/1 w-full cursor-zoom-in overflow-hidden bg-neutral-900"
       >
         <Image
           src={image}

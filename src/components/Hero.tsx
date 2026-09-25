@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { FiFileText } from "react-icons/fi";
 import profilePic from "../assets/afnanProfile.webp";
-import { HERO_CONTENT, NAME, ROLE } from "../constants";
+import { HERO_CONTENT, NAME, RESUME_PDF, ROLE } from "../constants";
 
 // Hero lines all start on the first frame (nothing waits to paint, which keeps
 // LCP fast) and cascade in through increasing durations instead of delays.
@@ -43,6 +44,17 @@ const Hero = () => {
             >
               Contact Me
             </a>
+            <a
+              href={RESUME_PDF}
+              target="_blank"
+              rel="noopener"
+              data-resume
+              aria-haspopup="dialog"
+              className="glass inline-flex items-center gap-2 rounded-full px-5 py-3 sm:px-6 font-medium transition-colors hover:bg-white/10"
+            >
+              <FiFileText aria-hidden="true" className="size-4" />
+              View CV
+            </a>
           </div>
         </div>
         <div className="relative flex justify-center lg:p-8">
@@ -50,7 +62,7 @@ const Hero = () => {
             aria-hidden="true"
             className="glow absolute top-1/2 left-1/2 size-72 sm:size-96 -translate-x-1/2 -translate-y-1/2"
           />
-          <div className="enter-zoom glass relative w-full max-w-[436px] rounded-3xl p-2" style={duration(1000, 150)}>
+          <div className="enter-zoom glass relative w-full max-w-109 rounded-3xl p-2" style={duration(1000, 150)}>
             <Image
               src={profilePic}
               alt={NAME}
