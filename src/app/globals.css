@@ -64,20 +64,43 @@
       0 8px 32px rgba(0, 0, 0, 0.37);
   }
 
+  /* Both page backdrops rise out of pure black at the top edge. Phone browsers fill the
+     status bar with the page background, so the page eases out from under it with no seam. */
+  .spotlight,
+  .wafer {
+    --edge-fade: linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.15) 1rem,
+      rgba(0, 0, 0, 0.4) 2rem,
+      rgba(0, 0, 0, 0.68) 3rem,
+      rgba(0, 0, 0, 0.9) 4rem,
+      #000 5rem
+    );
+  }
+
+  /* Soft light from above, pinned to the viewport. */
+  .spotlight {
+    background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(255, 255, 255, 0.08), #000);
+    mask-image: var(--edge-fade);
+  }
+
   /* Wafer-like crosshatch over the top of the page, easing out into the black below.
      The two diagonals mirror each other, so the diamonds stay centred at any width. */
   .wafer {
     background-image:
-      repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.065) 0 1px, transparent 1px 22px),
-      repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.065) 0 1px, transparent 1px 22px);
-    mask-image: radial-gradient(
-      ellipse 120% 100% at 50% 0%,
-      #000 0%,
-      rgba(0, 0, 0, 0.75) 30%,
-      rgba(0, 0, 0, 0.35) 60%,
-      rgba(0, 0, 0, 0.1) 80%,
-      transparent 100%
-    );
+      repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 22px),
+      repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 22px);
+    mask-image:
+      var(--edge-fade),
+      radial-gradient(
+        ellipse 120% 100% at 50% 0%,
+        #000 0%,
+        rgba(0, 0, 0, 0.75) 30%,
+        rgba(0, 0, 0, 0.35) 60%,
+        rgba(0, 0, 0, 0.1) 80%,
+        transparent 100%
+      );
+    mask-composite: intersect;
   }
 
   .text-gradient {
