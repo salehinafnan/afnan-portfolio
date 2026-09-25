@@ -14,7 +14,7 @@ const ProjectLinks = ({ project }: { project: Project }) => (
         href={project.live}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${pill} border-blue-500/30 bg-blue-900/30 text-blue-200 hover:border-blue-400/60 hover:bg-blue-900/50`}
+        className={`${pill} border-neutral-100 bg-neutral-100 text-neutral-900 hover:border-neutral-300 hover:bg-neutral-300`}
       >
         Live demo<span className="sr-only">: {project.title}</span>
         <FiArrowUpRight aria-hidden="true" className="size-3.5" />
@@ -37,7 +37,7 @@ const TechTags = ({ technologies }: { technologies: string[] }) => (
     {technologies.map((tech) => (
       <li
         key={tech}
-        className="rounded-full border border-neutral-700 bg-neutral-800/50 px-3 py-1 text-xs font-medium text-neutral-300"
+        className="rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1 text-xs font-medium text-neutral-300"
       >
         {tech}
       </li>
@@ -54,7 +54,7 @@ const Projects = () => {
 
       <ul className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
         <li data-reveal className="md:col-span-2">
-          <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] xl:flex-row">
+          <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.06)] xl:flex-row">
             {/* The screenshot has black margins, so a black panel lets it sit centred at any card height. */}
             <div className="bg-black xl:flex xl:w-[56%] xl:shrink-0 xl:items-center">
               <ProjectPreview
@@ -64,7 +64,7 @@ const Projects = () => {
               />
             </div>
             <div className="flex grow flex-col p-6 sm:p-8 xl:justify-center xl:p-10">
-              <p className="mb-3 font-mono text-xs font-medium tracking-widest text-blue-300 uppercase">Latest project</p>
+              <p className="mb-3 font-mono text-xs font-medium tracking-widest text-neutral-400 uppercase">Latest project</p>
               <h3 className="mb-3 text-2xl font-semibold tracking-tight sm:text-3xl">{featured.title}</h3>
               <p className="mb-6 max-w-2xl text-[0.9375rem] leading-relaxed text-neutral-400">{featured.description}</p>
               <TechTags technologies={featured.technologies} />
@@ -79,7 +79,7 @@ const Projects = () => {
             data-reveal
             style={{ "--reveal-delay": `${(index % 2) * 100}ms` } as React.CSSProperties}
           >
-            <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+            <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.06)]">
               <ProjectPreview image={project.image} title={project.title} />
               <div className="flex grow flex-col p-6 sm:p-8">
                 <h3 className="mb-3 text-xl font-semibold tracking-tight">{project.title}</h3>
@@ -103,9 +103,9 @@ const Projects = () => {
               data-reveal
               style={{ "--reveal-delay": `${(index % 3) * 100}ms` } as React.CSSProperties}
             >
-              <article className="glass-card group relative flex h-full flex-col rounded-2xl p-6 transition-colors duration-300 hover:border-blue-500/30 hover:bg-white/3">
+              <article className="glass-card group relative flex h-full flex-col rounded-2xl p-6 transition-colors duration-300 hover:border-white/15 hover:bg-white/3">
                 <div className="mb-5 flex items-center gap-3">
-                  <FiFolder aria-hidden="true" className="size-6 text-blue-400" />
+                  <FiFolder aria-hidden="true" className="size-6 text-neutral-300" />
                   {repo.team && (
                     <span className="rounded-full border border-neutral-700 px-2.5 py-0.5 text-[0.6875rem] font-medium text-neutral-400">
                       Team project
@@ -113,7 +113,7 @@ const Projects = () => {
                   )}
                   <FiArrowUpRight
                     aria-hidden="true"
-                    className="ml-auto size-5 text-neutral-500 transition-[color,translate] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-blue-300"
+                    className="ml-auto size-5 text-neutral-500 transition-[color,translate] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-neutral-100"
                   />
                 </div>
                 <h4 className="mb-2 font-semibold tracking-tight text-neutral-100">
@@ -122,7 +122,7 @@ const Projects = () => {
                     href={repo.source}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors group-hover:text-blue-200 after:absolute after:inset-0 after:rounded-2xl"
+                    className="transition-colors group-hover:text-white after:absolute after:inset-0 after:rounded-2xl"
                   >
                     {repo.title}
                     <span className="sr-only"> on GitHub</span>

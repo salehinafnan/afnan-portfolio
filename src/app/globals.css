@@ -9,7 +9,7 @@
 
 :root {
   --background: #000000;
-  --foreground: #e5e7eb;
+  --foreground: #ededed;
   color-scheme: dark;
 }
 
@@ -36,14 +36,14 @@
   }
 
   :focus-visible {
-    outline: 2px solid #60a5fa;
+    outline: 2px solid #d4d4d4;
     outline-offset: 3px;
   }
 
   input:-webkit-autofill,
   textarea:-webkit-autofill {
     -webkit-text-fill-color: #fff;
-    -webkit-box-shadow: 0 0 0 1000px #0b0b0f inset;
+    -webkit-box-shadow: 0 0 0 1000px #0a0a0a inset;
     caret-color: #fff;
   }
 }
@@ -65,21 +65,21 @@
   }
 
   .text-gradient {
-    background-image: linear-gradient(100deg, #e5e7eb 0%, #bfdbfe 55%, #93c5fd 100%);
+    background-image: linear-gradient(100deg, #fafafa 0%, #d4d4d4 45%, #8f8f8f 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-alt {
-    background-image: linear-gradient(to right, #a3a3a3, #bfdbfe);
+    background-image: linear-gradient(to right, #d4d4d4, #8a8a8a);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .glow {
-    background: radial-gradient(closest-side, rgba(59, 130, 246, 0.22), transparent);
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.07), transparent);
     pointer-events: none;
   }
 }
@@ -227,7 +227,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  background: #0a0a0f;
+  background: #0a0a0a;
   color: var(--foreground);
 }
 .cv-dialog[open] {

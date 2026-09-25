@@ -19,7 +19,7 @@ const Education = () => {
           <p className="shrink-0 font-mono text-xs tracking-wider text-balance text-neutral-400 uppercase md:w-1/4 md:pt-1.5">{EDUCATION.period.replace(" – ", " – ")}</p>
           <div className="md:w-3/4">
             <h3 className="text-lg font-semibold tracking-tight text-neutral-200 sm:text-xl">{EDUCATION.degree}</h3>
-            <p className="mt-1 text-sm font-medium text-blue-400 sm:text-base">{EDUCATION.school}</p>
+            <p className="mt-1 text-sm font-medium text-neutral-300 sm:text-base">{EDUCATION.school}</p>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-neutral-400">{EDUCATION.description}</p>
             <div className="mt-4">
               <LinkPill href={EDUCATION.certificate}>
@@ -44,7 +44,7 @@ const Education = () => {
                 style={{ "--reveal-delay": `${(index % 3) * 100}ms` } as React.CSSProperties}
               >
                 <article className="glass-card flex h-full flex-col rounded-2xl p-6">
-                  <Icon aria-hidden="true" className="mb-5 size-6 text-blue-400" />
+                  <Icon aria-hidden="true" className="mb-5 size-6 text-neutral-300" />
                   <h4 className="mb-1 font-semibold tracking-tight text-neutral-100">{credential.title}</h4>
                   <p className="grow text-sm leading-relaxed text-neutral-400">{credential.detail}</p>
                   {credential.links.length > 0 && (

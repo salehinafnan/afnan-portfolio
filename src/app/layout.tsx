@@ -74,10 +74,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
-      <body className="font-sans antialiased selection:bg-blue-300 selection:text-blue-900">
+      <body className="font-sans antialiased selection:bg-neutral-200 selection:text-neutral-950">
         <div
           aria-hidden="true"
-          className="pointer-events-none fixed inset-0 -z-10 bg-black bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(25,25,112,0.5),rgba(0,0,0,1))]"
+          className="pointer-events-none fixed inset-0 -z-10 bg-black bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,255,255,0.08),rgba(0,0,0,1))]"
         />
         {children}
         <RevealObserver />

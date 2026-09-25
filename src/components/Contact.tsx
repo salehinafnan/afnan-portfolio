@@ -3,13 +3,13 @@ import { CONTACT } from "../constants";
 import ContactForm from "./ContactForm";
 import SectionHeading, { Accent } from "./SectionHeading";
 
-const iconClass = "glass flex size-10 shrink-0 items-center justify-center rounded-full text-blue-400";
+const iconClass = "glass flex size-10 shrink-0 items-center justify-center rounded-full text-neutral-300";
 
 const Contact = () => {
   return (
     <section id="contact" aria-labelledby="contact-heading" className="border-t border-neutral-800 py-16 sm:py-20">
       <SectionHeading id="contact-heading">
-        Get in <Accent className="text-blue-400">touch</Accent>
+        Get in <Accent className="text-neutral-500">touch</Accent>
       </SectionHeading>
 
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-20">
@@ -28,7 +28,7 @@ const Contact = () => {
             <li>
               <a
                 href={`tel:${CONTACT.phoneNo.replace(/\s/g, "")}`}
-                className="flex items-center gap-4 transition-colors hover:text-blue-400"
+                className="flex items-center gap-4 transition-colors hover:text-white"
               >
                 <span className={iconClass}>
                   <FaPhoneAlt aria-hidden="true" />
@@ -39,7 +39,7 @@ const Contact = () => {
             <li>
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="flex items-center gap-4 break-all transition-colors hover:text-blue-400"
+                className="flex items-center gap-4 break-all transition-colors hover:text-white"
               >
                 <span className={iconClass}>
                   <FaEnvelope aria-hidden="true" />

@@ -3,11 +3,11 @@ import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaRegFileAlt } from "rea
 import { RESUME_PDF, SOCIAL_LINKS } from "../constants";
 
 const LINKS = [
-  { href: RESUME_PDF, label: "Resume / CV", Icon: FaRegFileAlt, hover: "hover:text-white", resume: true },
-  { href: SOCIAL_LINKS.linkedin, label: "LinkedIn", Icon: FaLinkedin, hover: "hover:text-blue-400" },
-  { href: SOCIAL_LINKS.github, label: "GitHub", Icon: FaGithub, hover: "hover:text-white" },
-  { href: SOCIAL_LINKS.instagram, label: "Instagram", Icon: FaInstagram, hover: "hover:text-pink-400" },
-  { href: SOCIAL_LINKS.facebook, label: "Facebook", Icon: FaFacebook, hover: "hover:text-blue-500" },
+  { href: RESUME_PDF, label: "Resume / CV", Icon: FaRegFileAlt, resume: true },
+  { href: SOCIAL_LINKS.linkedin, label: "LinkedIn", Icon: FaLinkedin },
+  { href: SOCIAL_LINKS.github, label: "GitHub", Icon: FaGithub },
+  { href: SOCIAL_LINKS.instagram, label: "Instagram", Icon: FaInstagram },
+  { href: SOCIAL_LINKS.facebook, label: "Facebook", Icon: FaFacebook },
 ];
 
 const Navbar = () => {
@@ -18,12 +18,12 @@ const Navbar = () => {
           href="/"
           prefetch={false}
           aria-label="Home"
-          className="enter-left shrink-0 rounded font-serif text-[2rem] leading-none text-neutral-100 italic [-webkit-text-stroke:0.4px_currentColor] transition-opacity duration-300 hover:opacity-70"
+          className="enter-left shrink-0 rounded font-serif text-[2rem] leading-none text-neutral-100 italic [-webkit-text-stroke:0.2px_currentColor] transition-opacity duration-300 hover:opacity-70"
         >
-          Afnan<span className="text-blue-400">.</span>
+          Afnan<span className="text-neutral-500">.</span>
         </Link>
-        <ul className="enter-right -mr-1.5 flex items-center gap-1 text-xl text-neutral-300 sm:-mr-2 sm:gap-3">
-          {LINKS.map(({ href, label, Icon, hover, resume }) => (
+        <ul className="enter-right -mr-1.5 flex items-center gap-1 text-xl text-neutral-400 sm:-mr-2 sm:gap-3">
+          {LINKS.map(({ href, label, Icon, resume }) => (
             <li key={label}>
               <a
                 href={href}
@@ -34,7 +34,7 @@ const Navbar = () => {
                 // Opens the in-page CV viewer (see ResumeViewer).
                 data-resume={resume}
                 aria-haspopup={resume ? "dialog" : undefined}
-                className={`block rounded-full p-1.5 transition-colors duration-300 sm:p-2 ${hover}`}
+                className="block rounded-full p-1.5 transition-colors duration-300 hover:text-white sm:p-2"
               >
                 <Icon aria-hidden="true" />
               </a>

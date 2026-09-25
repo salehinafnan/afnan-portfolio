@@ -31,7 +31,7 @@ const About = () => {
           {FACTS.map(({ icon: Icon, label, value, detail }) => (
             <div key={label} className="glass-card flex flex-col rounded-2xl p-4 sm:p-5">
               <dt className="mb-3 flex items-center gap-2 font-mono text-[0.6875rem] font-medium tracking-widest text-neutral-400 uppercase">
-                <Icon aria-hidden="true" className="size-4 text-blue-400" />
+                <Icon aria-hidden="true" className="size-4 text-neutral-400" />
                 {label}
               </dt>
               <dd className="leading-snug font-semibold tracking-tight text-neutral-100">{value}</dd>
