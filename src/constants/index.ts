@@ -29,9 +29,9 @@ export const SOCIAL_LINKS = {
   facebook: "https://facebook.com/salehinafnan",
 };
 
-export const HERO_CONTENT = `I build fast, user-friendly web apps with React, Next.js, Node.js and TypeScript, and I work where AI meets healthcare. As a Clinical AI Specialist at Augmedix, I partner with physicians from Sutter Health and UCSF to keep patient records accurate across specialties. I have co-authored peer-reviewed research on multimodal machine learning, published by IEEE and the Journal of Universal Computer Science, and sharpened my problem solving through competitive programming.`;
+export const HERO_CONTENT = `I build fast, user-friendly web apps with React, Next.js, Node.js and TypeScript, and I work where AI meets healthcare. As a Clinical AI Specialist at Commure Bangladesh, I partner with physicians from Sutter Health and UCSF to keep patient records accurate across specialties. I have co-authored peer-reviewed research on multimodal machine learning, published by IEEE and the Journal of Universal Computer Science, and sharpened my problem solving through competitive programming.`;
 
-export const ABOUT_TEXT = `I'm a Computer Science and Engineering graduate from International Islamic University Chittagong, and my work sits where software, data and healthcare meet. At Augmedix Bangladesh, I work one-on-one with clinicians in Gynecologic Oncology, ENT, Pediatrics, Orthopedics and Ophthalmology, documenting patient visits in their EHRs with proprietary AI tools. Alongside that, I build full-stack web apps, from local-first PWAs to MERN social platforms, and my research on non-intrusive anxiety detection has been published in an IEEE conference and a journal. I've guided Numerical Methods labs as a teaching assistant, and I enjoy turning complex problems into simple, reliable solutions. Outside of work, I stay active, explore new technologies and photograph my favourite moments, a hobby I also brought to the IIUC Photography Society as its Public Relations Secretary.`;
+export const ABOUT_TEXT = `I'm a Computer Science and Engineering graduate from International Islamic University Chittagong, and my work sits where software, data and healthcare meet. At Commure Bangladesh, I work one-on-one with clinicians in Gynecologic Oncology, ENT, Pediatrics, Orthopedics and Ophthalmology, documenting patient visits in their EHRs with proprietary AI tools. Alongside that, I build full-stack web apps, from local-first PWAs to MERN social platforms, and my research on non-intrusive anxiety detection has been published in an IEEE conference and a journal. I've guided Numerical Methods labs as a teaching assistant, and I enjoy turning complex problems into simple, reliable solutions. Outside of work, I stay active, explore new technologies and photograph my favourite moments, a hobby I also brought to the IIUC Photography Society as its Public Relations Secretary.`;
 
 export type Experience = {
   year: string;
@@ -46,7 +46,7 @@ export const EXPERIENCES: Experience[] = [
   {
     year: "June 2024 – Present",
     role: "Clinical AI Specialist",
-    company: "Augmedix Bangladesh",
+    company: "Commure Bangladesh",
     description:
       "Work one-on-one with clinicians from Sutter Health and UCSF, documenting and updating patient EHRs during visits with proprietary AI tools. Experienced across Gynecologic Oncology, ENT, Pediatrics, Orthopedics and Ophthalmology.",
     technologies: ["Clinical AI", "EHR Systems", "Medical Documentation", "HIPAA"],
