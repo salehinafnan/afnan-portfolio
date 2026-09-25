@@ -52,7 +52,7 @@ const personJsonLd = {
   url: SITE_URL,
   jobTitle: ROLE,
   email: `mailto:${CONTACT.email}`,
-  worksFor: { "@type": "Organization", name: "Augmedix Bangladesh" },
+  worksFor: { "@type": "Organization", name: "Commure Bangladesh" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "International Islamic University Chittagong" },
   knowsAbout: ["Web Development", "React", "Next.js", "Node.js", "Machine Learning", "Clinical AI"],
   sameAs: Object.values(SOCIAL_LINKS),
