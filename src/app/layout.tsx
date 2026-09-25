@@ -7,14 +7,25 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 
 const description =
-  "Portfolio of Mushfiqus Salehin Afnan, a web developer building fast, user-friendly experiences with React, Next.js and Node.js.";
+  "Portfolio of Mushfiqus Salehin Afnan, a web developer and Clinical AI Specialist who builds fast, user-friendly apps with React, Next.js and Node.js and has published research in multimodal machine learning.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: `${NAME} | Portfolio`,
   description,
   authors: [{ name: NAME }],
-  keywords: [NAME, "Afnan", "Web Developer", "React", "Next.js", "Portfolio", "Bangladesh"],
+  keywords: [
+    NAME,
+    "Afnan",
+    "Web Developer",
+    "Clinical AI Specialist",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Machine Learning",
+    "Portfolio",
+    "Bangladesh",
+  ],
   openGraph: {
     type: "website",
     title: `${NAME} | ${ROLE}`,
@@ -41,6 +52,9 @@ const personJsonLd = {
   url: SITE_URL,
   jobTitle: ROLE,
   email: `mailto:${CONTACT.email}`,
+  worksFor: { "@type": "Organization", name: "Augmedix Bangladesh" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "International Islamic University Chittagong" },
+  knowsAbout: ["Web Development", "React", "Next.js", "Node.js", "Machine Learning", "Clinical AI"],
   sameAs: Object.values(SOCIAL_LINKS),
 };
 

@@ -1,10 +1,12 @@
 import About from "../components/About";
 import Contact from "../components/Contact";
+import Education from "../components/Education";
 import Experience from "../components/Experience";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import Projects from "../components/Projects";
 import Publication from "../components/Publication";
+import ResumeViewer from "../components/ResumeViewer";
 import Technologies from "../components/Technologies";
 import { NAME } from "../constants";
 
@@ -23,6 +25,7 @@ export default function Home() {
         <About />
         <Technologies />
         <Experience />
+        <Education />
         <Publication />
         <Projects />
         <Contact />
@@ -32,8 +35,8 @@ export default function Home() {
         <p>
           © {new Date().getFullYear()} {NAME}. All rights reserved.
         </p>
-        <p className="mt-2">Designed & Built with Next.js & Tailwind CSS</p>
       </footer>
+      <ResumeViewer />
     </div>
   );
 }

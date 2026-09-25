@@ -12,10 +12,15 @@ export const SITE_URL =
     : "http://localhost:3000");
 
 export const NAME = "Mushfiqus Salehin Afnan";
-export const ROLE = "Web Developer";
+export const ROLE = "Web Developer & Clinical AI Specialist";
 
-export const RESUME_URL =
-  "https://drive.google.com/file/d/1_D7aZqK8ytZZWAmbEQEPhPS7Rv1uZaVa/view?usp=drive_link";
+// The CV lives in Google Drive so it can be updated without a redeploy: replace
+// the file in Drive (Manage versions keeps this ID) and the site picks it up
+// within an hour. /cv.pdf proxies it for the in-page viewer.
+export const RESUME_DRIVE_ID = "1_D7aZqK8ytZZWAmbEQEPhPS7Rv1uZaVa";
+export const RESUME_URL = `https://drive.google.com/file/d/${RESUME_DRIVE_ID}/view`;
+export const RESUME_PDF = "/cv.pdf";
+export const RESUME_FILENAME = "Mushfiqus-Salehin-Afnan-CV.pdf";
 
 export const SOCIAL_LINKS = {
   linkedin: "https://linkedin.com/in/salehinafnan",
@@ -24,9 +29,9 @@ export const SOCIAL_LINKS = {
   facebook: "https://facebook.com/salehinafnan",
 };
 
-export const HERO_CONTENT = `Aspiring web developer with a passion for creating engaging and user-friendly experiences. Possess a strong foundation in diverse programming languages and frameworks, including React, Next.js, Node.js, Tailwind CSS and MongoDB. Additionally, proficiency in Machine Learning adds depth to my skill set. Able to collaborate effectively within teams and contribute to project success. Logic building expertise with problem-solving skills honed through competitive programming. Eager to learn and grow within a dynamic web development environment.`;
+export const HERO_CONTENT = `I build fast, user-friendly web apps with React, Next.js, Node.js and TypeScript, and I work where AI meets healthcare. As a Clinical AI Specialist at Augmedix, I partner with physicians from Sutter Health and UCSF to keep patient records accurate across specialties. I have co-authored peer-reviewed research on multimodal machine learning, published by IEEE and the Journal of Universal Computer Science, and sharpened my problem solving through competitive programming.`;
 
-export const ABOUT_TEXT = `I am a dedicated and versatile web developer with a passion for creating efficient and user-friendly web applications. I have worked with a variety of technologies, including React, Next.js, Node.js, MySQL and MongoDB. My journey in web development began with a deep curiosity for how things work, and it has evolved into a passion where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and photographing my favourite moments.`;
+export const ABOUT_TEXT = `I'm a Computer Science and Engineering graduate from International Islamic University Chittagong, and my work sits where software, data and healthcare meet. At Augmedix Bangladesh, I work one-on-one with clinicians in Gynecologic Oncology, ENT, Pediatrics, Orthopedics and Ophthalmology, documenting patient visits in their EHRs with proprietary AI tools. Alongside that, I build full-stack web apps, from local-first PWAs to MERN social platforms, and my research on non-intrusive anxiety detection has been published in an IEEE conference and a journal. I've guided Numerical Methods labs as a teaching assistant, and I enjoy turning complex problems into simple, reliable solutions. Outside of work, I stay active, explore new technologies and photograph my favourite moments, a hobby I also brought to the IIUC Photography Society as its Public Relations Secretary.`;
 
 export type Experience = {
   year: string;
@@ -34,41 +39,120 @@ export type Experience = {
   company: string;
   description: string;
   technologies: string[];
+  certificate?: string;
 };
 
 export const EXPERIENCES: Experience[] = [
   {
-    year: "June 2024 - Present",
+    year: "June 2024 – Present",
     role: "Clinical AI Specialist",
     company: "Augmedix Bangladesh",
     description:
-      "Assist doctors across specialties by using proprietary AI technology to document and update patient EHRs during medical visits.",
-    technologies: ["AI", "Documentation", "EHR"],
+      "Work one-on-one with clinicians from Sutter Health and UCSF, documenting and updating patient EHRs during visits with proprietary AI tools. Experienced across Gynecologic Oncology, ENT, Pediatrics, Orthopedics and Ophthalmology.",
+    technologies: ["Clinical AI", "EHR Systems", "Medical Documentation", "HIPAA"],
   },
   {
-    year: "2022 - 2023",
-    role: "Teaching Assistant",
+    year: "July 2022 – January 2023",
+    role: "Teaching Assistant, Numerical Methods",
     company: "International Islamic University Chittagong",
-    description: `Assist and guide 7th-semester students with their lab assignments. Assess reports, assignments, and projects.`,
-    technologies: ["Numerical Methods"],
+    description: "Assisted and guided 7th-semester students with their lab assignments, and assessed reports, assignments and projects.",
+    technologies: ["Numerical Methods", "Teaching"],
+    certificate: "https://drive.google.com/file/d/1jDLBF_uvQuG37cKfaKadINdku-m5qO_c/view",
+  },
+];
+
+export const EDUCATION = {
+  period: "November 2018 – December 2022",
+  degree: "Bachelor of Computer Science and Engineering",
+  school: "International Islamic University Chittagong",
+  description:
+    "Graduated with a cumulative GPA of 3.429. Along the way I worked as a teaching assistant, co-authored research on multimodal anxiety detection and served as Public Relations Secretary of the IIUC Photography Society.",
+  certificate: "https://drive.google.com/file/d/14YwOJYa6RjZphB9bNceQsyBgyPgVrfiy/view",
+};
+
+export type Credential = {
+  kind: "certificate" | "language" | "code" | "photography";
+  title: string;
+  detail: string;
+  links: { label: string; href: string }[];
+};
+
+export const CREDENTIALS: Credential[] = [
+  {
+    kind: "certificate",
+    title: "Meta Front-End Developer Professional Certificate",
+    detail: "Meta · Coursera",
+    links: [{ label: "Certificates", href: "https://drive.google.com/drive/folders/11_OLL31Ty4yIHFEI61PSmIo-vzMD03Eg" }],
+  },
+  {
+    kind: "certificate",
+    title: "Full Stack Web Development with MERN",
+    detail: "Ostad",
+    links: [{ label: "Certificate", href: "https://ostad.app/share/certificate/c5341-mushfiqus-salehin-afnan" }],
+  },
+  {
+    kind: "certificate",
+    title: "Neural Networks and Deep Learning",
+    detail: "DeepLearning.AI · Coursera",
+    links: [{ label: "Certificate", href: "https://coursera.org/share/47a0ff59d1e5f84e11c0543c4271c00c" }],
+  },
+  {
+    kind: "language",
+    title: "IELTS",
+    detail: "Overall band score 8",
+    links: [{ label: "Test report", href: "https://drive.google.com/file/d/1AlbejCHxVKZNs15H6K0j6C-fmDFTp_8H/view" }],
+  },
+  {
+    kind: "code",
+    title: "Competitive Programming",
+    detail: "Algorithms and problem solving practice",
+    links: [
+      { label: "CodeChef", href: "https://www.codechef.com/users/salehinafnan" },
+      { label: "Codeforces", href: "https://codeforces.com/profile/0utrun" },
+      { label: "LeetCode", href: "https://leetcode.com/salehinafnan" },
+    ],
+  },
+  {
+    kind: "photography",
+    title: "IIUC Photography Society",
+    detail: "Public Relations Secretary",
+    links: [],
   },
 ];
 
 export type Publication = {
-  year: string;
+  date: string;
   title: string;
-  link: string;
+  authors: string[];
+  venue: string;
   description: string;
-  publisher: string[];
+  publisher: string;
+  type: string;
+  link: string;
 };
 
-export const PUBLICATION: Publication[] = [
+export const PUBLICATIONS: Publication[] = [
   {
-    year: "December 2023",
+    date: "March 2025",
+    title: "Novel Multimodal Fusion Algorithm for Non-Intrusive Anxiety Detection",
+    authors: ["Mahir Shadid", NAME, "Rashed Mustafa", "M. Jamshed Alam Patwary"],
+    venue: "Journal of Universal Computer Science, Volume 31, Issue 4, pp. 422–442",
+    description:
+      "Extends TI-Fusion into a full journal study. Six classifiers, including XGBoost, SVM and Random Forest, learn from questionnaire answers while a CNN with a Real Gabor filter reads facial expressions from the KDEF and CK+ datasets. Late fusion of the two reaches 92.38% accuracy, outperforming existing multimodal methods without any intrusive testing.",
+    publisher: "JUCS",
+    type: "Journal article",
+    link: "https://lib.jucs.org/article/127703/",
+  },
+  {
+    date: "December 2023",
     title: "TI-Fusion: A Multimodal Anxiety Disorder Detection Method",
+    authors: ["Mahir Shadid", NAME, "Muhammed J. A. Patwary"],
+    venue: "2023 6th International Conference on Electrical Information and Communication Technology (EICT)",
+    description:
+      "Introduces TI-Fusion, which detects anxiety disorders by combining a model trained on DASS-21 questionnaire answers with a CNN trained on Gabor-filtered facial expressions, using late fusion.",
+    publisher: "IEEE",
+    type: "Conference paper",
     link: "https://ieeexplore.ieee.org/document/10427924",
-    description: `Published in 2023 6th International Conference on Electrical Information and Communication Technology.`,
-    publisher: ["IEEE Xplore"],
   },
 ];
 
@@ -142,9 +226,17 @@ export const REPOSITORIES: Repository[] = [
   {
     title: "TI-Fusion",
     description:
-      "Code behind my IEEE paper. Detects anxiety disorders by late fusion of a CNN trained on Gabor-filtered facial expressions and a model trained on DASS-21 questionnaire answers.",
+      "Code behind my IEEE and JUCS papers. Detects anxiety disorders by late fusion of a CNN trained on Gabor-filtered facial expressions and a model trained on DASS-21 questionnaire answers.",
     technologies: ["Python", "TensorFlow", "scikit-learn", "OpenCV"],
     source: "https://github.com/salehinafnan/anxiety-disorder-detection-using-multimoadal-learning",
+  },
+  {
+    title: "Vaxin 1.0",
+    description:
+      "An Android app for vaccine registration and tracking. People register with their NID and check their dose dates, hospital admins schedule doses, and it adds ambulance contacts, a BMI calculator and COVID-19 news.",
+    technologies: ["Java", "Android", "Firebase"],
+    source: "https://github.com/salehinafnan/vaxin-1.0",
+    team: true,
   },
   {
     title: "Dua & Ruqyah",
@@ -159,6 +251,13 @@ export const REPOSITORIES: Repository[] = [
       "An Express server where clients wait up to 30 seconds on a key and receive queued data, in order, the moment it is pushed.",
     technologies: ["Node.js", "Express.js"],
     source: "https://github.com/salehinafnan/backend-long-polling-server",
+  },
+  {
+    title: "Cereal Rating Models",
+    description:
+      "Explores the nutrition facts of 80 breakfast cereals, then trains linear, ridge and lasso regression models to predict their ratings.",
+    technologies: ["Python", "pandas", "scikit-learn", "seaborn"],
+    source: "https://github.com/salehinafnan/machine-learning-implementation",
   },
   {
     title: "Campus Network",

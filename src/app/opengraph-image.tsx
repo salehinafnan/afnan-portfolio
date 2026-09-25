@@ -26,7 +26,7 @@ export default function OpengraphImage() {
         </div>
         <div style={{ display: "flex", marginTop: 20, fontSize: 40, color: "#93c5fd" }}>{ROLE}</div>
         <div style={{ display: "flex", marginTop: 48, fontSize: 26, color: "#a3a3a3" }}>
-          React · Next.js · Node.js · Tailwind CSS · MongoDB
+          React · Next.js · TypeScript · Node.js · Machine Learning
         </div>
       </div>
     ),

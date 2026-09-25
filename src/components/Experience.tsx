@@ -1,4 +1,5 @@
 import { EXPERIENCES } from "../constants";
+import LinkPill from "./LinkPill";
 import SectionHeading from "./SectionHeading";
 
 const Experience = () => {
@@ -12,7 +13,7 @@ const Experience = () => {
             data-reveal
             style={{ "--reveal-delay": `${index * 100}ms` } as React.CSSProperties}
           >
-            <article className="glass-card flex flex-col gap-3 rounded-3xl p-6 transition-colors hover:bg-white/[0.03] sm:p-8 md:flex-row md:gap-8">
+            <article className="glass-card flex flex-col gap-3 rounded-3xl p-6 transition-colors hover:bg-white/3 sm:p-8 md:flex-row md:gap-8">
               <p className="shrink-0 text-sm font-medium text-neutral-400 md:w-1/4">{experience.year}</p>
               <div className="md:w-3/4">
                 <h3 className="text-lg font-semibold text-neutral-200">{experience.role}</h3>
@@ -28,6 +29,13 @@ const Experience = () => {
                     </li>
                   ))}
                 </ul>
+                {experience.certificate && (
+                  <div className="mt-4">
+                    <LinkPill href={experience.certificate}>
+                      Certificate<span className="sr-only">: {experience.role}</span>
+                    </LinkPill>
+                  </div>
+                )}
               </div>
             </article>
           </li>
