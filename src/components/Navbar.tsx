@@ -18,7 +18,7 @@ const Navbar = () => {
           href="/"
           prefetch={false}
           aria-label="Home"
-          className="enter-left shrink-0 rounded font-serif text-[1.75rem] leading-none text-neutral-100 italic transition-opacity duration-300 hover:opacity-70"
+          className="enter-left shrink-0 rounded font-serif text-[2rem] leading-none text-neutral-100 italic [-webkit-text-stroke:0.4px_currentColor] transition-opacity duration-300 hover:opacity-70"
         >
           Afnan<span className="text-blue-400">.</span>
         </Link>
