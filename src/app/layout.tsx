@@ -75,10 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
       <body className="font-sans antialiased selection:bg-neutral-200 selection:text-neutral-950">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 -z-10 bg-black bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,255,255,0.08),rgba(0,0,0,1))]"
-        />
+        <div aria-hidden="true" className="spotlight pointer-events-none fixed inset-0 -z-10" />
         {/* Scrolls with the page, so the pattern stays behind the hero. */}
         <div aria-hidden="true" className="wafer pointer-events-none absolute inset-x-0 top-0 -z-10 h-screen" />
         {children}
