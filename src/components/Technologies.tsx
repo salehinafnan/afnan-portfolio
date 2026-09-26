@@ -53,7 +53,7 @@ const Technologies = () => {
                 rel="noopener noreferrer"
                 aria-label={name}
                 title={name}
-                className="group glass block rounded-2xl p-3 transition-[scale,background-color] duration-300 ease-spring hover:scale-110 hover:bg-glass-hover active:scale-100 lg:p-4"
+                className="group glass glass-tile block rounded-2xl p-3 transition-[scale,background-color] duration-300 ease-spring hover:scale-110 hover:bg-glass-hover active:scale-100 lg:p-4"
               >
                 <Icon
                   aria-hidden="true"
