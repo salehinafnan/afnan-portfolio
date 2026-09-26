@@ -1,7 +1,7 @@
 import { FiAward, FiCamera, FiCode, FiGlobe } from "react-icons/fi";
 import { CREDENTIALS, EDUCATION, type Credential } from "../constants";
 import LinkPill from "./LinkPill";
-import SectionHeading, { Amp } from "./SectionHeading";
+import SectionHeading from "./SectionHeading";
 
 const ICONS: Record<Credential["kind"], typeof FiAward> = {
   certificate: FiAward,
@@ -13,9 +13,7 @@ const ICONS: Record<Credential["kind"], typeof FiAward> = {
 const Education = () => {
   return (
     <section id="education" aria-labelledby="education-heading" className="py-16 sm:py-20">
-      <SectionHeading id="education-heading" eyebrow="04 — Academics">
-        Education
-      </SectionHeading>
+      <SectionHeading id="education-heading">Education</SectionHeading>
       <div data-reveal className="mx-auto max-w-4xl">
         <article className="glass-card flex flex-col gap-3 rounded-3xl p-6 transition-colors hover:bg-white/3 sm:p-8 md:flex-row md:gap-8">
           <p className="shrink-0 font-mono text-[0.6875rem] tracking-[0.16em] text-balance text-neutral-400 uppercase md:w-1/4 md:pt-2">
@@ -41,7 +39,7 @@ const Education = () => {
           data-reveal="down"
           className="mb-10 text-center text-2xl font-medium tracking-[-0.02em] text-neutral-50 sm:mb-12 sm:text-[1.75rem]"
         >
-          Certifications <Amp className="text-neutral-500" /> Activities
+          Certifications &amp; Activities
         </h3>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {CREDENTIALS.map((credential, index) => {

@@ -2,7 +2,6 @@ import Image from "next/image";
 import { FiArrowRight, FiFileText } from "react-icons/fi";
 import profilePic from "../assets/afnanProfile.webp";
 import { HERO_CONTENT, NAME, RESUME_PDF, ROLE } from "../constants";
-import { Amp } from "./SectionHeading";
 
 // Hero lines all start on the first frame (nothing waits to paint, which keeps
 // LCP fast) and cascade in through increasing durations instead of delays.
@@ -38,7 +37,11 @@ const Hero = () => {
           >
             {roleEnd ? (
               <>
-                {roleStart} <Amp /> {roleEnd}
+                {roleStart}
+                <span className="sr-only"> and </span>
+                {/* Thin divider instead of an ampersand. */}
+                <span aria-hidden="true" className="mx-3 inline-block h-[0.8em] w-px bg-neutral-600 align-middle" />
+                {roleEnd}
               </>
             ) : (
               ROLE

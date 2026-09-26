@@ -17,7 +17,7 @@ const FACTS = [
 const About = () => {
   return (
     <section id="about" aria-labelledby="about-heading" className="py-16 sm:py-20">
-      <SectionHeading id="about-heading" eyebrow="01 — Introduction">
+      <SectionHeading id="about-heading">
         About <Accent className="text-neutral-500">me</Accent>
       </SectionHeading>
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-5 lg:gap-12">

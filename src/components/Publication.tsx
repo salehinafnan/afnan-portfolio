@@ -6,9 +6,7 @@ import SectionHeading from "./SectionHeading";
 const Publication = () => {
   return (
     <section id="publications" aria-labelledby="publications-heading" className="py-16 sm:py-20">
-      <SectionHeading id="publications-heading" eyebrow="05 — Research">
-        Publications
-      </SectionHeading>
+      <SectionHeading id="publications-heading">Publications</SectionHeading>
       <ol className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
         {PUBLICATIONS.map((pub, index) => (
           <li key={pub.title} data-reveal style={{ "--reveal-delay": `${index * 100}ms` } as React.CSSProperties}>
