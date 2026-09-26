@@ -253,7 +253,7 @@ const ResumeViewer = () => {
                   href={RESUME_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass rounded-full px-5 py-2.5 text-sm font-medium transition-colors hover:bg-fg-1/10"
+                  className="glass rounded-full px-5 py-2.5 text-sm font-medium transition-[background-color,scale] duration-300 ease-spring hover:bg-glass-hover active:scale-96"
                 >
                   Open in Google Drive
                 </a>

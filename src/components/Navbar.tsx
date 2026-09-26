@@ -9,7 +9,8 @@ const LINKS = [
   { href: SOCIAL_LINKS.github, label: "GitHub", Icon: FaGithub },
 ];
 
-const iconButton = "block rounded-full p-1.5 transition-colors duration-300 hover:text-fg-1 sm:p-2";
+const iconButton =
+  "block rounded-full p-1.5 transition-[color,background-color,scale] duration-300 ease-spring hover:bg-glass-hover hover:text-fg-1 active:scale-90 sm:p-2";
 
 const Navbar = () => {
   return (
@@ -23,7 +24,7 @@ const Navbar = () => {
         >
           Afnan<span className="text-fg-4">.</span>
         </Link>
-        <ul className="enter-right -mr-1.5 flex items-center gap-1 text-xl text-fg-3 sm:-mr-2 sm:gap-3">
+        <ul className="enter-right glass glass-blur flex items-center gap-0.5 rounded-full p-1 text-xl text-fg-3 sm:gap-1">
           <li>
             <ThemeToggle className={iconButton} />
           </li>
