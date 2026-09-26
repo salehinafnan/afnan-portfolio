@@ -14,8 +14,11 @@
 }
 
 @layer base {
+  /* Set on both: iOS Safari ignores overflow on the viewport alone, but once html
+     has it, body clips its own content and nothing in flow can widen the page. */
   html {
     scrollbar-gutter: stable;
+    overflow-x: clip;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -98,6 +101,8 @@
   /* Wafer-like crosshatch over the top of the page, easing out into the black below.
      The two diagonals mirror each other, so the diamonds stay centred at any width. */
   .wafer {
+    /* The pulses below travel past the box; clip them so they never widen the page. */
+    overflow: clip;
     background-image:
       repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 22px),
       repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 22px);
