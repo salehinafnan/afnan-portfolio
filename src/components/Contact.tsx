@@ -8,7 +8,7 @@ const iconClass = "glass flex size-10 shrink-0 items-center justify-center round
 const Contact = () => {
   return (
     <section id="contact" aria-labelledby="contact-heading" className="border-t border-neutral-800 py-16 sm:py-20">
-      <SectionHeading id="contact-heading" eyebrow="07 — Contact">
+      <SectionHeading id="contact-heading">
         Get in <Accent className="text-neutral-500">touch</Accent>
       </SectionHeading>
 

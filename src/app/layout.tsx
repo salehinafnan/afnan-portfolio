@@ -67,6 +67,19 @@ const personJsonLd = {
   sameAs: Object.values(SOCIAL_LINKS),
 };
 
+// Light pulses that drift along the wafer's grid lines (see .pulse in globals.css).
+// --line picks the grid line; the rest vary the pace so the pattern never visibly repeats.
+const PULSES = [
+  { line: 22, slant: "\\", duration: 14, delay: -3, length: 11, peak: 0.7 },
+  { line: 29, slant: "/", duration: 17, delay: -9, length: 13, peak: 0.6 },
+  { line: 33, slant: "\\", duration: 12, delay: -7, length: 9, peak: 0.8 },
+  { line: 25, slant: "/", duration: 15, delay: -1, length: 10, peak: 0.75 },
+  { line: 39, slant: "\\", duration: 19, delay: -12, length: 12, peak: 0.55 },
+  { line: 36, slant: "/", duration: 13, delay: -5, length: 9, peak: 0.75 },
+  { line: 27, slant: "\\", duration: 16, delay: -14, length: 10, peak: 0.6 },
+  { line: 42, slant: "/", duration: 18, delay: -8, length: 11, peak: 0.55 },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -77,7 +90,24 @@ export default function RootLayout({
       <body className="font-sans antialiased selection:bg-neutral-200 selection:text-neutral-950">
         <div aria-hidden="true" className="spotlight pointer-events-none fixed inset-0 -z-10" />
         {/* Scrolls with the page, so the pattern stays behind the hero. */}
-        <div aria-hidden="true" className="wafer pointer-events-none absolute inset-x-0 top-0 -z-10 h-screen" />
+        <div aria-hidden="true" className="wafer pointer-events-none absolute inset-x-0 top-0 -z-10 h-screen">
+          {PULSES.map(({ line, slant, duration, delay, length, peak }) => (
+            <span
+              key={`${slant}${line}`}
+              className="pulse"
+              data-slant={slant}
+              style={
+                {
+                  "--line": line,
+                  "--duration": `${duration}s`,
+                  "--delay": `${delay}s`,
+                  "--length": `${length}rem`,
+                  "--peak": peak,
+                } as React.CSSProperties
+              }
+            />
+          ))}
+        </div>
         {children}
         <RevealObserver />
         <script

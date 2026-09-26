@@ -82,11 +82,10 @@
   .wafer {
     --edge-fade: linear-gradient(
       transparent,
-      rgba(0, 0, 0, 0.15) 1rem,
-      rgba(0, 0, 0, 0.4) 2rem,
-      rgba(0, 0, 0, 0.68) 3rem,
-      rgba(0, 0, 0, 0.9) 4rem,
-      #000 5rem
+      rgba(0, 0, 0, 0.2) 0.75rem,
+      rgba(0, 0, 0, 0.5) 1.5rem,
+      rgba(0, 0, 0, 0.8) 2.25rem,
+      #000 3rem
     );
   }
 
@@ -113,6 +112,32 @@
         transparent 100%
       );
     mask-composite: intersect;
+  }
+
+  /* Light pulses that travel along the wafer's grid lines, like signals on a die.
+     The gradients above start at the box's bottom corners, so the "\" line n
+     crosses the top edge n·22√2 px right of -100vh, and the "/" line n the same
+     distance left of 100% + 100vh. Each pulse is a 1px strip rotated onto its
+     line; only its transform animates, so the effect stays on the compositor and
+     the wafer's mask fades it out with the grid. */
+  .pulse {
+    position: absolute;
+    top: 0;
+    left: calc(var(--line) * 31.1127px - 100vh);
+    width: 1px;
+    height: var(--length, 9rem);
+    transform-origin: 0 0;
+    rotate: -45deg;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, var(--peak, 0.7)));
+    /* Follows the gradient's alpha, so only the bright head glows. */
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.45));
+    animation: pulse-travel var(--duration, 12s) linear infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .pulse[data-slant="/"] {
+    left: calc(100% + 100vh - var(--line) * 31.1127px - 1.4142px);
+    rotate: 45deg;
   }
 
   .text-gradient {
@@ -172,6 +197,15 @@
   }
   to {
     transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes pulse-travel {
+  from {
+    transform: translateY(calc(-1 * var(--length, 9rem)));
+  }
+  to {
+    transform: translateY(150vh);
   }
 }
 
@@ -319,6 +353,10 @@ html:has(dialog[open]) {
   .cv-dialog[open],
   .cv-dialog[open]::backdrop {
     animation: none;
+  }
+
+  .pulse {
+    display: none;
   }
 }
 

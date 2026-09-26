@@ -5,9 +5,7 @@ import SectionHeading from "./SectionHeading";
 const Experience = () => {
   return (
     <section id="experience" aria-labelledby="experience-heading" className="py-16 sm:py-20">
-      <SectionHeading id="experience-heading" eyebrow="03 — Career">
-        Experience
-      </SectionHeading>
+      <SectionHeading id="experience-heading">Experience</SectionHeading>
       <ol className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
         {EXPERIENCES.map((experience, index) => (
           <li

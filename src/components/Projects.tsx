@@ -50,9 +50,7 @@ const Projects = () => {
 
   return (
     <section id="projects" aria-labelledby="projects-heading" className="py-16 sm:py-20">
-      <SectionHeading id="projects-heading" eyebrow="06 — Selected work">
-        Projects
-      </SectionHeading>
+      <SectionHeading id="projects-heading">Projects</SectionHeading>
 
       <ul className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
         <li data-reveal className="md:col-span-2">
@@ -66,9 +64,6 @@ const Projects = () => {
               />
             </div>
             <div className="flex grow flex-col p-6 sm:p-8 xl:justify-center xl:p-10">
-              <p className="mb-3 font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-neutral-400 uppercase">
-                Latest project
-              </p>
               <h3 className="mb-3 text-[1.75rem] leading-none font-medium tracking-[-0.02em] text-neutral-50 sm:text-[2rem]">
                 {featured.title}
               </h3>
