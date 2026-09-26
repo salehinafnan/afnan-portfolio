@@ -172,6 +172,9 @@ export type Project = {
   };
 };
 
+// The date `days` from today in Dhaka, as YYYY-MM-DD.
+const dueIn = (days: number) => new Date(Date.now() + days * 864e5).toLocaleDateString("en-CA", { timeZone: "Asia/Dhaka" });
+
 // Showcased with a screenshot. The first one is featured full width.
 export const PROJECTS: Project[] = [
   {
@@ -198,23 +201,83 @@ export const PROJECTS: Project[] = [
   {
     title: "Task Management App",
     description:
-      "Create, edit, delete and filter tasks by status. State is managed with MobX-State-Tree and persisted to local storage.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MobX-State-Tree"],
+      "A keyboard-friendly task manager with Today, Upcoming, project and tag views, each as a list or a drag-and-drop board. Quick add picks up dates, priorities and tags from entries like “Send invoice friday !high #work”, and tasks carry repeat rules, notes and subtasks. State is managed with MobX-State-Tree, saved to local storage and synced across tabs.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MobX-State-Tree", "Radix UI", "dnd-kit"],
     image: taskManager,
     live: "https://afnantask.vercel.app/",
     source: "https://github.com/salehinafnan/task-management-app",
+    // The app's own example tasks. It shows due dates as "Today", "Tomorrow" and so on, so they're
+    // set relative to the day of the capture.
     capture: {
       localStorage: {
         taskStore: {
+          version: 2,
+          projects: [
+            { id: "web", name: "Website relaunch", color: "iris" },
+            { id: "home", name: "Home", color: "sage" },
+            { id: "read", name: "Reading list", color: "amber" },
+          ],
           tasks: [
             {
-              id: "1",
-              title: "Make a good portfolio",
-              description: "The design should be responsive and minimal",
+              title: "Finalize landing page copy",
+              notes: "Tighten the hero headline and trim the feature list to three points.",
               status: "in_progress",
+              priority: "high",
+              due: dueIn(0),
+              projectId: "web",
+              tags: ["writing"],
+              subtasks: [
+                { id: "s1", title: "Hero headline", done: true },
+                { id: "s2", title: "Feature bullets", done: true },
+                { id: "s3", title: "Pricing FAQ" },
+              ],
             },
-            { id: "2", title: "Buy some snacks", description: "Chips Juice Chocolate", status: "pending" },
-          ],
+            {
+              title: "Review pull requests",
+              priority: "medium",
+              due: dueIn(0),
+              repeat: "weekdays",
+              projectId: "web",
+              tags: ["dev"],
+            },
+            { title: "Book dentist appointment", priority: "low", due: dueIn(-1), projectId: "home" },
+            {
+              title: "Design system audit",
+              notes: "Check spacing tokens, focus states and dark mode contrast.",
+              priority: "medium",
+              due: dueIn(2),
+              projectId: "web",
+              tags: ["design"],
+              subtasks: [
+                { id: "s4", title: "Colors" },
+                { id: "s5", title: "Typography" },
+                { id: "s6", title: "Components" },
+              ],
+            },
+            { title: "Plan weekend hike", due: dueIn(4), projectId: "home", tags: ["outdoors"] },
+            { title: "Water the plants", due: dueIn(1), repeat: "weekly", projectId: "home" },
+            {
+              title: "Read “The Design of Everyday Things”",
+              status: "in_progress",
+              projectId: "read",
+              tags: ["design"],
+              subtasks: [
+                { id: "s7", title: "Chapters 1–3", done: true },
+                { id: "s8", title: "Chapters 4–5" },
+                { id: "s9", title: "Chapters 6–7" },
+              ],
+            },
+            { title: "Set up analytics dashboard", priority: "high", due: dueIn(9), projectId: "web", tags: ["dev"] },
+            { title: "Renew passport", priority: "medium", projectId: "home" },
+            {
+              title: "Draft launch announcement",
+              status: "done",
+              projectId: "web",
+              tags: ["writing"],
+              completedAt: Date.now() - 36e5,
+            },
+            { title: "Order new running shoes", status: "done", projectId: "home", completedAt: Date.now() - 864e5 },
+          ].map((task, order) => ({ id: `${order + 1}`, order, ...task })),
         },
       },
     },
@@ -222,8 +285,8 @@ export const PROJECTS: Project[] = [
   {
     title: "Random Block Graph Generator",
     description:
-      "Spawn, delete and drag randomly placed blocks. Each new block is linked to its parent by a line that follows it as it moves.",
-    technologies: ["React", "TypeScript", "CSS"],
+      "Spawn, delete, drag and resize randomly placed blocks. Each new block is linked to its parent by a line between their centres that follows it as it moves, and deleting a block removes its whole subtree. Works with a mouse, pen or touch.",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     image: blockGraph,
     source: "https://github.com/salehinafnan/random-block-graph-generator",
   },
