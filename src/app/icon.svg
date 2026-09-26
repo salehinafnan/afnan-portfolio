@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<defs><radialGradient id="g" cx="32" cy="-12" r="64" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+<rect width="64" height="64" rx="14" fill="#000"/>
+<rect width="64" height="64" rx="14" fill="url(#g)"/>
+<rect x=".5" y=".5" width="63" height="63" rx="13.5" fill="none" stroke="#fff" stroke-opacity=".14"/>
+<path fill="#fafafa" color="#fafafa" stroke="currentColor" stroke-width="0.5" stroke-linejoin="round" d="M14.5 53.76Q13.8 53.76 13.8 53.18Q13.8 52.66 14.73 52.43L15.65 52.26Q16.81 52.02 17.65 51.13Q18.49 50.23 19.24 48.61L36.54 12.45Q36.83 11.87 37.12 11.69Q37.41 11.52 37.64 11.52Q37.93 11.52 38.13 11.69Q38.34 11.87 38.34 12.45L38.97 49.13Q39.03 50.75 39.38 51.36Q39.72 51.97 40.82 52.26L41.58 52.43Q42.27 52.6 42.27 53.12Q42.27 53.76 41.29 53.76H31.74Q30.99 53.76 30.99 53.18Q30.99 52.54 32.14 52.43L33.3 52.31Q34.29 52.2 34.66 51.68Q35.04 51.16 35.04 49.88L34.92 40.91Q34.92 39.41 33.36 39.41H27.17Q25.66 39.41 24.91 40.91L21.15 48.67Q19.59 51.97 22.19 52.31L23 52.43Q23.87 52.54 23.87 53.12Q23.87 53.76 22.89 53.76ZM27.4 37.67H33.88Q34.86 37.67 34.86 36.69L34.75 20.89H34.46L26.88 36.69Q26.65 37.1 26.82 37.38Q26.99 37.67 27.4 37.67Z"/>
+<path fill="#a3a3a3" color="#a3a3a3" stroke="currentColor" stroke-width="0.5" stroke-linejoin="round" d="M46.96 54.28Q45.74 54.28 44.99 53.5Q44.24 52.72 44.24 51.56Q44.24 50.06 45.28 49.13Q46.32 48.21 47.48 48.21Q48.64 48.21 49.42 48.99Q50.2 49.77 50.2 50.92Q50.2 52.43 49.16 53.35Q48.11 54.28 46.96 54.28Z"/>
+</svg>
