@@ -195,18 +195,26 @@
     box-shadow: var(--card-shadow);
   }
 
-  /* Both page backdrops rise out of the plain page colour at the top edge. Phone browsers
-     fill the status bar with the page background, so the page eases out from under it with
-     no seam. (A mask only reads alpha, so the gradient's colour doesn't matter.) */
+  /* On touch devices both page backdrops rise out of the plain page colour at the top edge.
+     Phone browsers fill the status bar with the page background, so the page eases out from
+     under it with no seam. (A mask only reads alpha, so the gradient's colour doesn't matter.) */
   .spotlight,
   .wafer {
     --edge-fade: linear-gradient(
       transparent,
-      rgba(0, 0, 0, 0.2) 0.75rem,
-      rgba(0, 0, 0, 0.5) 1.5rem,
-      rgba(0, 0, 0, 0.8) 2.25rem,
-      #000 3rem
+      rgba(0, 0, 0, 0.2) 0.5rem,
+      rgba(0, 0, 0, 0.5) 1rem,
+      rgba(0, 0, 0, 0.8) 1.5rem,
+      #000 2rem
     );
+  }
+
+  /* Mouse and trackpad browsers have no status bar to blend into: run to the top edge. */
+  @media (hover: hover) and (pointer: fine) {
+    .spotlight,
+    .wafer {
+      --edge-fade: linear-gradient(#000, #000);
+    }
   }
 
   /* Soft light from above, pinned to the viewport. */
