@@ -149,7 +149,7 @@ const Projects = () => {
             href={`${SOCIAL_LINKS.github}?tab=repositories`}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors hover:bg-fg-1/10"
+            className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-[background-color,scale] duration-300 ease-spring hover:bg-glass-hover active:scale-96"
           >
             <FaGithub aria-hidden="true" className="size-4" />
             View all repositories

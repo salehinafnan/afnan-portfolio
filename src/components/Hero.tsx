@@ -9,7 +9,7 @@ const duration = (ms: number, delay = 0) =>
   ({ "--duration": `${ms}ms`, "--delay": `${delay}ms` }) as React.CSSProperties;
 
 const secondaryButton =
-  "glass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors hover:bg-fg-1/10 sm:px-6";
+  "glass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-[background-color,scale] duration-300 ease-spring hover:bg-glass-hover active:scale-96 sm:px-6";
 
 const [roleStart, roleEnd] = ROLE.split(" & ");
 
