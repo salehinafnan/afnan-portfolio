@@ -38,15 +38,10 @@
   --sel: #262626;
   --sel-fg: #fafafa;
   --focus: #404040;
-  /* Liquid glass: fill, rim light, and an inner highlight plus lift. */
+  /* Liquid glass: fill, rim light (stops from the lit edge to the far one), and an inner
+     highlight plus lift. */
   --glass: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.5));
-  --glass-rim: linear-gradient(
-    135deg,
-    #fff,
-    rgba(0, 0, 0, 0.07) 32%,
-    rgba(0, 0, 0, 0.09) 68%,
-    rgba(255, 255, 255, 0.9)
-  );
+  --glass-rim: #fff, rgba(0, 0, 0, 0.07) 32%, rgba(0, 0, 0, 0.09) 68%, rgba(255, 255, 255, 0.9);
   --glass-shadow: inset 0 1px 1px #fff, 0 1px 2px rgba(0, 0, 0, 0.05), 0 6px 20px rgba(0, 0, 0, 0.07);
   --glass-hover: rgba(0, 0, 0, 0.04);
   --card: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
@@ -95,13 +90,8 @@
   --sel-fg: #0a0a0a;
   --focus: #d4d4d4;
   --glass: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
-  --glass-rim: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.42),
-    rgba(255, 255, 255, 0.1) 32%,
-    rgba(255, 255, 255, 0.05) 68%,
-    rgba(255, 255, 255, 0.26)
-  );
+  --glass-rim:
+    rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.1) 32%, rgba(255, 255, 255, 0.05) 68%, rgba(255, 255, 255, 0.26);
   --glass-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 6px 20px rgba(0, 0, 0, 0.4);
   --glass-hover: rgba(255, 255, 255, 0.08);
   --card: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
@@ -204,8 +194,8 @@
 @layer components {
   /* Liquid glass, kept to what floats over the page (buttons, the header's icon bar, icon
      tiles, photo frames); cards and text stay matte. Light catches the top-left and
-     bottom-right rims. The border stays transparent so sizes don't change, and the rim is
-     drawn over it. */
+     bottom-right rims, or the top and bottom ones on .glass-tile. The border stays
+     transparent so sizes don't change, and the rim is drawn over it. */
   .glass {
     position: relative;
     background: var(--glass);
@@ -219,7 +209,7 @@
     inset: -1px;
     padding: 1px;
     border-radius: inherit;
-    background: var(--glass-rim);
+    background: linear-gradient(var(--glass-rim-angle, 135deg), var(--glass-rim));
     mask:
       linear-gradient(#000 0 0) content-box exclude,
       linear-gradient(#000 0 0);
@@ -238,15 +228,16 @@
      reads on any image. */
   .glass-media {
     --glass: linear-gradient(180deg, rgba(38, 38, 38, 0.5), rgba(10, 10, 10, 0.4));
-    --glass-rim: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.12) 32%,
-      rgba(255, 255, 255, 0.06) 68%,
-      rgba(255, 255, 255, 0.3)
-    );
+    --glass-rim:
+      rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.12) 32%, rgba(255, 255, 255, 0.06) 68%, rgba(255, 255, 255, 0.3);
     --glass-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.14), 0 4px 16px rgba(0, 0, 0, 0.3);
     color: #fff;
+  }
+
+  /* A square lit on one diagonal reads as tilted, so tiles take their light from straight
+     above: the rim is symmetric left to right, like the fill and the shadow. */
+  .glass-tile {
+    --glass-rim-angle: 180deg;
   }
 
   .glass-card {
