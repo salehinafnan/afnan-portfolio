@@ -162,16 +162,18 @@ export type Project = {
   image: StaticImageData;
   live?: string;
   source: string;
-  // How that script loads the site.
-  capture?: {
-    colorScheme?: "light" | "dark";
-    // A backend that sleeps when idle, woken before the page loads.
-    wake?: string;
-    // Set before the page loads, e.g. sample data for an app that starts empty.
-    localStorage?: Record<string, unknown>;
-    // A selector the page must show, or the old screenshot is kept and the run fails.
-    waitFor?: string;
-  };
+  // How that script loads the site, or false to keep a screenshot made by hand.
+  capture?:
+    | false
+    | {
+        colorScheme?: "light" | "dark";
+        // A backend that sleeps when idle, woken before the page loads.
+        wake?: string;
+        // Set before the page loads, e.g. sample data for an app that starts empty.
+        localStorage?: Record<string, unknown>;
+        // A selector the page must show, or the old screenshot is kept and the run fails.
+        waitFor?: string;
+      };
 };
 
 // The date `days` from today in Dhaka, as YYYY-MM-DD.
@@ -291,7 +293,10 @@ export const PROJECTS: Project[] = [
       "Spawn, delete, drag and resize randomly placed blocks. Each new block is linked to its parent by a line between their centres that follows it as it moves, and deleting a block removes its whole subtree. Works with a mouse, pen or touch.",
     technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     image: blockGraph,
+    live: "https://random-block-graph-generator.vercel.app/",
     source: "https://github.com/salehinafnan/random-block-graph-generator",
+    // A fresh visit is one block at a random spot, so the screenshot is made by hand to show a tree.
+    capture: false,
   },
   {
     title: "Portfolio Website",
