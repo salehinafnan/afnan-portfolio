@@ -10,7 +10,7 @@ const LINKS = [
 ];
 
 const iconButton =
-  "block rounded-full p-1.5 transition-[color,background-color,scale] duration-300 ease-spring hover:bg-glass-hover hover:text-fg-1 active:scale-90 sm:p-2";
+  "flex rounded-full p-1.5 transition-[color,background-color,scale] duration-300 ease-spring hover:bg-glass-hover hover:text-fg-1 active:scale-90 sm:p-2";
 
 const Navbar = () => {
   return (
@@ -24,28 +24,30 @@ const Navbar = () => {
         >
           Afnan<span className="text-fg-4">.</span>
         </Link>
-        <ul className="enter-right glass glass-blur flex items-center gap-0.5 rounded-full p-1 text-xl text-fg-3 sm:gap-1">
-          <li>
+        <div className="enter-right flex items-center gap-2 text-xl text-fg-3 sm:gap-3">
+          <ul className="glass glass-blur flex items-center gap-0.5 rounded-full p-1 sm:gap-1">
+            {LINKS.map(({ href, label, Icon, resume }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  // Opens the in-page CV viewer (see ResumeViewer).
+                  data-resume={resume}
+                  aria-haspopup={resume ? "dialog" : undefined}
+                  className={iconButton}
+                >
+                  <Icon aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="glass glass-blur rounded-full p-1">
             <ThemeToggle className={iconButton} />
-          </li>
-          {LINKS.map(({ href, label, Icon, resume }) => (
-            <li key={label}>
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                title={label}
-                // Opens the in-page CV viewer (see ResumeViewer).
-                data-resume={resume}
-                aria-haspopup={resume ? "dialog" : undefined}
-                className={iconButton}
-              >
-                <Icon aria-hidden="true" />
-              </a>
-            </li>
-          ))}
-        </ul>
+          </div>
+        </div>
       </nav>
     </header>
   );
