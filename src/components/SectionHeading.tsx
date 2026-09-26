@@ -8,7 +8,7 @@ const SectionHeading = ({ id, children }: Props) => {
     <h2
       id={id}
       data-reveal="down"
-      className="mb-12 text-center text-[2.125rem] leading-none font-medium tracking-[-0.035em] text-balance text-neutral-50 sm:mb-16 sm:text-[2.625rem] xl:text-[3rem]"
+      className="mb-12 text-center text-[2.125rem] leading-none font-medium tracking-[-0.035em] text-balance text-fg-1 sm:mb-16 sm:text-[2.625rem] xl:text-[3rem]"
     >
       {children}
     </h2>

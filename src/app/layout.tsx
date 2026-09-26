@@ -50,9 +50,19 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  colorScheme: "light dark",
 };
+
+// Runs before anything paints: a saved choice wins, otherwise the system setting.
+// The theme lives in data-theme on <html>; ThemeToggle keeps this in step.
+const themeScript = `(()=>{let t;try{t=localStorage.getItem("theme")}catch{}
+if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.dataset.theme=t;
+for(const m of document.querySelectorAll('meta[name="theme-color"]'))m.content=t==="dark"?"#000000":"#fafafa"})()`;
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -86,8 +96,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
-      <body className="font-sans antialiased selection:bg-neutral-200 selection:text-neutral-950">
+    // suppressHydrationWarning: the theme script above adds data-theme before React hydrates.
+    <html
+      lang="en"
+      className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="font-sans antialiased selection:bg-sel selection:text-sel-fg">
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <div aria-hidden="true" className="spotlight pointer-events-none fixed inset-0 -z-10" />
         {/* Scrolls with the page, so the pattern stays behind the hero. */}
         <div aria-hidden="true" className="wafer pointer-events-none absolute inset-x-0 top-0 -z-10 h-screen">

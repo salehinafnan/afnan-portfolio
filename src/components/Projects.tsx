@@ -14,7 +14,7 @@ const ProjectLinks = ({ project }: { project: Project }) => (
         href={project.live}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${pill} border-neutral-100 bg-neutral-100 text-neutral-900 hover:border-neutral-300 hover:bg-neutral-300`}
+        className={`${pill} border-btn bg-btn text-btn-fg hover:border-btn-hover hover:bg-btn-hover`}
       >
         Live demo<span className="sr-only">: {project.title}</span>
         <FiArrowUpRight aria-hidden="true" className="size-3.5" />
@@ -24,7 +24,7 @@ const ProjectLinks = ({ project }: { project: Project }) => (
       href={project.source}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${pill} border-neutral-700 text-neutral-300 hover:border-neutral-500 hover:text-white`}
+      className={`${pill} border-line-2 text-fg-2 hover:border-line-3 hover:text-fg-1`}
     >
       <FaGithub aria-hidden="true" className="size-3.5" />
       Source<span className="sr-only">: {project.title}</span>
@@ -35,10 +35,7 @@ const ProjectLinks = ({ project }: { project: Project }) => (
 const TechTags = ({ technologies }: { technologies: string[] }) => (
   <ul className="flex flex-wrap gap-2">
     {technologies.map((tech) => (
-      <li
-        key={tech}
-        className="rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1 text-xs font-medium text-neutral-300"
-      >
+      <li key={tech} className="rounded-full border border-line-1 bg-tag px-3 py-1 text-xs font-medium text-fg-2">
         {tech}
       </li>
     ))}
@@ -54,7 +51,7 @@ const Projects = () => {
 
       <ul className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
         <li data-reveal className="md:col-span-2">
-          <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.06)] xl:flex-row">
+          <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-(--card-glow) xl:flex-row">
             {/* The screenshot has black margins, so a black panel lets it sit centred at any card height. */}
             <div className="bg-black xl:flex xl:w-[56%] xl:shrink-0 xl:items-center">
               <ProjectPreview
@@ -64,10 +61,10 @@ const Projects = () => {
               />
             </div>
             <div className="flex grow flex-col p-6 sm:p-8 xl:justify-center xl:p-10">
-              <h3 className="mb-3 text-[1.75rem] leading-none font-medium tracking-[-0.02em] text-neutral-50 sm:text-[2rem]">
+              <h3 className="mb-3 text-[1.75rem] leading-none font-medium tracking-[-0.02em] text-fg-1 sm:text-[2rem]">
                 {featured.title}
               </h3>
-              <p className="mb-6 max-w-2xl text-[0.9375rem] leading-relaxed text-pretty text-neutral-400">
+              <p className="mb-6 max-w-2xl text-[0.9375rem] leading-relaxed text-pretty text-fg-3">
                 {featured.description}
               </p>
               <TechTags technologies={featured.technologies} />
@@ -82,11 +79,11 @@ const Projects = () => {
             data-reveal
             style={{ "--reveal-delay": `${(index % 2) * 100}ms` } as React.CSSProperties}
           >
-            <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.06)]">
+            <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-(--card-glow)">
               <ProjectPreview image={project.image} title={project.title} />
               <div className="flex grow flex-col p-6 sm:p-8">
-                <h3 className="mb-3 text-xl font-semibold tracking-tight text-balance text-neutral-50">{project.title}</h3>
-                <p className="mb-6 grow text-[0.9375rem] leading-relaxed text-pretty text-neutral-400">
+                <h3 className="mb-3 text-xl font-semibold tracking-tight text-balance text-fg-1">{project.title}</h3>
+                <p className="mb-6 grow text-[0.9375rem] leading-relaxed text-pretty text-fg-3">
                   {project.description}
                 </p>
                 <TechTags technologies={project.technologies} />
@@ -100,7 +97,7 @@ const Projects = () => {
       <div className="mx-auto mt-20 max-w-6xl sm:mt-24">
         <h3
           data-reveal="down"
-          className="mb-10 text-center text-2xl font-medium tracking-[-0.02em] text-neutral-50 sm:mb-12 sm:text-[1.75rem]"
+          className="mb-10 text-center text-2xl font-medium tracking-[-0.02em] text-fg-1 sm:mb-12 sm:text-[1.75rem]"
         >
           More on GitHub
         </h3>
@@ -111,33 +108,33 @@ const Projects = () => {
               data-reveal
               style={{ "--reveal-delay": `${(index % 3) * 100}ms` } as React.CSSProperties}
             >
-              <article className="glass-card group relative flex h-full flex-col rounded-2xl p-6 transition-colors duration-300 hover:border-white/15 hover:bg-white/3">
+              <article className="glass-card group relative flex h-full flex-col rounded-2xl p-6 transition-colors duration-300 hover:border-fg-1/15 hover:bg-fg-1/3">
                 <div className="mb-5 flex items-center gap-3">
-                  <FiFolder aria-hidden="true" className="size-6 text-neutral-400" />
+                  <FiFolder aria-hidden="true" className="size-6 text-fg-3" />
                   {repo.team && (
-                    <span className="rounded-full border border-neutral-700 px-2.5 py-0.5 text-[0.6875rem] font-medium text-neutral-400">
+                    <span className="rounded-full border border-line-2 px-2.5 py-0.5 text-[0.6875rem] font-medium text-fg-3">
                       Team project
                     </span>
                   )}
                   <FiArrowUpRight
                     aria-hidden="true"
-                    className="ml-auto size-5 text-neutral-500 transition-[color,translate] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-neutral-100"
+                    className="ml-auto size-5 text-fg-4 transition-[color,translate] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-fg-1"
                   />
                 </div>
-                <h4 className="mb-2 font-semibold tracking-tight text-balance text-neutral-50">
+                <h4 className="mb-2 font-semibold tracking-tight text-balance text-fg-1">
                   {/* Stretched link: the whole card is clickable, but only the title is announced. */}
                   <a
                     href={repo.source}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors group-hover:text-white after:absolute after:inset-0 after:rounded-2xl"
+                    className="after:absolute after:inset-0 after:rounded-2xl"
                   >
                     {repo.title}
                     <span className="sr-only"> on GitHub</span>
                   </a>
                 </h4>
-                <p className="mb-5 grow text-sm leading-relaxed text-pretty text-neutral-400">{repo.description}</p>
-                <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[0.6875rem] tracking-wide text-neutral-400">
+                <p className="mb-5 grow text-sm leading-relaxed text-pretty text-fg-3">{repo.description}</p>
+                <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[0.6875rem] tracking-wide text-fg-3">
                   {repo.technologies.map((tech) => (
                     <li key={tech}>{tech}</li>
                   ))}
@@ -152,7 +149,7 @@ const Projects = () => {
             href={`${SOCIAL_LINKS.github}?tab=repositories`}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors hover:bg-white/10"
+            className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors hover:bg-fg-1/10"
           >
             <FaGithub aria-hidden="true" className="size-4" />
             View all repositories

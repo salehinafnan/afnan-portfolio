@@ -25,8 +25,6 @@ export const RESUME_FILENAME = "Mushfiqus-Salehin-Afnan-CV.pdf";
 export const SOCIAL_LINKS = {
   linkedin: "https://linkedin.com/in/salehinafnan",
   github: "https://github.com/salehinafnan",
-  instagram: "https://instagram.com/salehinafnan",
-  facebook: "https://facebook.com/salehinafnan",
 };
 
 export const HERO_CONTENT = `I build fast, user-friendly web apps with React, Next.js, Node.js and TypeScript, and I work where AI meets healthcare. As a Clinical AI Specialist at Commure Bangladesh, I partner with physicians from Sutter Health and UCSF to keep patient records accurate across specialties. I have co-authored peer-reviewed research on multimodal machine learning, published by IEEE and the Journal of Universal Computer Science, and sharpened my problem solving through competitive programming.`;

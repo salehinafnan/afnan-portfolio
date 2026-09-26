@@ -22,7 +22,8 @@ The CV is kept in Google Drive (`RESUME_DRIVE_ID` in `src/constants/index.ts`) a
 
 ## Notes
 
-- Sections are server components; the only client JavaScript is the scroll-reveal observer, the project screenshot lightbox, the CV viewer and the contact form.
+- Sections are server components; the only client JavaScript is the theme toggle, the scroll-reveal observer, the project screenshot lightbox, the CV viewer and the contact form.
+- Light and dark themes: the toggle in the header stores the choice in `localStorage` (`theme`), and until a visitor picks one the site follows the system setting. Colours are defined once as CSS variables in `src/app/globals.css` (light on `:root`, dark under `[data-theme="dark"]`), and an inline script in `src/app/layout.tsx` applies the theme before the first paint.
 - The contact form posts to [FormSubmit](https://formsubmit.co) in the background, and falls back to a normal form post without JavaScript.
 - Set `NEXT_PUBLIC_SITE_URL` (e.g. `https://example.com`) when deploying outside Vercel so the sitemap, robots.txt and social previews use the right domain. On Vercel the production URL is picked up automatically.
 - Security headers (CSP, HSTS, frame protection, etc.) are configured in `next.config.ts`.

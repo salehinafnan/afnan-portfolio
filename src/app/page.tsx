@@ -15,7 +15,7 @@ export default function Home() {
     <div className="container mx-auto flex min-h-screen flex-col px-6 md:px-10 lg:px-16">
       <a
         href="#main"
-        className="sr-only rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-900 focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
+        className="sr-only rounded-full bg-btn px-4 py-2 text-sm font-medium text-btn-fg focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50"
       >
         Skip to content
       </a>
@@ -31,7 +31,7 @@ export default function Home() {
         <Contact />
       </main>
 
-      <footer className="mt-auto border-t border-neutral-800 py-8 text-center text-[0.8125rem] text-neutral-500">
+      <footer className="mt-auto border-t border-line-1 py-8 text-center text-[0.8125rem] text-fg-4">
         <p>
           © {new Date().getFullYear()} {NAME}. All rights reserved.
         </p>
