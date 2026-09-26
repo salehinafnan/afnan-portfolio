@@ -158,9 +158,18 @@ export type Project = {
   title: string;
   description: string;
   technologies: string[];
+  // With a live link, scripts/capture-screenshots.mjs keeps this in step with the site.
   image: StaticImageData;
   live?: string;
   source: string;
+  // How that script loads the site.
+  capture?: {
+    colorScheme?: "light" | "dark";
+    // A backend that sleeps when idle, woken before the page loads.
+    wake?: string;
+    // Set before the page loads, e.g. sample data for an app that starts empty.
+    localStorage?: Record<string, unknown>;
+  };
 };
 
 // Showcased with a screenshot. The first one is featured full width.
@@ -173,6 +182,7 @@ export const PROJECTS: Project[] = [
     image: nodrift,
     live: "https://nodrift.vercel.app/",
     source: "https://github.com/salehinafnan/nodrift",
+    capture: { colorScheme: "dark" },
   },
   {
     title: "Sepia",
@@ -182,6 +192,8 @@ export const PROJECTS: Project[] = [
     image: sepia,
     live: "https://sepia.onrender.com/",
     source: "https://github.com/salehinafnan/sepia",
+    // The API is on Render's free tier, which sleeps when idle, and the app shows a notice while it wakes.
+    capture: { wake: "https://sepia-server.onrender.com/" },
   },
   {
     title: "Task Management App",
@@ -191,6 +203,21 @@ export const PROJECTS: Project[] = [
     image: taskManager,
     live: "https://afnantask.vercel.app/",
     source: "https://github.com/salehinafnan/task-management-app",
+    capture: {
+      localStorage: {
+        taskStore: {
+          tasks: [
+            {
+              id: "1",
+              title: "Make a good portfolio",
+              description: "The design should be responsive and minimal",
+              status: "in_progress",
+            },
+            { id: "2", title: "Buy some snacks", description: "Chips Juice Chocolate", status: "pending" },
+          ],
+        },
+      },
+    },
   },
   {
     title: "Random Block Graph Generator",
@@ -208,6 +235,7 @@ export const PROJECTS: Project[] = [
     image: portfolio,
     live: "https://salehinafnan.vercel.app/",
     source: "https://github.com/salehinafnan/afnan-portfolio",
+    capture: { colorScheme: "dark" },
   },
 ];
 

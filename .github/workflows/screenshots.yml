@@ -1,0 +1,38 @@
+# Keeps the screenshots in the Projects section in step with the live sites (see
+# scripts/capture-screenshots.mjs). Runs every morning, or from the Actions tab with Run workflow.
+name: Screenshots
+
+on:
+  schedule:
+    - cron: "37 1 * * *" # 07:37 in Dhaka
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: screenshots
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Uses the runner's own Google Chrome.
+      - run: npm run screenshots
+      # Also runs when one site failed, so the others still get their new screenshots.
+      - name: Commit changed screenshots
+        if: ${{ !cancelled() }}
+        run: |
+          git add src/assets/projects
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: refresh project screenshots"
+          git pull --rebase
+          git push
