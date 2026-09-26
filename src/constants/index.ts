@@ -169,6 +169,8 @@ export type Project = {
     wake?: string;
     // Set before the page loads, e.g. sample data for an app that starts empty.
     localStorage?: Record<string, unknown>;
+    // A selector the page must show, or the old screenshot is kept and the run fails.
+    waitFor?: string;
   };
 };
 
@@ -196,7 +198,8 @@ export const PROJECTS: Project[] = [
     live: "https://sepia.onrender.com/",
     source: "https://github.com/salehinafnan/sepia",
     // The API is on Render's free tier, which sleeps when idle, and the app shows a notice while it wakes.
-    capture: { wake: "https://sepia-server.onrender.com/" },
+    // Each post is an <article>, so an empty feed keeps the old screenshot.
+    capture: { wake: "https://sepia-server.onrender.com/", waitFor: "article" },
   },
   {
     title: "Task Management App",

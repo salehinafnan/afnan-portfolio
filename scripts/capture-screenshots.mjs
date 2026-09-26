@@ -1,7 +1,7 @@
 // Keeps the screenshots of projects with a live link in step with the sites: opens each one in
 // Chrome and replaces its screenshot when the page looks different. Runs every morning in
 // .github/workflows/screenshots.yml, or locally with `npm run screenshots` (needs Google Chrome).
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { registerHooks } from "node:module";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright-core";
@@ -55,7 +55,7 @@ for (const { title, live, image, capture } of PROJECTS.filter((project) => proje
 
 await browser.close();
 
-async function screenshot(url, { colorScheme = "light", wake, localStorage } = {}) {
+async function screenshot(url, { colorScheme = "light", wake, localStorage, waitFor } = {}) {
   if (wake) await wakeUp(wake);
   // Dhaka time, so clocks on the page read as they do for the owner.
   const context = await browser.newContext({ viewport: VIEWPORT, colorScheme, timezoneId: "Asia/Dhaka" });
@@ -71,6 +71,12 @@ async function screenshot(url, { colorScheme = "light", wake, localStorage } = {
     if (!response?.ok()) throw new Error(`${url} answered ${response?.status()}`);
     // Some pages never go fully quiet, so this is only a head start.
     await page.waitForLoadState("networkidle", { timeout: 30_000 }).catch(() => {});
+    // Without it the page isn't worth showing, like a feed with no posts yet.
+    if (waitFor) {
+      await page.waitForSelector(waitFor, { timeout: 30_000 }).catch(() => {
+        throw new Error(`the page never showed ${waitFor}`);
+      });
+    }
     // Waits for web fonts. Entrances and fades are skipped to their end, and loops (a pulse, a
     // floating icon) are shown at their start, so the same page gives the same picture.
     const png = await page.screenshot({ animations: "disabled" });
@@ -109,7 +115,8 @@ function seed(entries) {
 // or its size doesn't match.
 async function difference(webp, file) {
   const pixels = (input) => sharp(input).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-  const [next, prev] = await Promise.all([pixels(webp), pixels(file).catch(() => null)]);
+  // Read into memory first: sharp keeps files it opens locked on Windows, so writing the new one would fail.
+  const [next, prev] = await Promise.all([pixels(webp), readFile(file).then(pixels).catch(() => null)]);
   if (prev?.info.width !== next.info.width || prev.info.height !== next.info.height) return 1;
   let changed = 0;
   for (let i = 0; i < next.data.length; i += 3) {
