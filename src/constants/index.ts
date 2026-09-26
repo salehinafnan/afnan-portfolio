@@ -179,8 +179,8 @@ export const PROJECTS: Project[] = [
   {
     title: "Sepia",
     description:
-      "A MERN stack social media app. Users can sign up, sign in, and create, like and delete their own posts, with changes showing up in real time on a fully responsive layout.",
-    technologies: ["MongoDB", "Express.js", "React", "Redux", "Node.js", "Material UI"],
+      "A MERN stack photo-sharing app with email and Google sign-in. Users create, edit, like and delete posts with a photo, caption and tags in an infinite-scrolling feed, with light and dark themes on a fully responsive layout.",
+    technologies: ["MongoDB", "Express.js", "React", "Redux Toolkit", "Node.js", "Tailwind CSS"],
     image: sepia,
     live: "https://sepia.onrender.com/",
     source: "https://github.com/salehinafnan/sepia",

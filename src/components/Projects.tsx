@@ -50,7 +50,9 @@ const Projects = () => {
 
   return (
     <section id="projects" aria-labelledby="projects-heading" className="py-16 sm:py-20">
-      <SectionHeading id="projects-heading">Projects</SectionHeading>
+      <SectionHeading id="projects-heading" eyebrow="06 — Selected work">
+        Projects
+      </SectionHeading>
 
       <ul className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
         <li data-reveal className="md:col-span-2">
@@ -64,9 +66,15 @@ const Projects = () => {
               />
             </div>
             <div className="flex grow flex-col p-6 sm:p-8 xl:justify-center xl:p-10">
-              <p className="mb-3 font-mono text-xs font-medium tracking-widest text-neutral-400 uppercase">Latest project</p>
-              <h3 className="mb-3 text-2xl font-semibold tracking-tight sm:text-3xl">{featured.title}</h3>
-              <p className="mb-6 max-w-2xl text-[0.9375rem] leading-relaxed text-neutral-400">{featured.description}</p>
+              <p className="mb-3 font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-neutral-400 uppercase">
+                Latest project
+              </p>
+              <h3 className="mb-3 text-[1.75rem] leading-none font-medium tracking-[-0.02em] text-neutral-50 sm:text-[2rem]">
+                {featured.title}
+              </h3>
+              <p className="mb-6 max-w-2xl text-[0.9375rem] leading-relaxed text-pretty text-neutral-400">
+                {featured.description}
+              </p>
               <TechTags technologies={featured.technologies} />
               <ProjectLinks project={featured} />
             </div>
@@ -82,8 +90,10 @@ const Projects = () => {
             <article className="glass-card group flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(255,255,255,0.06)]">
               <ProjectPreview image={project.image} title={project.title} />
               <div className="flex grow flex-col p-6 sm:p-8">
-                <h3 className="mb-3 text-xl font-semibold tracking-tight">{project.title}</h3>
-                <p className="mb-6 grow text-[0.9375rem] leading-relaxed text-neutral-400">{project.description}</p>
+                <h3 className="mb-3 text-xl font-semibold tracking-tight text-balance text-neutral-50">{project.title}</h3>
+                <p className="mb-6 grow text-[0.9375rem] leading-relaxed text-pretty text-neutral-400">
+                  {project.description}
+                </p>
                 <TechTags technologies={project.technologies} />
                 <ProjectLinks project={project} />
               </div>
@@ -93,7 +103,10 @@ const Projects = () => {
       </ul>
 
       <div className="mx-auto mt-20 max-w-6xl sm:mt-24">
-        <h3 data-reveal="down" className="mb-10 text-center text-2xl font-semibold tracking-tight sm:mb-12 sm:text-3xl">
+        <h3
+          data-reveal="down"
+          className="mb-10 text-center text-2xl font-medium tracking-[-0.02em] text-neutral-50 sm:mb-12 sm:text-[1.75rem]"
+        >
           More on GitHub
         </h3>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
@@ -105,7 +118,7 @@ const Projects = () => {
             >
               <article className="glass-card group relative flex h-full flex-col rounded-2xl p-6 transition-colors duration-300 hover:border-white/15 hover:bg-white/3">
                 <div className="mb-5 flex items-center gap-3">
-                  <FiFolder aria-hidden="true" className="size-6 text-neutral-300" />
+                  <FiFolder aria-hidden="true" className="size-6 text-neutral-400" />
                   {repo.team && (
                     <span className="rounded-full border border-neutral-700 px-2.5 py-0.5 text-[0.6875rem] font-medium text-neutral-400">
                       Team project
@@ -116,7 +129,7 @@ const Projects = () => {
                     className="ml-auto size-5 text-neutral-500 transition-[color,translate] duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-neutral-100"
                   />
                 </div>
-                <h4 className="mb-2 font-semibold tracking-tight text-neutral-100">
+                <h4 className="mb-2 font-semibold tracking-tight text-balance text-neutral-50">
                   {/* Stretched link: the whole card is clickable, but only the title is announced. */}
                   <a
                     href={repo.source}
@@ -128,8 +141,8 @@ const Projects = () => {
                     <span className="sr-only"> on GitHub</span>
                   </a>
                 </h4>
-                <p className="mb-5 grow text-sm leading-relaxed text-neutral-400">{repo.description}</p>
-                <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[0.6875rem] text-neutral-400">
+                <p className="mb-5 grow text-sm leading-relaxed text-pretty text-neutral-400">{repo.description}</p>
+                <ul className="flex flex-wrap gap-x-3 gap-y-1 font-mono text-[0.6875rem] tracking-wide text-neutral-400">
                   {repo.technologies.map((tech) => (
                     <li key={tech}>{tech}</li>
                   ))}

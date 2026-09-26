@@ -42,7 +42,9 @@ const TECHNOLOGIES = [
 const Technologies = () => {
   return (
     <section id="technologies" aria-labelledby="technologies-heading" className="py-16 sm:py-20 lg:py-24">
-      <SectionHeading id="technologies-heading">Technologies</SectionHeading>
+      <SectionHeading id="technologies-heading" eyebrow="02 — Toolkit">
+        Technologies
+      </SectionHeading>
       <ul className="mx-auto grid w-fit grid-cols-4 gap-x-2 gap-y-6 sm:grid-cols-8 sm:gap-x-3 lg:gap-5">
         {TECHNOLOGIES.map(({ name, Icon, color, url, dur }, index) => (
           <li key={name} data-reveal style={{ "--reveal-delay": `${index * 40}ms` } as React.CSSProperties}>

@@ -35,6 +35,18 @@
     scroll-margin-top: 1.5rem;
   }
 
+  /* Headings break into even lines; paragraphs avoid orphans on the last line. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
   :focus-visible {
     outline: 2px solid #d4d4d4;
     outline-offset: 3px;
