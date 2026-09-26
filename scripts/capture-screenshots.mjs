@@ -35,7 +35,7 @@ const NEEDED = new Set(["stylesheet", "script", "font", "image"]);
 
 const browser = await chromium.launch({ channel: "chrome" });
 
-for (const { title, live, image, capture } of PROJECTS.filter((project) => project.live)) {
+for (const { title, live, image, capture } of PROJECTS.filter((project) => project.live && project.capture !== false)) {
   try {
     const attempt = () => screenshot(live, capture);
     const png = await attempt().catch((error) => {
