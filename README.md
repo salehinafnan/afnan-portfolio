@@ -25,7 +25,7 @@ The CV is kept in Google Drive (`RESUME_DRIVE_ID` in `src/constants/index.ts`) a
 Projects with a live link keep their screenshots up to date on their own. Every morning `.github/workflows/screenshots.yml` runs `scripts/capture-screenshots.mjs`, which opens each live site in Chrome at 1920 × 960 and compares it with the screenshot in `src/assets/projects/`. When more than 1.5% of it changed, the new screenshot is committed, which redeploys the site; smaller differences, like a clock or today's date on the page, are ignored. A site that fails to load keeps its old screenshot and fails the run, which GitHub notifies you about.
 
 - To refresh now, open the Actions tab, pick Screenshots and click Run workflow. `npm run screenshots` does the same locally (Node 22.18 or newer and Google Chrome); commit the files it changes.
-- `capture` on a project in `src/constants/index.ts` sets how its site is loaded: the colour scheme, a sleeping backend to wake first, and `localStorage` entries to set before the page loads, such as sample data for an app that starts empty.
+- `capture` on a project in `src/constants/index.ts` sets how its site is loaded: the colour scheme, a sleeping backend to wake first, `localStorage` entries to set before the page loads, such as sample data for an app that starts empty, and `waitFor`, a selector the page must show before its screenshot counts. Sepia waits for a post, so while its feed is empty the old screenshot stays and the run fails, telling you the live demo has nothing to show.
 - A new project imports its screenshot like the others. With a live link, run `npm run screenshots` to create the file; without one, add a screenshot yourself.
 
 ## Notes
