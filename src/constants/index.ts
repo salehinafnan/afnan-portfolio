@@ -192,7 +192,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Sepia",
     description:
-      "A MERN stack photo-sharing app with email and Google sign-in. Users create, edit, like and delete posts with a photo, caption and tags in an infinite-scrolling feed, with light and dark themes on a fully responsive layout.",
+      "A MERN stack photo-sharing app with email and Google sign-in. Users create, edit, like and delete posts with a photo, caption and tags in an infinite-scrolling feed, with light and dark themes on a fully responsive layout. Likes update optimistically, photos are resized in the browser before upload, and the Express 5 API validates every request with zod, rate-limits sign-ins and is covered by integration tests.",
     technologies: ["MongoDB", "Express.js", "React", "Redux Toolkit", "Node.js", "Tailwind CSS"],
     image: sepia,
     live: "https://sepia.onrender.com/",
