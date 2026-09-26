@@ -20,7 +20,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: `${NAME} | Portfolio`,
+  title: "Afnan's Portfolio",
   description,
   authors: [{ name: NAME }],
   keywords: [
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    title: `${NAME} | ${ROLE}`,
+    title: "Afnan's Portfolio",
     description,
     siteName: NAME,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${NAME} | ${ROLE}`,
+    title: "Afnan's Portfolio",
     description,
   },
 };
