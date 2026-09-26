@@ -17,24 +17,24 @@ const FACTS = [
 const About = () => {
   return (
     <section id="about" aria-labelledby="about-heading" className="py-16 sm:py-20">
-      <SectionHeading id="about-heading">
+      <SectionHeading id="about-heading" eyebrow="01 — Introduction">
         About <Accent className="text-neutral-500">me</Accent>
       </SectionHeading>
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-5 lg:gap-12">
         <p
           data-reveal="left"
-          className="text-base leading-7 text-neutral-300/90 lg:col-span-3 lg:text-lg lg:leading-8"
+          className="text-base leading-7 text-pretty text-neutral-300 lg:col-span-3 lg:text-lg lg:leading-8"
         >
           {ABOUT_TEXT}
         </p>
         <dl data-reveal="right" className="grid grid-cols-2 gap-3 sm:gap-4 lg:col-span-2">
           {FACTS.map(({ icon: Icon, label, value, detail }) => (
             <div key={label} className="glass-card flex flex-col rounded-2xl p-4 sm:p-5">
-              <dt className="mb-3 flex items-center gap-2 font-mono text-[0.6875rem] font-medium tracking-widest text-neutral-400 uppercase">
-                <Icon aria-hidden="true" className="size-4 text-neutral-400" />
+              <dt className="mb-3 flex items-center gap-2 font-mono text-[0.6875rem] font-medium tracking-[0.16em] text-neutral-400 uppercase">
+                <Icon aria-hidden="true" className="size-4 text-neutral-500" />
                 {label}
               </dt>
-              <dd className="leading-snug font-semibold tracking-tight text-neutral-100">{value}</dd>
+              <dd className="leading-snug font-semibold tracking-tight text-balance text-neutral-50">{value}</dd>
               {detail && <dd className="mt-1 text-sm text-neutral-400">{detail}</dd>}
             </div>
           ))}

@@ -31,7 +31,7 @@ export default function Home() {
         <Contact />
       </main>
 
-      <footer className="mt-auto border-t border-neutral-800 py-8 text-center text-sm text-neutral-400">
+      <footer className="mt-auto border-t border-neutral-800 py-8 text-center text-[0.8125rem] text-neutral-500">
         <p>
           © {new Date().getFullYear()} {NAME}. All rights reserved.
         </p>

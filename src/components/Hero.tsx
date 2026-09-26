@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FiArrowRight, FiFileText } from "react-icons/fi";
 import profilePic from "../assets/afnanProfile.webp";
 import { HERO_CONTENT, NAME, RESUME_PDF, ROLE } from "../constants";
+import { Amp } from "./SectionHeading";
 
 // Hero lines all start on the first frame (nothing waits to paint, which keeps
 // LCP fast) and cascade in through increasing durations instead of delays.
@@ -10,6 +11,8 @@ const duration = (ms: number, delay = 0) =>
 
 const secondaryButton =
   "glass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors hover:bg-white/10 sm:px-6";
+
+const [roleStart, roleEnd] = ROLE.split(" & ");
 
 const Hero = () => {
   return (
@@ -33,10 +36,16 @@ const Hero = () => {
             className="enter-left text-gradient-alt text-lg font-medium tracking-tight sm:text-xl lg:text-2xl"
             style={duration(900)}
           >
-            {ROLE}
+            {roleEnd ? (
+              <>
+                {roleStart} <Amp /> {roleEnd}
+              </>
+            ) : (
+              ROLE
+            )}
           </p>
           <p
-            className="enter-left mt-6 mb-10 max-w-xl text-left text-base leading-7 text-neutral-300/90 lg:text-[1.0625rem] lg:leading-[1.8]"
+            className="enter-left mt-6 mb-10 max-w-xl text-left text-base leading-7 text-pretty text-neutral-300 lg:text-[1.0625rem] lg:leading-[1.8]"
             style={duration(1100)}
           >
             {HERO_CONTENT}
