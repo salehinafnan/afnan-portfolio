@@ -9,7 +9,7 @@ const duration = (ms: number, delay = 0) =>
   ({ "--duration": `${ms}ms`, "--delay": `${delay}ms` }) as React.CSSProperties;
 
 const secondaryButton =
-  "glass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors hover:bg-white/10 sm:px-6";
+  "glass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-colors hover:bg-fg-1/10 sm:px-6";
 
 const [roleStart, roleEnd] = ROLE.split(" & ");
 
@@ -40,7 +40,7 @@ const Hero = () => {
                 {roleStart}
                 <span className="sr-only"> and </span>
                 {/* Thin divider instead of an ampersand. */}
-                <span aria-hidden="true" className="mx-3 inline-block h-[0.8em] w-px bg-neutral-600 align-middle" />
+                <span aria-hidden="true" className="mx-3 inline-block h-[0.8em] w-px bg-line-2 align-middle" />
                 {roleEnd}
               </>
             ) : (
@@ -48,7 +48,7 @@ const Hero = () => {
             )}
           </p>
           <p
-            className="enter-left mt-6 mb-10 max-w-xl text-left text-base leading-7 text-pretty text-neutral-300 lg:text-[1.0625rem] lg:leading-[1.8]"
+            className="enter-left mt-6 mb-10 max-w-xl text-left text-base leading-7 text-pretty text-fg-2 lg:text-[1.0625rem] lg:leading-[1.8]"
             style={duration(1100)}
           >
             {HERO_CONTENT}
@@ -56,7 +56,7 @@ const Hero = () => {
           <div className="enter-left flex flex-wrap justify-center gap-3 lg:justify-start" style={duration(1300)}>
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2 rounded-full bg-neutral-100 px-5 py-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-300 sm:px-6"
+              className="group inline-flex items-center gap-2 rounded-full bg-btn px-5 py-3 text-sm font-medium text-btn-fg transition-colors hover:bg-btn-hover sm:px-6"
             >
               View Work
               <FiArrowRight

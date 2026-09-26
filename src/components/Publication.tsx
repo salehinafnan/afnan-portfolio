@@ -10,29 +10,29 @@ const Publication = () => {
       <ol className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
         {PUBLICATIONS.map((pub, index) => (
           <li key={pub.title} data-reveal style={{ "--reveal-delay": `${index * 100}ms` } as React.CSSProperties}>
-            <article className="glass-card flex flex-col gap-3 rounded-3xl p-6 transition-colors hover:bg-white/3 sm:p-8 md:flex-row md:gap-8">
-              <p className="shrink-0 font-mono text-[0.6875rem] tracking-[0.16em] text-balance text-neutral-400 uppercase md:w-1/4 md:pt-2">
+            <article className="glass-card flex flex-col gap-3 rounded-3xl p-6 transition-colors hover:bg-fg-1/3 sm:p-8 md:flex-row md:gap-8">
+              <p className="shrink-0 font-mono text-[0.6875rem] tracking-[0.16em] text-balance text-fg-3 uppercase md:w-1/4 md:pt-2">
                 {pub.date}
               </p>
               <div className="md:w-3/4">
-                <h3 className="text-lg leading-snug font-semibold tracking-tight text-balance text-neutral-50 sm:text-xl">
+                <h3 className="text-lg leading-snug font-semibold tracking-tight text-balance text-fg-1 sm:text-xl">
                   {pub.title}
                 </h3>
-                <p className="mt-2 text-sm text-neutral-400">
+                <p className="mt-2 text-sm text-fg-3">
                   {pub.authors.map((author, i) => (
                     <Fragment key={author}>
                       {i > 0 && ", "}
-                      {author === NAME ? <span className="font-medium text-neutral-200">{author}</span> : author}
+                      {author === NAME ? <span className="font-medium text-fg-2">{author}</span> : author}
                     </Fragment>
                   ))}
                 </p>
-                <p className="mt-1.5 font-serif text-[1.0625rem] leading-snug text-neutral-400 italic">{pub.venue}</p>
-                <p className="mt-3 text-[0.9375rem] leading-relaxed text-pretty text-neutral-400">{pub.description}</p>
+                <p className="mt-1.5 font-serif text-[1.0625rem] leading-snug text-fg-3 italic">{pub.venue}</p>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-pretty text-fg-3">{pub.description}</p>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <span className="rounded-full border border-neutral-700 bg-neutral-800/60 px-3 py-1 text-xs font-medium text-neutral-100">
+                  <span className="rounded-full border border-line-2 bg-chip px-3 py-1 text-xs font-medium text-fg-1">
                     {pub.publisher}
                   </span>
-                  <span className="rounded-full border border-neutral-800 bg-neutral-900/60 px-3 py-1 text-xs font-medium text-neutral-400">
+                  <span className="rounded-full border border-line-1 bg-tag px-3 py-1 text-xs font-medium text-fg-3">
                     {pub.type}
                   </span>
                   <LinkPill href={pub.link}>

@@ -5,7 +5,7 @@ import { useState, type FormEvent } from "react";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const fieldClass =
-  "w-full rounded-xl border border-neutral-700 bg-neutral-900/50 px-4 py-3 text-base text-white outline-none transition-colors placeholder:text-neutral-500 focus:border-neutral-400 focus:ring-1 focus:ring-neutral-400";
+  "w-full rounded-xl border border-line-2 bg-field px-4 py-3 text-base text-fg-1 outline-none transition-colors placeholder:text-hint focus:border-field-focus focus:ring-1 focus:ring-field-focus";
 
 // Submits in the background so visitors stay on the page. Without JavaScript the
 // form still posts straight to FormSubmit.
@@ -45,7 +45,7 @@ const ContactForm = ({ email }: { email: string }) => {
       <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
       <div>
-        <label htmlFor="name" className="mb-2 block text-sm font-medium text-neutral-400">
+        <label htmlFor="name" className="mb-2 block text-sm font-medium text-fg-3">
           Name
         </label>
         <input
@@ -60,7 +60,7 @@ const ContactForm = ({ email }: { email: string }) => {
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-2 block text-sm font-medium text-neutral-400">
+        <label htmlFor="email" className="mb-2 block text-sm font-medium text-fg-3">
           Email Address
         </label>
         <input
@@ -75,7 +75,7 @@ const ContactForm = ({ email }: { email: string }) => {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-neutral-400">
+        <label htmlFor="message" className="mb-2 block text-sm font-medium text-fg-3">
           Message
         </label>
         <textarea
@@ -92,17 +92,19 @@ const ContactForm = ({ email }: { email: string }) => {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="w-full rounded-xl bg-neutral-100 py-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-300 disabled:cursor-wait disabled:opacity-70"
+          className="w-full rounded-xl bg-btn py-3 text-sm font-medium text-btn-fg transition-colors hover:bg-btn-hover disabled:cursor-wait disabled:opacity-70"
         >
           {status === "sending" ? "Sending…" : "Send Message"}
         </button>
 
         <p role="status" aria-live="polite" className="mt-4 text-center text-sm empty:mt-0">
           {status === "sent" && (
-            <span className="text-emerald-400">Thanks! Your message has been sent. I&apos;ll get back to you soon.</span>
+            <span className="text-emerald-600 dark:text-emerald-400">
+              Thanks! Your message has been sent. I&apos;ll get back to you soon.
+            </span>
           )}
           {status === "error" && (
-            <span className="text-red-400">
+            <span className="text-red-600 dark:text-red-400">
               Something went wrong. Please try again or email me at{" "}
               <a href={`mailto:${email}`} className="underline underline-offset-2">
                 {email}
