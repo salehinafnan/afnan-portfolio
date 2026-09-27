@@ -1,9 +1,9 @@
 import type { StaticImageData } from "next/image";
+import anxietyDetection from "../assets/projects/anxiety-detection.webp";
 import blockGraph from "../assets/projects/block-graph.webp";
 import duaWebApp from "../assets/projects/dua-web-app.webp";
 import nodrift from "../assets/projects/nodrift.webp";
 import phoneStore from "../assets/projects/phone-store.webp";
-import portfolio from "../assets/projects/portfolio.webp";
 import sepia from "../assets/projects/sepia.webp";
 import taskManager from "../assets/projects/task-manager.webp";
 
@@ -208,11 +208,20 @@ export const PROJECTS: Project[] = [
   {
     title: "Dua Web App",
     description:
-      "A bilingual English and Bangla reader for 176 duas (Islamic supplications), with Arabic text, transliteration, translation and recitation audio. It has full-text search, bookmarks and reader settings that apply before the first paint. I rebuilt it from a static take-home prototype into a self-contained Next.js app with pre-rendered pages and a REST API over SQLite, and fixed data problems I found along the way, including mixed Unicode encodings that silently broke Bangla search.",
+      "A bilingual English and Bangla reader for 176 duas (Islamic supplications) with Arabic text, transliteration, translation, references and recitation audio. It has full-text search that matches Bangla however it is typed, bookmarks, and reader settings for script, font size and night mode that apply before the first paint. Every category is pre-rendered from a bundled SQLite database, which also backs a cached REST API served by Next.js or a standalone Express server.",
     technologies: ["Next.js", "React", "Tailwind CSS", "SQLite", "Express.js"],
     image: duaWebApp,
     live: "https://dua-web-app-afnan.vercel.app/",
     source: "https://github.com/salehinafnan/dua-web-app",
+  },
+  {
+    title: "Multimodal Anxiety Detection",
+    description:
+      "My undergraduate thesis, TI-Fusion, which detects anxiety from two modalities. A classifier grades answers to the seven anxiety items of the DASS-21 questionnaire into five severity levels, and a CNN reads facial expressions from the CK+48 and KDEF datasets through a bank of Gabor filters. A small neural network fuses both outputs into a final anxiety or no-anxiety decision, and one function runs the whole pipeline end to end.",
+    technologies: ["Python", "TensorFlow", "scikit-learn", "XGBoost", "OpenCV", "Jupyter"],
+    // A diagram of the pipeline, drawn with the repo's real Gabor kernels.
+    image: anxietyDetection,
+    source: "https://github.com/salehinafnan/anxiety-disorder-detection-using-multimoadal-learning",
   },
   {
     title: "Task Management App",
@@ -312,20 +321,10 @@ export const PROJECTS: Project[] = [
   {
     title: "Phone Store",
     description:
-      "A single-page phone shop with a product catalogue, product pages, an “added to cart” dialog and a cart with quantities, tax and totals. I first built it for a MERN course, then modernised it from a Create React App setup that no longer installed to Vite and React 19, replaced mutable cart logic with a tested pure reducer, and added URL-driven routing and filters, a persistent cart and an accessible UI.",
+      "A single-page phone shop with a product catalogue, product pages, an “added to cart” dialog and a cart with quantities, tax and totals. Brand filters and price sorting live in the URL, product pages deep-link by id, and the cart is a pure reducer that persists to localStorage. The dialog works from the keyboard, icons and fonts are self-hosted, and Vitest and Testing Library cover the cart logic and user flows.",
     technologies: ["React", "Vite", "React Router", "styled-components", "Bootstrap", "Vitest"],
     image: phoneStore,
     source: "https://github.com/salehinafnan/react-phone-store",
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "This site. Server-rendered with the Next.js App Router, it ships almost no client JavaScript, animates with CSS alone and is tuned for accessibility and Core Web Vitals.",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    image: portfolio,
-    live: "https://salehinafnan.vercel.app/",
-    source: "https://github.com/salehinafnan/afnan-portfolio",
-    capture: { colorScheme: "dark" },
   },
 ];
 
@@ -340,23 +339,16 @@ export type Repository = {
 // Smaller and academic work, shown as compact cards.
 export const REPOSITORIES: Repository[] = [
   {
-    title: "Multimodal Anxiety Detection",
-    description:
-      "My undergraduate thesis, TI-Fusion, which detects anxiety by fusing a DASS-21 questionnaire model with a Gabor-feature CNN on facial expressions. Revisiting it, I fixed evaluation flaws, including a fusion merge that made the “fused” label equal the image prediction and oversampling that leaked into cross-validation, and rebuilt it as a reproducible three-stage pipeline.",
-    technologies: ["Python", "TensorFlow", "scikit-learn", "XGBoost", "OpenCV"],
-    source: "https://github.com/salehinafnan/anxiety-disorder-detection-using-multimoadal-learning",
-  },
-  {
     title: "Long-Polling Message Server",
     description:
-      "An HTTP message queue built on long polling that delivers each message to exactly one consumer and serves waiting consumers first come, first served. My original coding-challenge solution polled every 100 ms and let disconnected clients swallow messages. The rewrite is event-driven, cancels abandoned waits with AbortSignal and has 17 tests.",
+      "An HTTP message queue built on long polling. Producers post JSON messages to a key, and consumers wait on it until a message arrives or the poll times out. Each message reaches exactly one consumer, waiting consumers are served in order, and a disconnect cancels its wait through an AbortSignal, so no message is lost. It has 17 tests.",
     technologies: ["Node.js", "Express.js", "node:test"],
     source: "https://github.com/salehinafnan/backend-long-polling-server",
   },
   {
     title: "Vaxin",
     description:
-      "An Android app for COVID-19 vaccine registration in Bangladesh, where citizens check their vaccination dates and three admin roles schedule and record doses in Firebase. I turned an incomplete source export into a full Android Studio project and fixed privacy and crash bugs, including one that stored users' passwords as database keys.",
+      "An Android app for managing COVID-19 vaccination in Bangladesh, with a mixed Bangla and English interface. Citizens register with their NID, see their vaccination date and download a vaccine card, while three PIN-protected admin roles assign dates, record doses and search registrations. It also lists hospitals and ambulances by division, with all data in Firebase Realtime Database.",
     technologies: ["Java", "Android", "Firebase", "Gradle"],
     source: "https://github.com/salehinafnan/vaxin-1.0",
     team: true,
@@ -364,14 +356,22 @@ export const REPOSITORIES: Repository[] = [
   {
     title: "Cereal Nutrition Analysis",
     description:
-      "A data analysis of 77 breakfast cereals. Sugar is the strongest predictor of a low rating, and the rating itself turns out to be an exact linear formula of nine nutrients, which explains a “perfect” regression score. Revisiting the notebook, I fixed a bug that made Ridge and Lasso report the linear model's score, and removed data leakage.",
+      "An analysis of 77 breakfast cereals, with Linear, Ridge and Lasso models that predict each cereal's rating from its nutrition facts. Sugar is the strongest predictor of a low rating (r = −0.76), and the rating is an exact linear formula of nine nutrients: each gram of fibre adds 3.4 points and each gram of sugar costs 0.7.",
     technologies: ["Python", "pandas", "scikit-learn", "seaborn"],
     source: "https://github.com/salehinafnan/machine-learning-implementation",
   },
   {
+    title: "Air Quality Monitor",
+    description:
+      "An Arduino Uno air quality monitor, built for an electronics lab, that shows an MQ-135 gas sensor's reading on a 16x2 LCD and flags the air as good or bad. It averages 10 samples per update, holds a dead-band around the threshold so the status doesn't flicker, and streams readings to the Arduino Serial Plotter. The repo includes the Proteus simulation and breadboard wiring.",
+    technologies: ["Arduino", "C++", "MQ-135", "Proteus"],
+    source: "https://github.com/salehinafnan/air-quality-sensor",
+    team: true,
+  },
+  {
     title: "Campus Network with OSPF",
     description:
-      "A six-department campus network from the university networking lab, emulated in GNS3 with VLSM addressing and OSPF over a partial mesh of serial links, so losing any one link leaves every LAN reachable. I later wrote a Python linter that checks the topology and router configs, and used it to review the design and propose a corrected point-to-point addressing plan.",
+      "A six-department campus network for the university networking lab, emulated in GNS3 with Cisco 7200 routers, VLSM addressing and single-area OSPF. Eight serial links form a partial mesh, so losing any one link leaves every LAN reachable. A Python linter checks the topology and every router and PC config, prints the addressing plan and draws the topology diagram.",
     technologies: ["GNS3", "Cisco IOS", "OSPF", "VLSM", "Python"],
     source: "https://github.com/salehinafnan/campus-network-ospf",
     team: true,
@@ -379,32 +379,31 @@ export const REPOSITORIES: Repository[] = [
   {
     title: "Campus Network with NAT & DHCP",
     description:
-      "The networking lab's final project, which adds internet access through NAT/PAT and automatic addressing through DHCP to the OSPF campus network. Its router configs were never saved, so I later completed the lab with configs that implement the design and give each serial link its own /30, which the same Python linter validates statically with no errors or warnings.",
+      "The networking lab's final project: the campus network with internet access through NAT/PAT and automatic host addressing through DHCP. Each department router serves its own DHCP pool and translates its LAN onto an uplink to the GNS3 NAT node, while OSPF runs over a ring of six serial links, one /30 each. The same Python linter validates the whole lab.",
     technologies: ["GNS3", "Cisco IOS", "NAT/PAT", "DHCP", "Python"],
     source: "https://github.com/salehinafnan/campus-network-nat",
     team: true,
   },
   {
-    title: "Air Quality Monitor",
-    description:
-      "An electronics lab project: an Arduino Uno monitor that shows an MQ-135 gas sensor's reading on a 16x2 LCD and flags the air as good or bad, simulated in Proteus and built on a breadboard. I later improved the firmware with sample averaging, a dead-band on the alarm threshold and serial plotting, and documented why the raw reading isn't a calibrated ppm value.",
-    technologies: ["Arduino", "C++", "MQ-135", "Proteus"],
-    source: "https://github.com/salehinafnan/air-quality-sensor",
-    team: true,
-  },
-  {
     title: "Ostad MERN Assignments",
     description:
-      "Front-end assignments from Ostad's MERN course: a React store and my personal portfolio site. Revisiting the portfolio, I tracked down why its typing animation never ran and why parts of the layout were silently dropped (stray braces in the CSS), wired up the contact form and shrank a 7 MB photo to 45 KB.",
+      "Two front-end assignments from Ostad's MERN course: a React phone store with product pages, a cart and Jest tests, and my personal portfolio site in HTML, CSS and jQuery, with a typing animation, skill bars and a contact form that opens the visitor's email app with the message filled in.",
     technologies: ["React", "React Router", "HTML/CSS", "jQuery"],
     source: "https://github.com/salehinafnan/ostad-mern-assignments",
   },
   {
     title: "Competitive Programming",
     description:
-      "193 C++ solutions from CodeChef, Codeforces, LightOJ and SPOJ, a few using a segmented sieve, binary search on the answer or DFS. Going back through them, I found and fixed about 20 wrong or unsafe solutions (wrong formulas, integer overflows, a buffer overflow), sorted them by judge and added CI that compiles every file.",
+      "193 C++ solutions from CodeChef, Codeforces, LightOJ and SPOJ, organised by judge. Most are implementation and maths problems, and a few use a segmented sieve, binary search on the answer, DFS flood fill, geometry, modular inverses or prefix sums. A GitHub Actions workflow compiles every solution.",
     technologies: ["C++17", "Algorithms", "clang-format", "GitHub Actions"],
     source: "https://github.com/salehinafnan/competitive-programming",
+  },
+  {
+    title: "Data Structures and Algorithms",
+    description:
+      "34 C++ practice programs from a data structures and algorithms course, in six topic folders covering control flow and patterns, bitwise operators, number systems, functions, arrays and two LeetCode problems. A Makefile builds them, and a test suite of 51 cases checks every program in GitHub Actions CI.",
+    technologies: ["C++17", "Make", "Bash", "GitHub Actions"],
+    source: "https://github.com/salehinafnan/data-structure-and-algorithm",
   },
 ];
 
