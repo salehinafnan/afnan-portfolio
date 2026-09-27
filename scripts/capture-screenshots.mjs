@@ -1,5 +1,5 @@
 // Keeps the screenshots of projects with a live link in step with the sites: opens each one in
-// Chrome and replaces its screenshot when the page looks different. Runs every morning in
+// Chrome and replaces its screenshot when the page looks different. Runs once a week in
 // .github/workflows/screenshots.yml, or locally with `npm run screenshots` (needs Google Chrome).
 import { readFile, writeFile } from "node:fs/promises";
 import { registerHooks } from "node:module";

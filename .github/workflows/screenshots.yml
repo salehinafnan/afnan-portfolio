@@ -1,10 +1,11 @@
 # Keeps the screenshots in the Projects section in step with the live sites (see
-# scripts/capture-screenshots.mjs). Runs every morning, or from the Actions tab with Run workflow.
+# scripts/capture-screenshots.mjs). Runs once a week, or from the Actions tab with Run workflow.
 name: Screenshots
 
 on:
   schedule:
-    - cron: "37 1 * * *" # 07:37 in Dhaka
+    - cron: "0 3 * * 0" # Sundays at 03:00
+      timezone: "Asia/Dhaka"
   workflow_dispatch:
 
 permissions:
