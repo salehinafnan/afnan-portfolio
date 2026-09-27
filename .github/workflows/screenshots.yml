@@ -4,7 +4,8 @@ name: Screenshots
 
 on:
   schedule:
-    - cron: "0 3 * * 0" # Sundays at 03:00
+    # Sundays at 03:07. Runs on the hour are the likeliest to start late.
+    - cron: "7 3 * * 0"
       timezone: "Asia/Dhaka"
   workflow_dispatch:
 

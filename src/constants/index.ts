@@ -160,22 +160,25 @@ export type Project = {
   title: string;
   description: string;
   technologies: string[];
-  // With a live link, scripts/capture-screenshots.mjs keeps this in step with the site.
+  // With a live link, scripts/capture-screenshots.mjs keeps this in step with the site, so a new
+  // live project can start with any picture here until the next run replaces it.
   image: StaticImageData;
   live?: string;
   source: string;
-  // How that script loads the site, or false to keep a screenshot made by hand.
-  capture?:
-    | false
-    | {
-        colorScheme?: "light" | "dark";
-        // A backend that sleeps when idle, woken before the page loads.
-        wake?: string;
-        // Set before the page loads, e.g. sample data for an app that starts empty.
-        localStorage?: Record<string, unknown>;
-        // A selector the page must show, or the old screenshot is kept and the run shows a warning.
-        waitFor?: string;
-      };
+  // How that script loads the site.
+  capture?: {
+    colorScheme?: "light" | "dark";
+    // A backend that sleeps when idle, woken before the page loads.
+    wake?: string;
+    // Set before the page loads, e.g. sample data for an app that starts empty.
+    localStorage?: Record<string, unknown>;
+    // A selector the page must show, or the old screenshot is kept and the run shows a warning.
+    waitFor?: string;
+    // Selectors clicked in order once the page has loaded, e.g. to build something worth showing.
+    clicks?: string[];
+    // Math.random gives the same numbers on every run, starting from this seed (0 by default).
+    randomSeed?: number;
+  };
 };
 
 // The date `days` from today in Dhaka, as YYYY-MM-DD.
@@ -315,8 +318,12 @@ export const PROJECTS: Project[] = [
     image: blockGraph,
     live: "https://random-block-graph-generator.vercel.app/",
     source: "https://github.com/salehinafnan/random-block-graph-generator",
-    // A fresh visit is one block at a random spot, so the screenshot is made by hand to show a tree.
-    capture: false,
+    // A fresh visit is a lone root block, so the root gets three children and each of those one more.
+    // New blocks land at random, and this seed spreads them out with no overlaps or crossing lines.
+    capture: {
+      clicks: [0, 0, 0, 1, 2, 3].map((block) => `[aria-label="Add child block"] >> nth=${block}`),
+      randomSeed: 546,
+    },
   },
   {
     title: "Phone Store",

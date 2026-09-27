@@ -35,7 +35,7 @@ const NEEDED = new Set(["stylesheet", "script", "font", "image"]);
 
 const browser = await chromium.launch({ channel: "chrome" });
 
-for (const { title, live, image, capture } of PROJECTS.filter((project) => project.live && project.capture !== false)) {
+for (const { title, live, image, capture } of PROJECTS.filter((project) => project.live)) {
   try {
     const attempt = () => screenshot(live, capture);
     const png = await attempt().catch((error) => {
@@ -61,11 +61,17 @@ for (const { title, live, image, capture } of PROJECTS.filter((project) => proje
 
 await browser.close();
 
-async function screenshot(url, { colorScheme = "light", wake, localStorage, waitFor } = {}) {
+async function screenshot(
+  url,
+  { colorScheme = "light", wake, localStorage, waitFor, clicks = [], randomSeed = 0 } = {},
+) {
   if (wake) await wakeUp(wake);
   // Dhaka time, so clocks on the page read as they do for the owner.
   const context = await browser.newContext({ viewport: VIEWPORT, colorScheme, timezoneId: "Asia/Dhaka" });
   try {
+    // Whatever a page places at random, like new blocks on the block graph, lands in the same spot
+    // on every run.
+    await context.addInitScript(sameRandom, randomSeed);
     if (localStorage) await context.addInitScript(seed, localStorage);
     const page = await context.newPage();
     const failed = [];
@@ -84,6 +90,9 @@ async function screenshot(url, { colorScheme = "light", wake, localStorage, wait
         throw Object.assign(new Error(`the page never showed ${waitFor}, only "${shown}"`), { missing: true });
       });
     }
+    for (const selector of clicks) await page.locator(selector).click();
+    // So nothing the mouse last touched is shown hovered.
+    if (clicks.length) await page.mouse.move(0, 0);
     // Waits for web fonts. Entrances and fades are skipped to their end, and loops (a pulse, a
     // floating icon) are shown at their start, so the same page gives the same picture.
     const png = await page.screenshot({ animations: "disabled" });
@@ -112,6 +121,18 @@ function report(level, message) {
   if (!process.env.GITHUB_ACTIONS) return console[level === "error" ? "error" : "warn"](message);
   // A workflow command is a single line, so line breaks are escaped, and so is the % that escapes them.
   console.log(`::${level}::${message.replace(/[%\r\n]/g, encodeURIComponent)}`);
+}
+
+// Runs in the page before its own scripts: a small seeded generator (mulberry32) in place of
+// Math.random, so it gives the same numbers every time.
+function sameRandom(seed) {
+  let state = seed;
+  Math.random = () => {
+    state = (state + 0x6d2b79f5) | 0;
+    let t = Math.imul(state ^ (state >>> 15), state | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 2 ** 32;
+  };
 }
 
 // Runs in the page before its own scripts.
