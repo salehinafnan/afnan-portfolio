@@ -1,6 +1,8 @@
 import type { StaticImageData } from "next/image";
 import blockGraph from "../assets/projects/block-graph.webp";
+import duaWebApp from "../assets/projects/dua-web-app.webp";
 import nodrift from "../assets/projects/nodrift.webp";
+import phoneStore from "../assets/projects/phone-store.webp";
 import portfolio from "../assets/projects/portfolio.webp";
 import sepia from "../assets/projects/sepia.webp";
 import taskManager from "../assets/projects/task-manager.webp";
@@ -204,6 +206,15 @@ export const PROJECTS: Project[] = [
     capture: { wake: "https://sepia-server.onrender.com/", waitFor: "article" },
   },
   {
+    title: "Dua Web App",
+    description:
+      "A bilingual English and Bangla reader for 176 duas (Islamic supplications), with Arabic text, transliteration, translation and recitation audio. It has full-text search, bookmarks and reader settings that apply before the first paint. I rebuilt it from a static take-home prototype into a self-contained Next.js app with pre-rendered pages and a REST API over SQLite, and fixed data problems I found along the way, including mixed Unicode encodings that silently broke Bangla search.",
+    technologies: ["Next.js", "React", "Tailwind CSS", "SQLite", "Express.js"],
+    image: duaWebApp,
+    live: "https://dua-web-app-afnan.vercel.app/",
+    source: "https://github.com/salehinafnan/dua-web-app",
+  },
+  {
     title: "Task Management App",
     description:
       "A keyboard-friendly task manager with Today, Upcoming, project and tag views, each as a list or a drag-and-drop board. Quick add picks up dates, priorities and tags from entries like “Send invoice friday !high #work”, and tasks carry repeat rules, notes and subtasks. State is managed with MobX-State-Tree, saved to local storage and synced across tabs.",
@@ -299,6 +310,14 @@ export const PROJECTS: Project[] = [
     capture: false,
   },
   {
+    title: "Phone Store",
+    description:
+      "A single-page phone shop with a product catalogue, product pages, an “added to cart” dialog and a cart with quantities, tax and totals. I first built it for a MERN course, then modernised it from a Create React App setup that no longer installed to Vite and React 19, replaced mutable cart logic with a tested pure reducer, and added URL-driven routing and filters, a persistent cart and an accessible UI.",
+    technologies: ["React", "Vite", "React Router", "styled-components", "Bootstrap", "Vitest"],
+    image: phoneStore,
+    source: "https://github.com/salehinafnan/react-phone-store",
+  },
+  {
     title: "Portfolio Website",
     description:
       "This site. Server-rendered with the Next.js App Router, it ships almost no client JavaScript, animates with CSS alone and is tuned for accessibility and Core Web Vitals.",
@@ -321,62 +340,70 @@ export type Repository = {
 // Smaller and academic work, shown as compact cards.
 export const REPOSITORIES: Repository[] = [
   {
-    title: "TI-Fusion",
+    title: "Multimodal Anxiety Detection",
     description:
-      "Code behind my IEEE and JUCS papers. Detects anxiety disorders by late fusion of a CNN trained on Gabor-filtered facial expressions and a model trained on DASS-21 questionnaire answers.",
-    technologies: ["Python", "TensorFlow", "scikit-learn", "OpenCV"],
+      "My undergraduate thesis, TI-Fusion, which detects anxiety by fusing a DASS-21 questionnaire model with a Gabor-feature CNN on facial expressions. Revisiting it, I fixed evaluation flaws, including a fusion merge that made the “fused” label equal the image prediction and oversampling that leaked into cross-validation, and rebuilt it as a reproducible three-stage pipeline.",
+    technologies: ["Python", "TensorFlow", "scikit-learn", "XGBoost", "OpenCV"],
     source: "https://github.com/salehinafnan/anxiety-disorder-detection-using-multimoadal-learning",
   },
   {
-    title: "Vaxin 1.0",
+    title: "Long-Polling Message Server",
     description:
-      "An Android app for vaccine registration and tracking. People register with their NID and check their dose dates, hospital admins schedule doses, and it adds ambulance contacts, a BMI calculator and COVID-19 news.",
-    technologies: ["Java", "Android", "Firebase"],
+      "An HTTP message queue built on long polling that delivers each message to exactly one consumer and serves waiting consumers first come, first served. My original coding-challenge solution polled every 100 ms and let disconnected clients swallow messages. The rewrite is event-driven, cancels abandoned waits with AbortSignal and has 17 tests.",
+    technologies: ["Node.js", "Express.js", "node:test"],
+    source: "https://github.com/salehinafnan/backend-long-polling-server",
+  },
+  {
+    title: "Vaxin",
+    description:
+      "An Android app for COVID-19 vaccine registration in Bangladesh, where citizens check their vaccination dates and three admin roles schedule and record doses in Firebase. I turned an incomplete source export into a full Android Studio project and fixed privacy and crash bugs, including one that stored users' passwords as database keys.",
+    technologies: ["Java", "Android", "Firebase", "Gradle"],
     source: "https://github.com/salehinafnan/vaxin-1.0",
     team: true,
   },
   {
-    title: "Dua & Ruqyah",
+    title: "Cereal Nutrition Analysis",
     description:
-      "A Next.js front end for browsing duas by category and sub-category, backed by an Express REST API over a SQLite database.",
-    technologies: ["Next.js", "Express.js", "SQLite", "Tailwind CSS"],
-    source: "https://github.com/salehinafnan/dua-web-app-front-end",
-  },
-  {
-    title: "Long-Polling Server",
-    description:
-      "An Express server where clients wait up to 30 seconds on a key and receive queued data, in order, the moment it is pushed.",
-    technologies: ["Node.js", "Express.js"],
-    source: "https://github.com/salehinafnan/backend-long-polling-server",
-  },
-  {
-    title: "Cereal Rating Models",
-    description:
-      "Explores the nutrition facts of 80 breakfast cereals, then trains linear, ridge and lasso regression models to predict their ratings.",
+      "A data analysis of 77 breakfast cereals. Sugar is the strongest predictor of a low rating, and the rating itself turns out to be an exact linear formula of nine nutrients, which explains a “perfect” regression score. Revisiting the notebook, I fixed a bug that made Ridge and Lasso report the linear model's score, and removed data leakage.",
     technologies: ["Python", "pandas", "scikit-learn", "seaborn"],
     source: "https://github.com/salehinafnan/machine-learning-implementation",
   },
   {
-    title: "Campus Network",
+    title: "Campus Network with OSPF",
     description:
-      "A GNS3 simulation of a six-department university network, taken from static routing to OSPF, then extended with NAT and DHCP for internet access.",
-    technologies: ["GNS3", "OSPF", "NAT", "DHCP"],
-    source: "https://github.com/salehinafnan/campus-network-gns3",
+      "A six-department campus network from the university networking lab, emulated in GNS3 with VLSM addressing and OSPF over a partial mesh of serial links, so losing any one link leaves every LAN reachable. I later wrote a Python linter that checks the topology and router configs, and used it to review the design and propose a corrected point-to-point addressing plan.",
+    technologies: ["GNS3", "Cisco IOS", "OSPF", "VLSM", "Python"],
+    source: "https://github.com/salehinafnan/campus-network-ospf",
+    team: true,
+  },
+  {
+    title: "Campus Network with NAT & DHCP",
+    description:
+      "The networking lab's final project, which adds internet access through NAT/PAT and automatic addressing through DHCP to the OSPF campus network. Its router configs were never saved, so I later completed the lab with configs that implement the design and give each serial link its own /30, which the same Python linter validates statically with no errors or warnings.",
+    technologies: ["GNS3", "Cisco IOS", "NAT/PAT", "DHCP", "Python"],
+    source: "https://github.com/salehinafnan/campus-network-nat",
     team: true,
   },
   {
     title: "Air Quality Monitor",
     description:
-      "An Arduino Uno device that reads gas levels from an MQ-135 sensor and shows the ppm and an air-quality verdict on an LCD, designed and simulated in Proteus.",
-    technologies: ["Arduino", "C++", "Proteus"],
+      "An electronics lab project: an Arduino Uno monitor that shows an MQ-135 gas sensor's reading on a 16x2 LCD and flags the air as good or bad, simulated in Proteus and built on a breadboard. I later improved the firmware with sample averaging, a dead-band on the alarm threshold and serial plotting, and documented why the raw reading isn't a calibrated ppm value.",
+    technologies: ["Arduino", "C++", "MQ-135", "Proteus"],
     source: "https://github.com/salehinafnan/air-quality-sensor",
     team: true,
   },
   {
+    title: "Ostad MERN Assignments",
+    description:
+      "Front-end assignments from Ostad's MERN course: a React store and my personal portfolio site. Revisiting the portfolio, I tracked down why its typing animation never ran and why parts of the layout were silently dropped (stray braces in the CSS), wired up the contact form and shrank a 7 MB photo to 45 KB.",
+    technologies: ["React", "React Router", "HTML/CSS", "jQuery"],
+    source: "https://github.com/salehinafnan/ostad-mern-assignments",
+  },
+  {
     title: "Competitive Programming",
     description:
-      "Nearly 200 solutions to Codeforces and CodeChef problems, written while sharpening problem solving and algorithms.",
-    technologies: ["C++", "Algorithms", "Data Structures"],
+      "193 C++ solutions from CodeChef, Codeforces, LightOJ and SPOJ, a few using a segmented sieve, binary search on the answer or DFS. Going back through them, I found and fixed about 20 wrong or unsafe solutions (wrong formulas, integer overflows, a buffer overflow), sorted them by judge and added CI that compiles every file.",
+    technologies: ["C++17", "Algorithms", "clang-format", "GitHub Actions"],
     source: "https://github.com/salehinafnan/competitive-programming",
   },
 ];
