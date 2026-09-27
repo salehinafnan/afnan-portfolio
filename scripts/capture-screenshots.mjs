@@ -48,8 +48,14 @@ for (const { title, live, image, capture } of PROJECTS.filter((project) => proje
     if (updated) await writeFile(image, webp);
     console.log(`${title}: ${updated ? "updated" : "no visible change"} (${(change * 100).toFixed(2)}% differs)`);
   } catch (error) {
-    console.error(`${title}: ${error.message}`);
-    process.exitCode = 1;
+    // A page without the content its screenshot needs, like a feed with no posts yet, only warns.
+    // Anything else, like a site that's down, fails the run.
+    if (error.missing) {
+      report("warning", `${title}: kept the old screenshot, since ${error.message}`);
+    } else {
+      report("error", `${title}: ${error.message}`);
+      process.exitCode = 1;
+    }
   }
 }
 
@@ -73,8 +79,9 @@ async function screenshot(url, { colorScheme = "light", wake, localStorage, wait
     await page.waitForLoadState("networkidle", { timeout: 30_000 }).catch(() => {});
     // Without it the page isn't worth showing, like a feed with no posts yet.
     if (waitFor) {
-      await page.waitForSelector(waitFor, { timeout: 30_000 }).catch(() => {
-        throw new Error(`the page never showed ${waitFor}`);
+      await page.waitForSelector(waitFor, { timeout: 30_000 }).catch(async () => {
+        const shown = (await page.locator("body").innerText()).replace(/\s+/g, " ").trim().slice(0, 200);
+        throw Object.assign(new Error(`the page never showed ${waitFor}, only "${shown}"`), { missing: true });
       });
     }
     // Waits for web fonts. Entrances and fades are skipped to their end, and loops (a pulse, a
@@ -100,6 +107,13 @@ async function wakeUp(url) {
   }
 }
 
+// On GitHub, warnings and errors also show on the run's page, not just in its log.
+function report(level, message) {
+  if (!process.env.GITHUB_ACTIONS) return console[level === "error" ? "error" : "warn"](message);
+  // A workflow command is a single line, so line breaks are escaped, and so is the % that escapes them.
+  console.log(`::${level}::${message.replace(/[%\r\n]/g, encodeURIComponent)}`);
+}
+
 // Runs in the page before its own scripts.
 function seed(entries) {
   try {
@@ -116,7 +130,12 @@ function seed(entries) {
 async function difference(webp, file) {
   const pixels = (input) => sharp(input).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   // Read into memory first: sharp keeps files it opens locked on Windows, so writing the new one would fail.
-  const [next, prev] = await Promise.all([pixels(webp), readFile(file).then(pixels).catch(() => null)]);
+  const [next, prev] = await Promise.all([
+    pixels(webp),
+    readFile(file)
+      .then(pixels)
+      .catch(() => null),
+  ]);
   if (prev?.info.width !== next.info.width || prev.info.height !== next.info.height) return 1;
   let changed = 0;
   for (let i = 0; i < next.data.length; i += 3) {

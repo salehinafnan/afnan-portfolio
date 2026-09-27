@@ -173,7 +173,7 @@ export type Project = {
         wake?: string;
         // Set before the page loads, e.g. sample data for an app that starts empty.
         localStorage?: Record<string, unknown>;
-        // A selector the page must show, or the old screenshot is kept and the run fails.
+        // A selector the page must show, or the old screenshot is kept and the run shows a warning.
         waitFor?: string;
       };
 };
