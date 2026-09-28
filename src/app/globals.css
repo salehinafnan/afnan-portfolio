@@ -542,9 +542,10 @@ html:has(dialog[open]) {
    of them. It floats at the bottom on phones and tablets, within thumb reach, and at the top from
    lg up. It keeps out of sight until the header has scrolled away, unless it takes focus. */
 .chapters {
-  /* The same pill, the same distance from the screen's edge, at the top and at the bottom. */
+  /* The same pill at the top and at the bottom. At the bottom it sits just above the browser's
+     toolbar; at the top it gets a little more room from the edge. */
   --pill-height: 2.5rem;
-  --pill-offset: 0.625rem;
+  --pill-offset: 0.3125rem;
   position: fixed;
   bottom: calc(var(--pill-offset) + env(safe-area-inset-bottom));
   left: 50%;
@@ -615,6 +616,7 @@ html:has(dialog[open]) {
 }
 @media (min-width: 64rem) {
   .chapters {
+    --pill-offset: 0.625rem;
     top: var(--pill-offset);
     bottom: auto;
   }
