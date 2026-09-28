@@ -33,6 +33,14 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  // Safari and iOS also request these root paths directly.
+  async rewrites() {
+    const destination = "/apple-icon.png";
+    return [
+      { source: "/apple-touch-icon.png", destination },
+      { source: "/apple-touch-icon-precomposed.png", destination },
+    ];
+  },
 };
 
 export default nextConfig;
