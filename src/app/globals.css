@@ -259,21 +259,18 @@
 
   /* On touch devices both page backdrops rise out of the plain page colour at the top edge.
      Phone browsers fill the status bar with the page background, so the page eases out from
-     under it with no seam. The alpha follows a smootherstep curve, flat where it leaves the
-     bar and where it reaches full strength, so neither end reads as a line. (A mask only reads
-     alpha, so the gradient's colour doesn't matter.) */
+     under it with no seam. The alpha follows a smoothstep curve, flat where it leaves the bar
+     and where it reaches full strength, so neither end reads as a line. Any shorter and it
+     reads as one anyway. (A mask only reads alpha, so the gradient's colour doesn't matter.) */
   .spotlight,
   .wafer {
     --edge-fade: linear-gradient(
       transparent,
-      rgba(0, 0, 0, 0.02) 5px,
-      rgba(0, 0, 0, 0.1) 10px,
-      rgba(0, 0, 0, 0.28) 15px,
-      rgba(0, 0, 0, 0.5) 20px,
-      rgba(0, 0, 0, 0.72) 25px,
-      rgba(0, 0, 0, 0.9) 30px,
-      rgba(0, 0, 0, 0.98) 35px,
-      #000 40px
+      rgba(0, 0, 0, 0.1) 4px,
+      rgba(0, 0, 0, 0.35) 8px,
+      rgba(0, 0, 0, 0.65) 12px,
+      rgba(0, 0, 0, 0.9) 16px,
+      #000 20px
     );
   }
 
