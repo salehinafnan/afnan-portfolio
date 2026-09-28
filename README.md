@@ -1,6 +1,6 @@
 # Afnan's Portfolio
 
-This is the repository for my personal portfolio website, live at **[salehinafnan.vercel.app](https://salehinafnan.vercel.app)**.
+This is the repository for my personal portfolio website, live at **[meetafnan.vercel.app](https://meetafnan.vercel.app)**.
 
 It's a single page about me: who I am, the technologies I work with, my experience, education and research, and the projects I've built, with a contact form at the end. My CV opens right on the page too.
 
