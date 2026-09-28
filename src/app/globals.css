@@ -259,26 +259,21 @@
 
   /* On touch devices both page backdrops rise out of the plain page colour at the top edge.
      Phone browsers fill the status bar with the page background, so the page eases out from
-     under it with no seam. (A mask only reads alpha, so the gradient's colour doesn't matter.)
-     The spotlight's even glow needs the longer fade, or its top edge reads as a line under the
-     bar. The crosshatch's diagonals never line up into an edge, so they start almost at the bar. */
-  .spotlight {
-    --edge-fade: linear-gradient(
-      transparent,
-      rgba(0, 0, 0, 0.2) 0.5rem,
-      rgba(0, 0, 0, 0.5) 1rem,
-      rgba(0, 0, 0, 0.8) 1.5rem,
-      #000 2rem
-    );
-  }
-
+     under it with no seam. The alpha follows a smootherstep curve, flat where it leaves the
+     bar and where it reaches full strength, so neither end reads as a line. (A mask only reads
+     alpha, so the gradient's colour doesn't matter.) */
+  .spotlight,
   .wafer {
     --edge-fade: linear-gradient(
       transparent,
-      rgba(0, 0, 0, 0.2) 0.125rem,
-      rgba(0, 0, 0, 0.5) 0.25rem,
-      rgba(0, 0, 0, 0.8) 0.375rem,
-      #000 0.5rem
+      rgba(0, 0, 0, 0.02) 5px,
+      rgba(0, 0, 0, 0.1) 10px,
+      rgba(0, 0, 0, 0.28) 15px,
+      rgba(0, 0, 0, 0.5) 20px,
+      rgba(0, 0, 0, 0.72) 25px,
+      rgba(0, 0, 0, 0.9) 30px,
+      rgba(0, 0, 0, 0.98) 35px,
+      #000 40px
     );
   }
 
