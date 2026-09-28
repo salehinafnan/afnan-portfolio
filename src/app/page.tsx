@@ -1,4 +1,5 @@
 import About from "../components/About";
+import ChapterNav from "../components/ChapterNav";
 import Contact from "../components/Contact";
 import Education from "../components/Education";
 import Experience from "../components/Experience";
@@ -20,6 +21,7 @@ export default function Home() {
         Skip to content
       </a>
       <Navbar />
+      <ChapterNav />
       <main id="main">
         <Hero />
         <About />
@@ -31,7 +33,8 @@ export default function Home() {
         <Contact />
       </main>
 
-      <footer className="mt-auto border-t border-line-1 py-8 text-center text-[0.8125rem] text-fg-4">
+      {/* Below lg the chapter nav floats at the bottom, so the footer leaves room under its text. */}
+      <footer className="mt-auto border-t border-line-1 pt-8 pb-24 text-center text-[0.8125rem] text-fg-4 lg:pb-8">
         <p>
           © {new Date().getFullYear()} {NAME}. All rights reserved.
         </p>
