@@ -34,7 +34,7 @@ export default function Home() {
       </main>
 
       {/* Below lg the chapter nav floats at the bottom, so the footer leaves room under its text. */}
-      <footer className="mt-auto border-t border-line-1 pt-8 pb-24 text-center text-[0.8125rem] text-fg-4 lg:pb-8">
+      <footer className="mt-auto border-t border-line-1 pt-8 pb-20 text-center text-[0.8125rem] text-fg-4 lg:pb-8">
         <p>
           © {new Date().getFullYear()} {NAME}. All rights reserved.
         </p>

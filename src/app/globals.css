@@ -542,8 +542,11 @@ html:has(dialog[open]) {
    of them. It floats at the bottom on phones and tablets, within thumb reach, and at the top from
    lg up. It keeps out of sight until the header has scrolled away, unless it takes focus. */
 .chapters {
+  /* The same pill, the same distance from the screen's edge, at the top and at the bottom. */
+  --pill-height: 2.5rem;
+  --pill-offset: 0.625rem;
   position: fixed;
-  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  bottom: calc(var(--pill-offset) + env(safe-area-inset-bottom));
   left: 50%;
   z-index: 40;
   translate: -50% 0;
@@ -562,6 +565,13 @@ html:has(dialog[open]) {
   opacity: 0;
   pointer-events: none;
 }
+/* The pill is drawn smaller than a comfortable tap target, so its hit area reaches past it, to
+   48px tall (measured from inside its 1px border). */
+.chapter-pill::after {
+  content: "";
+  position: absolute;
+  inset: -0.3125rem;
+}
 /* Closed, the list is clipped to the pill's own shape, so opening grows it out of the pill. */
 .chapter-list {
   position: absolute;
@@ -569,7 +579,9 @@ html:has(dialog[open]) {
   left: 50%;
   width: min(19rem, calc(100vw - 2rem));
   translate: -50% 0;
-  clip-path: inset(calc(100% - 2.75rem) calc(50% - var(--pill-width, 10rem) / 2) 0 round 1.375rem);
+  clip-path: inset(
+    calc(100% - var(--pill-height)) calc(50% - var(--pill-width, 10rem) / 2) 0 round calc(var(--pill-height) / 2)
+  );
   opacity: 0;
   visibility: hidden;
   transition:
@@ -603,7 +615,7 @@ html:has(dialog[open]) {
 }
 @media (min-width: 64rem) {
   .chapters {
-    top: 1rem;
+    top: var(--pill-offset);
     bottom: auto;
   }
   .chapters[data-hidden]:not(:focus-within) {
@@ -613,7 +625,9 @@ html:has(dialog[open]) {
     top: 0;
     bottom: auto;
     width: 17.5rem;
-    clip-path: inset(0 calc(50% - var(--pill-width, 10rem) / 2) calc(100% - 2.75rem) round 1.375rem);
+    clip-path: inset(
+      0 calc(50% - var(--pill-width, 10rem) / 2) calc(100% - var(--pill-height)) round calc(var(--pill-height) / 2)
+    );
   }
 }
 

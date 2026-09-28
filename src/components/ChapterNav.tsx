@@ -105,9 +105,9 @@ const ChapterNav = () => {
         // Hidden behind the open list, so Shift+Tab from the list leaves the nav instead.
         tabIndex={open ? -1 : undefined}
         onClick={() => setOpen(true)}
-        className="chapter-pill glass glass-blur glass-float flex h-11 items-center gap-2.5 rounded-full pr-4 pl-3 text-sm font-medium tracking-tight whitespace-nowrap text-fg-1 transition-[opacity,scale] duration-300 ease-spring active:scale-96"
+        className="chapter-pill glass glass-blur glass-float flex h-(--pill-height) items-center gap-2 rounded-full pr-3.5 pl-2.5 text-[0.8125rem] font-medium tracking-tight whitespace-nowrap text-fg-1 transition-[opacity,scale] duration-300 ease-spring active:scale-96"
       >
-        <svg viewBox="0 0 20 20" aria-hidden="true" className="size-5 shrink-0 -rotate-90 fill-none stroke-[2.25]">
+        <svg viewBox="0 0 20 20" aria-hidden="true" className="size-4.5 shrink-0 -rotate-90 fill-none stroke-[2.25]">
           <circle cx="10" cy="10" r="8" className="stroke-line-2" />
           <circle
             ref={ringRef}
@@ -124,7 +124,7 @@ const ChapterNav = () => {
           <>
             {current.label}
             {/* Screen readers can read "3/7" as a date. */}
-            <span aria-hidden="true" className="font-mono text-xs font-normal text-fg-4 tabular-nums">
+            <span aria-hidden="true" className="font-mono text-[0.6875rem] font-normal text-fg-4 tabular-nums">
               {active + 1}/{SECTIONS.length}
             </span>
             <span className="sr-only">, section {position}</span>
@@ -132,7 +132,7 @@ const ChapterNav = () => {
         ) : (
           "Contents"
         )}
-        <FiChevronUp aria-hidden="true" className="size-3.5 text-fg-3 lg:rotate-180" />
+        <FiChevronUp aria-hidden="true" className="size-3 text-fg-3 lg:rotate-180" />
       </button>
 
       <div id="chapter-list" className="chapter-list glass glass-blur glass-float rounded-[1.625rem] p-2">
