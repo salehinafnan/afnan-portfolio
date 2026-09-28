@@ -17,8 +17,8 @@ export const NAME = "Mushfiqus Salehin Afnan";
 export const ROLE = "Web Developer & Clinical AI Specialist";
 
 // The CV lives in Google Drive so it can be updated without a redeploy: replace
-// the file in Drive (Manage versions keeps this ID) and the site picks it up
-// within an hour. /cv.pdf proxies it for the in-page viewer.
+// the file in Drive (Manage versions keeps this ID) and the site serves the new
+// version on the next request. /cv.pdf proxies it for the in-page viewer.
 export const RESUME_DRIVE_ID = "1_D7aZqK8ytZZWAmbEQEPhPS7Rv1uZaVa";
 export const RESUME_URL = `https://drive.google.com/file/d/${RESUME_DRIVE_ID}/view`;
 export const RESUME_PDF = "/cv.pdf";
